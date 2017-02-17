@@ -32,17 +32,20 @@ public abstract class AbstractScreen implements Screen{
 		camera.setToOrtho(false, Herbarium.WIDHT, Herbarium.HEIGHT);
 		camera.update();
 	}
-	@Override
-	public void show(){}
 	
 	@Override
 	public void render(float delta){
 		clearScreen();
 		camera.update();
+		spriteBatch.setProjectionMatrix(camera.combined);
 	}
+	
+	@Override
+	public void show(){}
+	
 
 	private void clearScreen() {
-		Gdx.gl.glClearColor(0, 0, 0, 0);
+		Gdx.gl.glClearColor(1, 1, 1, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	
@@ -55,6 +58,8 @@ public abstract class AbstractScreen implements Screen{
 	public void pause(){
 		herbarium.setPause(true);
 	}
+	@Override
+	public void hide() {}
 	
 	@Override
 	public void dispose(){

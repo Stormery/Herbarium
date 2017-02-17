@@ -2,6 +2,7 @@ package com.stormery.herbarium;
 
 
 import com.badlogic.gdx.Game;
+import com.stormery.herbarium.screens.SplashScreen;
 
 
 public class Herbarium extends Game {
@@ -11,32 +12,23 @@ public class Herbarium extends Game {
 	public final static int WIDHT = 480;
 	public final static int HEIGHT = 700;
 	
-	public static boolean Pause;
+	private boolean pause;
 	
 	@Override
 	public void create () {
-	//	this.setScreen(new SplashScreen(this));
+	this.setScreen(new SplashScreen(this));
 	}
 
-	@Override
-	public void render () {
-	
-	}
-	
-	@Override
-	public void dispose () {
-		
-	}
 /*
  * 
  * Getters and setters
  * 
  */
-	public static boolean isPause() {
-		return Pause;
+	public boolean isPause() {
+		return pause;
 	}
 
-	public static void setPause(boolean pause) {
-		Pause = pause;
+	public void setPause(boolean pause) {
+		this.pause = pause;
 	}
 }
