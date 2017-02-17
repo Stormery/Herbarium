@@ -32,7 +32,8 @@ public class SplashScreen extends AbstractScreen{
 	}
 	
 	private void initContinueButton(){
-	
+	//TODO get better button texture
+		
 		continueButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("continueButton.jpg"))));
 		continueButton.setWidth(135);
 		continueButton.setHeight(135);
@@ -44,10 +45,12 @@ public class SplashScreen extends AbstractScreen{
 		
 		continueButton.addListener(new ClickListener(){
 			
+			
+			
 		@Override
 		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 			
-		//go to next page	
+		herbarium.setScreen(new MainScreen(herbarium));
 			
 			return super.touchDown(event, x, y, pointer, button);
 		}
