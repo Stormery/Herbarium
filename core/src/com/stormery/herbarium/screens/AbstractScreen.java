@@ -48,7 +48,7 @@ public abstract class AbstractScreen implements Screen{
 	
 
 	private void clearScreen() {
-		Gdx.gl.glClearColor(1, 0, 1, 0); // Tlo jest biale
+		Gdx.gl.glClearColor(1, 1, 1, 0); // Tlo jest biale na 1 1 1 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	

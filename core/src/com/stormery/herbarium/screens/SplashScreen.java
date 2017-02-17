@@ -1,10 +1,13 @@
 package com.stormery.herbarium.screens;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.stormery.herbarium.Herbarium;
 
 
@@ -12,7 +15,7 @@ import com.stormery.herbarium.Herbarium;
 public class SplashScreen extends AbstractScreen{
 
 	private Texture logoImg;
-	private Button continueButton;
+	private ImageButton continueButton;
 	
 	public SplashScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -29,12 +32,13 @@ public class SplashScreen extends AbstractScreen{
 	}
 	
 	private void initContinueButton(){
-		continueButton = new Button(new ButtonStyle());
-		continueButton.setWidth(200);
-		continueButton.setHeight(100);
-		continueButton.setX(10);
-		continueButton.setY(170);
-		continueButton.setDebug(true);
+	
+		continueButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("continueButton.jpg"))));
+		continueButton.setWidth(135);
+		continueButton.setHeight(135);
+		continueButton.setX(Herbarium.WIDHT/2-continueButton.getWidth()/2);
+		continueButton.setY(250);
+		continueButton.setDebug(false);
 		
 		stage.addActor(continueButton);
 		
