@@ -24,8 +24,11 @@ public abstract class AbstractScreen implements Screen{
 		stage = new Stage(new StretchViewport(Herbarium.WIDHT, Herbarium.HEIGHT));
 		spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(stage);
+		init();
 		
 	}
+
+	protected abstract void init();
 
 	private void createCamera() {
 		camera = new OrthographicCamera();
@@ -45,7 +48,7 @@ public abstract class AbstractScreen implements Screen{
 	
 
 	private void clearScreen() {
-		Gdx.gl.glClearColor(1, 1, 1, 0);
+		Gdx.gl.glClearColor(1, 0, 1, 0); // Tlo jest biale
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	
