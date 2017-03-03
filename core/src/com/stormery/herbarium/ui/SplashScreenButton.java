@@ -10,8 +10,8 @@ import com.stormery.herbarium.screens.MainScreen;
 public class SplashScreenButton extends Image {
 	
 	
-	public SplashScreenButton(){
-		super(new Texture("Logo.png"));
+	public SplashScreenButton(final Herbarium herbarium){
+		super(new Texture("SplashBg.png"));
 	
 		this.setOrigin(Herbarium.WIDHT/2, Herbarium.HEIGHT/2);
 		this.setSize(Herbarium.WIDHT, Herbarium.HEIGHT);
@@ -21,6 +21,7 @@ public class SplashScreenButton extends Image {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				herbarium.setScreen(new MainScreen(herbarium));
+				
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});
@@ -28,3 +29,7 @@ public class SplashScreenButton extends Image {
 
 	
 }
+
+
+
+

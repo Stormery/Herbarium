@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.ui.SplashScreenButton;
 
 
 //ekran powitalny
@@ -14,6 +15,7 @@ public class SplashScreen extends AbstractScreen{
 
 	private Texture logoImg;
 	private ImageButton continueButton;
+	private SplashScreenButton splashScreenButton;
 	
 	public SplashScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -25,7 +27,7 @@ public class SplashScreen extends AbstractScreen{
 		
 		
 		initSplashScreen();
-		initContinueButton();
+		initContinueButton(herbarium);
 	}
 	
 	private void initSplashScreen() {
@@ -35,39 +37,11 @@ public class SplashScreen extends AbstractScreen{
 		
 	}
 
-	private void initContinueButton(){
+	private void initContinueButton(Herbarium herbarium){
 	//TODO get better button texture
+		splashScreenButton = new SplashScreenButton(herbarium);
 		
-		continueButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("continueButton.jpg"))));
-		continueButton.setWidth(135);
-		continueButton.setHeight(135);
-		continueButton.setX(Herbarium.WIDHT/2-continueButton.getWidth()/2);
-		continueButton.setY(250);
-		continueButton.setDebug(false);
-		
-		stage.addActor(continueButton);
-		
-		continueButton.addListener(new ClickListener(){
-				
-			
-	
-		@Override
-		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-			
-//TODO jakas grafika wciskania
-			
-			return super.touchDown(event, x, y, pointer, button);
-		}
-			
-		
-		@Override
-		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-			
-			herbarium.setScreen(new MainScreen(herbarium));
-			super.touchUp(event, x, y, pointer, button);
-		}
-		});
-		
+		stage.addActor(splashScreenButton);
 		
 	}
 	
@@ -77,11 +51,11 @@ public class SplashScreen extends AbstractScreen{
 		super.render(delta);
 		
 		
-		stage.draw();
+		
 		spriteBatch.begin();
 		
-		spriteBatch.draw(logoImg, 0, Herbarium.HEIGHT-logoImg.getHeight()-100); // wysokosc logo skaluje sie od gornej czesci ekranu
-		
+		stage.draw();
+			
 		spriteBatch.end();
 	}
 
