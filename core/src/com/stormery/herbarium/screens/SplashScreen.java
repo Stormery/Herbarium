@@ -3,8 +3,6 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -24,13 +22,19 @@ public class SplashScreen extends AbstractScreen{
 	
 	@Override
 	protected void init() {
+		
+		
+		initSplashScreen();
+		initContinueButton();
+	}
+	
+	private void initSplashScreen() {
 		//TODO implement better assets loading when game grows
 		// change logoImg to my own one
 		logoImg = new Texture("Logo.png");
 		
-		initContinueButton();
 	}
-	
+
 	private void initContinueButton(){
 	//TODO get better button texture
 		
@@ -44,18 +48,26 @@ public class SplashScreen extends AbstractScreen{
 		stage.addActor(continueButton);
 		
 		continueButton.addListener(new ClickListener(){
+				
 			
-			
-			
+	
 		@Override
 		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 			
-		herbarium.setScreen(new MainScreen(herbarium));
+//TODO jakas grafika wciskania
 			
 			return super.touchDown(event, x, y, pointer, button);
 		}
 			
+		
+		@Override
+		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			
+			herbarium.setScreen(new MainScreen(herbarium));
+			super.touchUp(event, x, y, pointer, button);
+		}
 		});
+		
 		
 	}
 	
