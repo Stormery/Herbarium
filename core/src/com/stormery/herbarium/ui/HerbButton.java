@@ -33,14 +33,17 @@ public class HerbButton extends Image {
 	}
 
 	private void whatPosition(int i) {
+		int adjust = 30;
 		switch(i)
 		{
-		case 1: this.xPos = 0;
-		
+		case 1: this.xPos = 0 + adjust;break;
+		case 2: this.xPos = 130 + adjust; break;
+		case 3: this.xPos = 260 + adjust; break;
 		}
 		
 	}
 
+	
 	public HerbButton(String buttonImage, float xPos, float yPos) {
 		super(new Texture(buttonImage));
 

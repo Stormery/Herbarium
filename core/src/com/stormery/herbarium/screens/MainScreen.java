@@ -9,7 +9,7 @@ public class MainScreen	extends AbstractScreen {
 
 	private Image background;
 	private Image logo;
-	private HerbButton herbButton;
+	private HerbButton[] herbButton;
 	
 	
 	public MainScreen(Herbarium herbarium) {
@@ -28,9 +28,15 @@ public class MainScreen	extends AbstractScreen {
 	}
 	
 	private void initHerbButton() {
+		herbButton = new HerbButton[3];
 		
-		herbButton = new HerbButton(1);
-		stage.addActor(herbButton);
+		herbButton[0] = new HerbButton(1);
+		herbButton[1] = new HerbButton(2);
+		herbButton[2] = new HerbButton(3);
+		for(HerbButton herbs : herbButton){
+			stage.addActor(herbs);
+		}
+		
 	}
 	
 	private void initBackgroundTextures() {
