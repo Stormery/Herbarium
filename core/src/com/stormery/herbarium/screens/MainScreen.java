@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.ui.HerbButton;
+import com.stormery.herbarium.ui.IClickCallback;
 
 public class MainScreen	extends AbstractScreen {
 
@@ -22,21 +23,40 @@ public class MainScreen	extends AbstractScreen {
 	protected void init() {
 		//TODO GET better background texture
 		initBackgroundTextures();
-		initHerbButton();
-		
+		initHerbButton();		
 		
 	}
 	
 	private void initHerbButton() {
 		herbButton = new HerbButton[3];
 		
-		herbButton[0] = new HerbButton(1);
-		herbButton[1] = new HerbButton(2);
-		herbButton[2] = new HerbButton(3);
+		herbButton[0] = new HerbButton(1, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("1 pozycja");
+				
+			}
+		});
+		
+		herbButton[1] = new HerbButton(2, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("2 pozycja");
+				
+			}
+		});
+		herbButton[2] = new HerbButton(3, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println(" 3 pozycja");
+			}
+		});
 		for(HerbButton herbs : herbButton){
 			stage.addActor(herbs);
-		}
-		
+		}		
 	}
 	
 	private void initBackgroundTextures() {
