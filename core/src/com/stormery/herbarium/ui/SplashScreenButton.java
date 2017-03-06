@@ -11,7 +11,7 @@ public class SplashScreenButton extends Image {
 	
 	
 	public SplashScreenButton(final Herbarium herbarium){
-		super(new Texture("SplashBg.png"));
+		super(new Texture("backgroundImg/SplashBg.png"));
 	
 		this.setOrigin(Herbarium.WIDHT/2, Herbarium.HEIGHT/2);
 		this.setSize(Herbarium.WIDHT, Herbarium.HEIGHT);
