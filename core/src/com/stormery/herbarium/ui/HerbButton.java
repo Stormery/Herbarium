@@ -11,12 +11,12 @@ public class HerbButton extends Image {
 	private float xPos;
 	private float yPos;
 
-	private Herbarium herbarium;
+	
 	
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
-		//this.herbarium = herbarium;
+	
 		init(xPosition, callback, herbarium);
 
 	}
@@ -33,7 +33,7 @@ public class HerbButton extends Image {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-				herbarium.playTapSound();
+				herbarium.getSoundService().playTapSound();
 				callback.onClick();
 				
 				return super.touchDown(event, x, y, pointer, button);
@@ -68,7 +68,7 @@ public class HerbButton extends Image {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-				herbarium.playTapSound();
+				herbarium.getSoundService().playTapSound();
 				callback.onClick();
 				
 				return super.touchDown(event, x, y, pointer, button);

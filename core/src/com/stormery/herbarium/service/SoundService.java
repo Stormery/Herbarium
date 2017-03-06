@@ -9,6 +9,7 @@ public class SoundService {
 	public SoundService(){
 		init();
 	}
+	
 	private void init() {
 
 		tapSound = Gdx.audio.newSound(Gdx.files.internal("sound/tap.wav"));
