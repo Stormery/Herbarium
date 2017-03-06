@@ -19,7 +19,8 @@ public class SplashScreenButton extends Image {
 		this.addCaptureListener(new ClickListener(){
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+				
+				herbarium.getSoundService().playTapSound();
 				herbarium.setScreen(new MainScreen(herbarium));
 				
 				return super.touchDown(event, x, y, pointer, button);
