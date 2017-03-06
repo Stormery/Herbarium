@@ -12,6 +12,7 @@ public class SplashScreen extends AbstractScreen{
 	public SplashScreen(Herbarium herbarium) {
 		super(herbarium);
 		init();
+		
 	}
 	
 	@Override

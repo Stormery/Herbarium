@@ -32,9 +32,10 @@ public class MainScreen extends AbstractScreen {
 		herbButton[0] = new HerbButton(1, new IClickCallback() {
 			@Override
 			public void onClick() {
-				
 				System.out.println("1 pozycja");
 
+				herbarium.setScreen(new HerbPage(herbarium));
+				
 			}
 		}, herbarium);
 
