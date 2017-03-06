@@ -11,14 +11,17 @@ public class HerbButton extends Image {
 	private float xPos;
 	private float yPos;
 
-	public HerbButton(int xPosition, final IClickCallback callback) {
+	private Herbarium herbarium;
+	
+	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
-		init(xPosition, callback);
+		//this.herbarium = herbarium;
+		init(xPosition, callback, herbarium);
 
 	}
 
-	private void init(int xPosition, final IClickCallback callback) {
+	private void init(int xPosition, final IClickCallback callback, final Herbarium herbarium) {
 		this.setSize(150, 75);
 
 		yPos = Herbarium.HEIGHT - this.getHeight() - 150;
@@ -30,6 +33,7 @@ public class HerbButton extends Image {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
+				herbarium.playTapSound();
 				callback.onClick();
 				
 				return super.touchDown(event, x, y, pointer, button);
@@ -54,23 +58,23 @@ public class HerbButton extends Image {
 
 	}
 
-	public HerbButton(String buttonImage, float xPos, float yPos) {
+	// drugi sposob jesli chce ustawic pozycje
+	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,final Herbarium herbarium) {
 		super(new Texture(buttonImage));
 
 		this.setPosition(xPos, yPos);
 		this.setSize(150, 75);
-
-		this.addCaptureListener(new ClickListener() {
-
+		this.addListener(new ClickListener(){
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-				System.out.println("click");
-
+				herbarium.playTapSound();
+				callback.onClick();
+				
 				return super.touchDown(event, x, y, pointer, button);
 			}
-
 		});
+		
 
 	}
 

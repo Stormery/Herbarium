@@ -6,66 +6,64 @@ import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.ui.HerbButton;
 import com.stormery.herbarium.ui.IClickCallback;
 
-public class MainScreen	extends AbstractScreen {
+public class MainScreen extends AbstractScreen {
 
 	private Image background;
 	private Image logo;
 	private HerbButton[] herbButton;
-	
-	
+
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
 		init();
-		
+
 	}
 
 	@Override
 	protected void init() {
-		//TODO GET better background texture
+		// TODO GET better background texture
 		initBackgroundTextures();
-		initHerbButton();		
-		
+		initHerbButton(herbarium);
+
 	}
-	
-	private void initHerbButton() {
+
+	private void initHerbButton(final Herbarium herbarium) {
 		herbButton = new HerbButton[3];
-		
+
 		herbButton[0] = new HerbButton(1, new IClickCallback() {
-			
 			@Override
 			public void onClick() {
-				System.out.println("1 pozycja");
 				
+				System.out.println("1 pozycja");
+
 			}
-		});
-		
+		}, herbarium);
+
 		herbButton[1] = new HerbButton(2, new IClickCallback() {
-			
 			@Override
 			public void onClick() {
 				System.out.println("2 pozycja");
-				
+
 			}
-		});
+		}, herbarium);
 		herbButton[2] = new HerbButton(3, new IClickCallback() {
-			
 			@Override
 			public void onClick() {
 				System.out.println(" 3 pozycja");
 			}
-		});
-		for(HerbButton herbs : herbButton){
-			stage.addActor(herbs);
-		}		
-	}
-	
-	private void initBackgroundTextures() {
+		}, herbarium);
 		
+		for (HerbButton herbs : herbButton) {
+			stage.addActor(herbs);
+		}
+	}
+
+	private void initBackgroundTextures() {
+
 		background = new Image(new Texture("backgroundImg/tlo01.png"));
 		stage.addActor(background);
-		
+
 		logo = new Image(new Texture("backgroundImg/Logo.png"));
-		logo.setPosition(0, Herbarium.HEIGHT-logo.getHeight());
+		logo.setPosition(0, Herbarium.HEIGHT - logo.getHeight());
 		stage.addActor(logo);
 	}
 
@@ -75,7 +73,7 @@ public class MainScreen	extends AbstractScreen {
 		super.render(delta);
 		spriteBatch.begin();
 		stage.draw();
-		
+
 		spriteBatch.end();
 	}
 
