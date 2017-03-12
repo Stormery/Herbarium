@@ -11,8 +11,8 @@ public class HerbPage extends AbstractScreen {
 	private Image background;
 
 	private Vector2 dragOld, dragNew;
-	private int zmienna;
-	private float balanceView;
+	private int balanceView;
+	private float zmiennaRuchu;
 	private int maxAtTop;
 	private int maxAtBottom;
 	private int zmiennaTla;
@@ -25,9 +25,9 @@ public class HerbPage extends AbstractScreen {
 
 	@Override
 	protected void init() {
-		maxAtBottom = 800;
-		maxAtTop = 200;
-		
+		maxAtBottom = -800;
+		maxAtTop = 0;
+
 		initBackgroundTexture();
 
 	}
@@ -36,7 +36,7 @@ public class HerbPage extends AbstractScreen {
 
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
 		background.setPosition(0, -background.getHeight() + 700);
-		zmiennaTla = (int) (-background.getHeight()+700);
+		zmiennaTla = (int) (-background.getHeight() + 700);
 		stage.addActor(background);
 
 	}
@@ -68,41 +68,45 @@ public class HerbPage extends AbstractScreen {
 			dragOld = dragNew;
 
 		}
-		if (Gdx.input.isTouched()) {
+		if (Gdx.input.isTouched() && inRange()) {
 			dragNew = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 
-			if (!dragNew.equals(dragOld) && inRange()) {
+			if (!dragNew.equals(dragOld)) {
 
-				balanceView = dragNew.y - dragOld.y;
+				zmiennaRuchu = dragNew.y - dragOld.y;
+				balanceView += zmiennaRuchu* 30 * Gdx.graphics.getDeltaTime();
+
 				moveImagesBy();
-				System.out.println(zmienna += balanceView);
+				System.out.println("Balance: " + balanceView);
 
 				camera.update();
 				dragOld = dragNew; // Drag old becomes drag new.
 			}
 		}
+
 	}
 
 	private void moveImagesBy() {
-		background.moveBy(0, -balanceView);
+		background.moveBy(0, -zmiennaRuchu * 30 * Gdx.graphics.getDeltaTime());
 	}
 
 	private boolean inRange() {
-		if (zmienna >= -maxAtBottom) {
+		if ((balanceView >= maxAtBottom) && balanceView <= maxAtTop) {
 
 			return true;
-		} else {
-			System.err.println("Camera position: " + camera.position.y);
-			stopImageMoving();
-			zmienna = -maxAtBottom;
+		} else if (balanceView > maxAtTop) {
+			background.setPosition(0, zmiennaTla);
+			balanceView = maxAtTop;
 			camera.update();
 			return false;
 
+		} else {
+			background.setPosition(0, zmiennaTla - maxAtBottom);
+			balanceView = maxAtBottom;
+			camera.update();
+			return false;
 		}
-	}
 
-	private void stopImageMoving() {
-		background.setPosition(0,zmiennaTla+maxAtBottom);
 	}
 
 }
