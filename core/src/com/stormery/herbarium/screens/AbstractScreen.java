@@ -21,7 +21,7 @@ public abstract class AbstractScreen implements Screen{
 	public AbstractScreen(Herbarium herbarium){
 		this.herbarium = herbarium;
 		createCamera();
-		stage = new Stage();
+		stage = new Stage(new StretchViewport(Herbarium.WIDHT, Herbarium.HEIGHT));
 		spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(stage);
 		init();
