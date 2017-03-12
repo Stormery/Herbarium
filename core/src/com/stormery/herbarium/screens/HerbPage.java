@@ -25,7 +25,7 @@ public class HerbPage extends AbstractScreen {
 
 	@Override
 	protected void init() {
-		maxAtBottom = -800;
+		maxAtBottom = -500;
 		maxAtTop = 0;
 
 		initBackgroundTexture();
@@ -68,7 +68,7 @@ public class HerbPage extends AbstractScreen {
 			dragOld = dragNew;
 
 		}
-		if (Gdx.input.isTouched() && inRange()) {
+		if (Gdx.input.isTouched()) {
 			dragNew = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 
 			if (!dragNew.equals(dragOld)) {
@@ -76,7 +76,8 @@ public class HerbPage extends AbstractScreen {
 				zmiennaRuchu = dragNew.y - dragOld.y;
 				balanceView += zmiennaRuchu* 30 * Gdx.graphics.getDeltaTime();
 
-				moveImagesBy();
+				if(inRange())moveImagesBy();
+			
 				System.out.println("Balance: " + balanceView);
 
 				camera.update();
@@ -87,20 +88,24 @@ public class HerbPage extends AbstractScreen {
 	}
 
 	private void moveImagesBy() {
+		//Dla androida musi byc * 30 * delta
 		background.moveBy(0, -zmiennaRuchu * 30 * Gdx.graphics.getDeltaTime());
 	}
 
 	private boolean inRange() {
-		if ((balanceView >= maxAtBottom) && balanceView <= maxAtTop) {
+		
+		if ((balanceView <= maxAtTop) && balanceView >= maxAtBottom ) {
 
 			return true;
 		} else if (balanceView > maxAtTop) {
+			//Jesli przesuniecie jest wieksze niz koniec topa, stopuje przesuwanie
 			background.setPosition(0, zmiennaTla);
 			balanceView = maxAtTop;
 			camera.update();
 			return false;
 
 		} else {
+			//Jesli przesuniecie jest wieksze niz koniec bota, stopuje przesuwanie
 			background.setPosition(0, zmiennaTla - maxAtBottom);
 			balanceView = maxAtBottom;
 			camera.update();
