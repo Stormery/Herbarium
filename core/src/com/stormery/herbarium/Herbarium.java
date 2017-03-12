@@ -1,7 +1,9 @@
 package com.stormery.herbarium;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.screens.SplashScreen;
+import com.stormery.herbarium.service.DraggScreenService;
 import com.stormery.herbarium.service.SoundService;
 
 public class Herbarium extends Game {
@@ -10,6 +12,9 @@ public class Herbarium extends Game {
 
 	public final static int WIDHT = 480;
 	public final static int HEIGHT = 700;
+
+	private DraggScreenService draggScreenService;
+
 
 	private SoundService soundService;
 
@@ -23,6 +28,11 @@ public class Herbarium extends Game {
 
 	private void init() {
 		initSoundService();
+		initDragScreenService();
+	}
+	
+	public void initDragScreenService(){
+		draggScreenService = new DraggScreenService();
 	}
 	
 	public void initSoundService(){
@@ -45,4 +55,9 @@ public class Herbarium extends Game {
 	public SoundService getSoundService() {
 		return soundService;
 	}
+	public DraggScreenService getDraggScreenService() {
+		return draggScreenService;
+	}
+
+	
 }
