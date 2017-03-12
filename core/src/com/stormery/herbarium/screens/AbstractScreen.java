@@ -14,14 +14,14 @@ public abstract class AbstractScreen implements Screen{
 	protected Herbarium herbarium;
 	
 	protected Stage stage;
-	private OrthographicCamera camera;
+	protected OrthographicCamera camera;
 	protected SpriteBatch spriteBatch;
 	
 	
 	public AbstractScreen(Herbarium herbarium){
 		this.herbarium = herbarium;
 		createCamera();
-		stage = new Stage(new StretchViewport(Herbarium.WIDHT, Herbarium.HEIGHT));
+		stage = new Stage();
 		spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(stage);
 		init();
