@@ -7,7 +7,7 @@ import com.stormery.herbarium.Herbarium;
 public class HerbPage extends AbstractScreen {
 
 	private Image background;
-	private Image logo;
+	
 	
 
 	public HerbPage(Herbarium herbarium) {
@@ -27,11 +27,9 @@ public class HerbPage extends AbstractScreen {
 
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
 		background.setPosition(0, -background.getHeight() + 700);
-		logo = new Image(new Texture("backgroundImg/Logo.png"));
-		logo.setPosition(0, 0);
-
+		
 		stage.addActor(background);
-		stage.addActor(logo);
+		
 
 	}
 
@@ -40,7 +38,7 @@ public class HerbPage extends AbstractScreen {
 		super.render(delta);
 		
 		herbarium.getDraggScreenService().draggScreen(background); // Funkcja scroll
-		herbarium.getDraggScreenService().draggScreen(logo); // Funkcja scroll
+		
 		
 		
 
