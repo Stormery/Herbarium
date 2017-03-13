@@ -1,6 +1,7 @@
 package com.stormery.herbarium.ui;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -10,13 +11,13 @@ public class HerbButton extends Image {
 
 	private float xPos;
 	private float yPos;
-
+	private final Vector2 xyPosition;
 	
 	
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
-	
+		xyPosition = new Vector2(xPosition, 0);
 		init(xPosition, callback, herbarium);
 
 	}
@@ -62,13 +63,15 @@ public class HerbButton extends Image {
 	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,final Herbarium herbarium) {
 		super(new Texture(buttonImage));
 
+		xyPosition = new Vector2(xPos, yPos);
+		
 		this.setPosition(xPos, yPos);
-		this.setSize(150, 75);
+		//this.setSize(150, 75);
 		this.addListener(new ClickListener(){
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-				herbarium.getSoundService().playTapSound();
+				//herbarium.getSoundService().playTapSound();
 				callback.onClick();
 				
 				return super.touchDown(event, x, y, pointer, button);
@@ -76,6 +79,10 @@ public class HerbButton extends Image {
 		});
 		
 
+	}
+
+	public Vector2 getXyPosition() {
+		return xyPosition;
 	}
 
 }
