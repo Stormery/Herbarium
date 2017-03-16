@@ -42,7 +42,7 @@ public class HerbPage extends AbstractScreen {
 	private void initBackgroundTexture() {
 
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
-		background.setPosition(0, -background.getHeight() + 700);
+		//background.setPosition(0, -background.getHeight() + 700);
 		
 		bttBackground = new HerbButton("backgroundImg/HerbPage.png", 0, -background.getHeight() + 700, new IClickCallback() {
 			

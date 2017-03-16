@@ -47,13 +47,14 @@ public class DraggScreenService {
 
 				for (HerbButton dragImg : imgs) {
 					 
+					dragImg.setMovingPosition(dragImg.getyBasePosition());
 					
-					vectorPosition = dragImg.getXyPosition();
-					System.err.println(vectorPosition);
+					
 					if (inRange2(dragImg)){
-						holdPositionOn = vectorPosition.y -balanceView;
-						System.out.println("->" + holdPositionOn);
 						
+						dragImg.setMovingPosition(dragImg.getyBasePosition() - balanceView);
+						System.out.println("->" + dragImg.getMovingPosition());
+					
 						moveImagesBy(dragImg);
 					}
 						
@@ -67,24 +68,43 @@ public class DraggScreenService {
 
 	}
 
-	private boolean inRange2(Image dragImg) {
+	private boolean inRange2(HerbButton dragImg) {
 		if ((balanceView <= maxAtTop) && balanceView >= maxAtBottom) {
 
 			return true;
-		} else if (balanceView > maxAtTop) {
-			// Jesli przesuniecie jest wieksze niz koniec topa, stopuje
-			// przesuwanie
-			dragImg.setPosition(0, holdPositionOn);
-			balanceView = maxAtTop;
-			return false;
-
-		} else {
-			// Jesli przesuniecie jest wieksze niz koniec bota, stopuje
-			// przesuwanie
-			dragImg.setPosition(0, holdPositionOn);
-			balanceView = maxAtBottom;
+		}
+		if(balanceView >maxAtTop){
+			
+			//balanceView = maxAtTop;
 			return false;
 		}
+		return false;
+		
+		
+		
+//		} else if (balanceView > maxAtTop) {
+//			// Jesli przesuniecie jest wieksze niz koniec topa, stopuje
+//			// przesuwanie
+//			System.out.println("posi: "+dragImg.getMovingPosition());
+//			dragImg.setPosition(0, dragImg.getyBasePosition() );
+//			balanceView = maxAtTop;
+//			return false;
+//
+//		} else if(balanceView < maxAtBottom){
+//			// Jesli przesuniecie jest wieksze niz koniec bota, stopuje
+//			// przesuwanie
+//			dragImg.setPosition(0, dragImg.getMovingPosition());
+//			
+//			balanceView = maxAtBottom;
+//			return false;
+//		}
+//			else{
+//				
+//				return false;
+//			}
+//		
+		
+		
 
 	}
 

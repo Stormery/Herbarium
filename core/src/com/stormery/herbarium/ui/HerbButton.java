@@ -11,13 +11,15 @@ public class HerbButton extends Image {
 
 	private float xPos;
 	private float yPos;
-	private final Vector2 xyPosition;
+	
+	private final float yBasePosition;
+	private float movingPosition;
 	
 	
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
-		xyPosition = new Vector2(xPosition, 0);
+		yBasePosition = 0;
 		init(xPosition, callback, herbarium);
 
 	}
@@ -63,7 +65,7 @@ public class HerbButton extends Image {
 	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,final Herbarium herbarium) {
 		super(new Texture(buttonImage));
 
-		xyPosition = new Vector2(xPos, yPos);
+		yBasePosition = yPos;
 		
 		this.setPosition(xPos, yPos);
 		//this.setSize(150, 75);
@@ -81,8 +83,19 @@ public class HerbButton extends Image {
 
 	}
 
-	public Vector2 getXyPosition() {
-		return xyPosition;
+	public float getMovingPosition() {
+		return movingPosition;
 	}
+
+	public void setMovingPosition(float movingPosition) {
+		this.movingPosition = movingPosition;
+	}
+
+	public float getyBasePosition() {
+		return yBasePosition;
+	}
+
+	
+	
 
 }
