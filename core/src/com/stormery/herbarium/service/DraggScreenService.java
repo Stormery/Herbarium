@@ -43,25 +43,28 @@ public class DraggScreenService {
 			if (!dragNew.equals(dragOld)) {
 
 				zmiennaRuchu = dragNew.y - dragOld.y;
-				balanceView += zmiennaRuchu * 30 * Gdx.graphics.getDeltaTime();
+				
 
 				for (HerbButton dragImg : imgs) {
-					 
+					
+					dragImg.balanceView += zmiennaRuchu * 30 * Gdx.graphics.getDeltaTime();
 					dragImg.setMovingPosition(dragImg.getyBasePosition());
 					
 					
 					if (inRange2(dragImg)){
 						
-						dragImg.setMovingPosition(dragImg.getyBasePosition() - balanceView);
+						dragImg.setMovingPosition(dragImg.getyBasePosition() +dragImg.balanceView);
+						dragImg.finalPosition.y = dragImg.getyBasePosition() -dragImg.balanceView;
 						System.out.println("->" + dragImg.getMovingPosition());
+						System.out.println("@@@@@" + dragImg.finalPosition.y);
 					
 						moveImagesBy(dragImg);
 					}
 						
-
+					System.err.println("Balance: " + dragImg.balanceView);
 				}
 
-				System.out.println("Balance: " + balanceView);
+				
 				dragOld = dragNew; // Drag old becomes drag new.
 			}
 		}
@@ -69,13 +72,21 @@ public class DraggScreenService {
 	}
 
 	private boolean inRange2(HerbButton dragImg) {
-		if ((balanceView <= maxAtTop) && balanceView >= maxAtBottom) {
+		if ((dragImg.balanceView <= maxAtTop) && dragImg.balanceView >= maxAtBottom) {
 
 			return true;
 		}
-		if(balanceView >maxAtTop){
+		if(dragImg.balanceView >maxAtTop){
 			
-			//balanceView = maxAtTop;
+			dragImg.balanceView = maxAtTop;
+			dragImg.setPosition(0, dragImg.getyBasePosition());
+			return false;
+		}
+		if(dragImg.balanceView < maxAtBottom)
+		{
+			dragImg.balanceView = maxAtBottom;
+			System.out.println("------>" + dragImg.finalPosition.y);
+			dragImg.setPosition(0, dragImg.finalPosition.y);
 			return false;
 		}
 		return false;

@@ -23,7 +23,11 @@ public class HerbPage extends AbstractScreen {
 	
 		initBackgroundTexture();
 		initHerbButton();
+		
 	}
+
+
+	
 
 	private void initHerbButton() {
 
