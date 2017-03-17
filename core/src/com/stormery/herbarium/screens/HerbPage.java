@@ -9,8 +9,10 @@ import com.stormery.herbarium.ui.IClickCallback;
 public class HerbPage extends AbstractScreen {
 
 	private Image background;
+	
+	private int windowHeight = 700;
 
-	private HerbImage herbButton, bttBackground, secondButton;
+	private HerbImage herbButton, bttBackground;
 	private HerbImage returnButton;
 
 	public HerbPage(Herbarium herbarium) {
@@ -25,7 +27,6 @@ public class HerbPage extends AbstractScreen {
 		initBackgroundTexture();
 		initReturnButton();
 		initHerbButton();
-		initSecondButton();
 
 	}
 
@@ -43,16 +44,10 @@ public class HerbPage extends AbstractScreen {
 		
 	}
 
-	private void initSecondButton() {
-
-		secondButton = new HerbImage("buttons/SingleButton.png", 200, 100, 150, 75, herbarium);
-		stage.addActor(secondButton);
-
-	}
 
 	private void initHerbButton() {
 
-		herbButton = new HerbImage("buttons/SingleButton.png", 50, 300, 150	,75 , herbarium);
+		herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150	,75 , herbarium);
 
 		stage.addActor(herbButton);
 	}
@@ -61,7 +56,7 @@ public class HerbPage extends AbstractScreen {
 
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
 
-		bttBackground = new HerbImage("backgroundImg/HerbPage.png", 0, -background.getHeight() + 700, 0, 0, herbarium);
+		bttBackground = new HerbImage("backgroundImg/HerbPage.png", 0, -background.getHeight() + windowHeight, 0, 0, herbarium);
 		stage.addActor(bttBackground);
 
 	}
@@ -70,7 +65,7 @@ public class HerbPage extends AbstractScreen {
 	public void render(float delta) {
 		super.render(delta);
 
-		herbarium.getDraggScreenService().draggScreen(bttBackground, herbButton, secondButton); // Funkcja
+		herbarium.getDraggScreenService().draggScreen(bttBackground, herbButton); // Funkcja
 																								// scroll
 
 		spriteBatch.begin();
