@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.stormery.herbarium.Herbarium;
 
-public class HerbButton extends Image {
+public class HerbImage extends Image {
 
 	private float xPos;
 	private float yPos;
@@ -18,7 +18,7 @@ public class HerbButton extends Image {
 	private Vector2 finalPosition;
 	
 // Basic Button Implement with no callback
-	public HerbButton(String buttonImage, float xPos, float yPos, int xSize, int ySize,
+	public HerbImage(String buttonImage, float xPos, float yPos, int xSize, int ySize,
 			 Herbarium herbarium) {
 		
 		super(new Texture(buttonImage));
@@ -32,7 +32,7 @@ public class HerbButton extends Image {
 	}
 	
 	// Button init with callback
-	public HerbButton(String buttonImage, float xPos, float yPos, int xSize, int ySize,
+	public HerbImage(String buttonImage, float xPos, float yPos, int xSize, int ySize,
 			final IClickCallback callback, final Herbarium herbarium) {
 		
 		super(new Texture(buttonImage));
@@ -58,7 +58,7 @@ public class HerbButton extends Image {
 	
 	
 	//Small buttons with static positions (need refactor imo)
-	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
+	public HerbImage(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
 		yBasePosition = 0;

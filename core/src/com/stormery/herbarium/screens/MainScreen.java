@@ -3,14 +3,14 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.ui.HerbButton;
+import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
 public class MainScreen extends AbstractScreen {
 
 	private Image background;
 	private Image logo;
-	private HerbButton[] herbButton;
+	private HerbImage[] herbButton;
 
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -27,9 +27,9 @@ public class MainScreen extends AbstractScreen {
 	}
 
 	private void initHerbButton(final Herbarium herbarium) {
-		herbButton = new HerbButton[3];
+		herbButton = new HerbImage[3];
 
-		herbButton[0] = new HerbButton(1, new IClickCallback() {
+		herbButton[0] = new HerbImage(1, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("1 pozycja");
@@ -39,21 +39,21 @@ public class MainScreen extends AbstractScreen {
 			}
 		}, herbarium);
 
-		herbButton[1] = new HerbButton(2, new IClickCallback() {
+		herbButton[1] = new HerbImage(2, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("2 pozycja");
 
 			}
 		}, herbarium);
-		herbButton[2] = new HerbButton(3, new IClickCallback() {
+		herbButton[2] = new HerbImage(3, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println(" 3 pozycja");
 			}
 		}, herbarium);
 		
-		for (HerbButton herbs : herbButton) {
+		for (HerbImage herbs : herbButton) {
 			stage.addActor(herbs);
 		}
 	}

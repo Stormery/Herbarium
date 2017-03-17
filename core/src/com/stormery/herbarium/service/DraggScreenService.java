@@ -3,7 +3,7 @@ package com.stormery.herbarium.service;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.stormery.herbarium.ui.HerbButton;
+import com.stormery.herbarium.ui.HerbImage;
 
 public class DraggScreenService {
 
@@ -21,7 +21,7 @@ public class DraggScreenService {
 	
 	}
 
-	public void draggScreen(HerbButton background, HerbButton... imgs) {
+	public void draggScreen(HerbImage background, HerbImage... imgs) {
 		/*
 		 * If just touched, u get tap position, and if its changed (different
 		 * than dragOld) thats mean screen is dragging. dragDistance set how far
@@ -47,7 +47,7 @@ public class DraggScreenService {
 
 				dragDistance = dragNew.y - dragOld.y;
 				moveBackground(background);
-				for (HerbButton dragImg : imgs) {
+				for (HerbImage dragImg : imgs) {
 
 					dragImg.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 
@@ -65,7 +65,7 @@ public class DraggScreenService {
 		}
 	}
 
-	private void moveBackground(HerbButton background) {
+	private void moveBackground(HerbImage background) {
 		background.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 
 		if (inRange2(background)) {
@@ -75,7 +75,7 @@ public class DraggScreenService {
 		}		
 	}
 
-	private boolean inRange2(HerbButton dragImg) {
+	private boolean inRange2(HerbImage dragImg) {
 		if ((dragImg.getBalanceView() <= maxAtTopBalance) && dragImg.getBalanceView() >= maxAtBottomBalance) {
 
 			return true;
