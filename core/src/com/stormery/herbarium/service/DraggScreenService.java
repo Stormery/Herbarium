@@ -9,7 +9,7 @@ public class DraggScreenService {
 
 	private Vector2 dragOld, dragNew;
 
-	private float dragDistance; //= dragNew.y - dragOld.y
+	private float dragDistance; // = dragNew.y - dragOld.y
 	private int maxAtTop = 0;
 	private int maxAtBottom;
 
@@ -23,10 +23,17 @@ public class DraggScreenService {
 	}
 
 	public void draggScreen(HerbButton... imgs) {
+		/*
+		 * If just touched, u get tap position, and if its changed (different
+		 * than dragOld) thats mean screen is dragging. dragDistance set how far
+		 * its dragged from one drag (dragNew.y - dragOld.y) and for each picture
+		 * implemented Balance window is changing from 0 (top edge) to max bottom
+		 * edge. FinalPositionY inform how far pictures needs to be moved till
+		 * end and at end
+		 * 
+		 */
 
 		if (Gdx.input.justTouched()) {
-			// System.out.println("Mouse ClickOn: " + Gdx.input.getX() + " " +
-			// Gdx.input.getY());
 			dragNew = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 			dragOld = dragNew;
 
@@ -40,15 +47,15 @@ public class DraggScreenService {
 
 				for (HerbButton dragImg : imgs) {
 
-					dragImg.balanceView += dragDistance * 30 * Gdx.graphics.getDeltaTime();
+					dragImg.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 
 					if (inRange2(dragImg)) {
 
-						dragImg.setFinalPositionY(dragImg.getBasePositionY() - dragImg.balanceView);
+						dragImg.setFinalPositionY(dragImg.getBasePositionY() - dragImg.getBalanceView());
 						moveImagesBy(dragImg);
 					}
 
-					System.err.println("Balance: " + dragImg.balanceView);
+					System.err.println("Balance: " + dragImg.getBalanceView());
 				}
 
 				dragOld = dragNew; // Drag old becomes drag new.
@@ -57,18 +64,18 @@ public class DraggScreenService {
 	}
 
 	private boolean inRange2(HerbButton dragImg) {
-		if ((dragImg.balanceView <= maxAtTop) && dragImg.balanceView >= maxAtBottom) {
+		if ((dragImg.getBalanceView() <= maxAtTop) && dragImg.getBalanceView() >= maxAtBottom) {
 
 			return true;
 		}
-		if (dragImg.balanceView > maxAtTop) {
+		if (dragImg.getBalanceView() > maxAtTop) {
 
-			dragImg.balanceView = maxAtTop;
+			dragImg.setBalanceView(maxAtTop);
 			dragImg.setPosition(0, dragImg.getBasePositionY());
 			return false;
 		}
-		if (dragImg.balanceView < maxAtBottom) {
-			dragImg.balanceView = maxAtBottom;
+		if (dragImg.getBalanceView() < maxAtBottom) {
+			dragImg.setBalanceView(maxAtBottom);
 			dragImg.setPosition(0, dragImg.getFinalPositionY());
 			return false;
 		}

@@ -13,10 +13,9 @@ public class HerbButton extends Image {
 	private float yPos;
 
 	private final float yBasePosition;
-	private float movingPosition;
 
-	public float balanceView;
-	public Vector2 finalPosition;
+	private float balanceView;
+	private Vector2 finalPosition;
 
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
@@ -89,19 +88,12 @@ public class HerbButton extends Image {
 	 * Getters and Setters
 	 * 
 	 */
-	public float getMovingPosition() {
-		return movingPosition;
-	}
-
-	public void setMovingPosition(float movingPosition) {
-		this.movingPosition = movingPosition;
-	}
 
 	public float getBasePositionY() {
 		return yBasePosition;
 	}
 
-	
+	/////FinalPosition\\\\\\\\\  After scrolling positions
 	public float getFinalPositionY() {
 		return finalPosition.y;
 	}
@@ -109,8 +101,17 @@ public class HerbButton extends Image {
 	public void setFinalPositionY(float finalPosition) {
 		this.finalPosition.y = finalPosition;
 	}
-	public void addToFinalPosition(float x){
-		this.finalPosition.y += x;
+	
+	///BalanceView\\\
+	public float getBalanceView() {
+		return balanceView;
+	}
+
+	public void setBalanceView(float balanceView) {
+		this.balanceView = balanceView;
+	}
+	public void addToBalanceView(float x){
+		this.balanceView += x;
 	}
 
 }
