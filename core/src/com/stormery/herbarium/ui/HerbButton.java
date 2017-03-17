@@ -56,6 +56,8 @@ public class HerbButton extends Image {
 		});
 	}
 	
+	
+	//Small buttons with static positions (need refactor imo)
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
@@ -110,11 +112,12 @@ public class HerbButton extends Image {
 	}
 
 	/////FinalPosition\\\\\\\\\  After scrolling positions
-	public float getFinalPositionY() {
-		return finalPosition.y;
-	}
 	public float getFinalPositionX() {
 		return finalPosition.x;
+	}
+	
+	public float getFinalPositionY() {
+		return finalPosition.y;
 	}
 
 	public void setFinalPositionY(float finalPosition) {

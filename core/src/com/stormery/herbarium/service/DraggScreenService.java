@@ -10,29 +10,31 @@ public class DraggScreenService {
 	private Vector2 dragOld, dragNew;
 
 	private float dragDistance; // = dragNew.y - dragOld.y
-	private int maxAtTop = 0;
-	private int maxAtBottom;
+	private int maxAtTopBalance = 0;
+	private int maxAtBottomBalance;
 
 	public DraggScreenService() {
 		init();
 	}
 
 	private void init() {
-		maxAtBottom = -500;
-
+	
 	}
 
-	public void draggScreen(HerbButton... imgs) {
+	public void draggScreen(HerbButton background, HerbButton... imgs) {
 		/*
 		 * If just touched, u get tap position, and if its changed (different
 		 * than dragOld) thats mean screen is dragging. dragDistance set how far
 		 * its dragged from one drag (dragNew.y - dragOld.y) and for each picture
 		 * implemented Balance window is changing from 0 (top edge) to max bottom
 		 * edge. FinalPositionY inform how far pictures needs to be moved till
-		 * end and at end
+		 * end and at end.
 		 * 
 		 */
+		//maxAtBottomBalance gets bottom edge
+		maxAtBottomBalance  = -((int) background.getHeight()-699);
 
+		
 		if (Gdx.input.justTouched()) {
 			dragNew = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 			dragOld = dragNew;
@@ -44,7 +46,7 @@ public class DraggScreenService {
 			if (!dragNew.equals(dragOld)) {
 
 				dragDistance = dragNew.y - dragOld.y;
-
+				moveBackground(background);
 				for (HerbButton dragImg : imgs) {
 
 					dragImg.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
@@ -63,19 +65,29 @@ public class DraggScreenService {
 		}
 	}
 
+	private void moveBackground(HerbButton background) {
+		background.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
+
+		if (inRange2(background)) {
+
+			background.setFinalPositionY(background.getBasePositionY() - background.getBalanceView());
+			moveImagesBy(background);
+		}		
+	}
+
 	private boolean inRange2(HerbButton dragImg) {
-		if ((dragImg.getBalanceView() <= maxAtTop) && dragImg.getBalanceView() >= maxAtBottom) {
+		if ((dragImg.getBalanceView() <= maxAtTopBalance) && dragImg.getBalanceView() >= maxAtBottomBalance) {
 
 			return true;
 		}
-		if (dragImg.getBalanceView() > maxAtTop) {
+		if (dragImg.getBalanceView() > maxAtTopBalance) {
 
-			dragImg.setBalanceView(maxAtTop);
+			dragImg.setBalanceView(maxAtTopBalance);
 			dragImg.setPosition(dragImg.getFinalPositionX(), dragImg.getBasePositionY());
 			return false;
 		}
-		if (dragImg.getBalanceView() < maxAtBottom) {
-			dragImg.setBalanceView(maxAtBottom);
+		if (dragImg.getBalanceView() < maxAtBottomBalance) {
+			dragImg.setBalanceView(maxAtBottomBalance);
 			dragImg.setPosition(dragImg.getFinalPositionX(), dragImg.getFinalPositionY());
 			return false;
 		}
