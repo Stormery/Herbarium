@@ -11,6 +11,7 @@ public class HerbPage extends AbstractScreen {
 	private Image background;
 
 	private HerbImage herbButton, bttBackground, secondButton;
+	private HerbImage returnButton;
 
 	public HerbPage(Herbarium herbarium) {
 		super(herbarium);
@@ -22,9 +23,24 @@ public class HerbPage extends AbstractScreen {
 	protected void init() {
 
 		initBackgroundTexture();
+		initReturnButton();
 		initHerbButton();
 		initSecondButton();
 
+	}
+
+	private void initReturnButton() {
+		returnButton = new HerbImage("buttons/back.png", 0, 0, 100, 100, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				herbarium.setScreen(new MainScreen(herbarium));
+				
+			}
+		}, herbarium);
+		
+		stage.addActor(returnButton);
+		
 	}
 
 	private void initSecondButton() {

@@ -42,7 +42,7 @@ public class HerbImage extends Image {
 		finalPosition.x = xPos; 
 		this.setPosition(xPos, yPos);
 		
-		if(xSize!=0)this.setSize(150, 75);
+		if(xSize!=0)this.setSize(xSize, ySize);
 		
 		this.addListener(new ClickListener() {
 			@Override
