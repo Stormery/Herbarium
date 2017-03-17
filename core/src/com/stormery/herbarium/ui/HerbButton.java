@@ -11,14 +11,13 @@ public class HerbButton extends Image {
 
 	private float xPos;
 	private float yPos;
-	
+
 	private final float yBasePosition;
 	private float movingPosition;
-	
+
 	public float balanceView;
 	public Vector2 finalPosition;
-	
-	
+
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
@@ -33,15 +32,14 @@ public class HerbButton extends Image {
 		yPos = Herbarium.HEIGHT - this.getHeight() - 150;
 		whatPosition(xPosition);
 		this.setPosition(xPos, yPos);
-		
-		
-		this.addListener(new ClickListener(){
+
+		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				herbarium.getSoundService().playTapSound();
 				callback.onClick();
-				
+
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});
@@ -65,28 +63,32 @@ public class HerbButton extends Image {
 	}
 
 	// drugi sposob jesli chce ustawic pozycje
-	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,final Herbarium herbarium) {
+	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,
+			final Herbarium herbarium) {
 		super(new Texture(buttonImage));
 
 		yBasePosition = yPos;
 		finalPosition = new Vector2();
-		
+
 		this.setPosition(xPos, yPos);
-		//this.setSize(150, 75);
-		this.addListener(new ClickListener(){
+		// this.setSize(150, 75);
+		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-				//herbarium.getSoundService().playTapSound();
+				// herbarium.getSoundService().playTapSound();
 				callback.onClick();
-				
+
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});
-		
 
 	}
 
+	/*
+	 * Getters and Setters
+	 * 
+	 */
 	public float getMovingPosition() {
 		return movingPosition;
 	}
@@ -95,11 +97,20 @@ public class HerbButton extends Image {
 		this.movingPosition = movingPosition;
 	}
 
-	public float getyBasePosition() {
+	public float getBasePositionY() {
 		return yBasePosition;
 	}
 
 	
-	
+	public float getFinalPositionY() {
+		return finalPosition.y;
+	}
+
+	public void setFinalPositionY(float finalPosition) {
+		this.finalPosition.y = finalPosition;
+	}
+	public void addToFinalPosition(float x){
+		this.finalPosition.y += x;
+	}
 
 }
