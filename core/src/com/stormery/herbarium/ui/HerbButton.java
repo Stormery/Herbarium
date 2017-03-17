@@ -16,7 +16,46 @@ public class HerbButton extends Image {
 
 	private float balanceView;
 	private Vector2 finalPosition;
+	
+// Basic Button Implement with no callback
+	public HerbButton(String buttonImage, float xPos, float yPos, int xSize, int ySize,
+			 Herbarium herbarium) {
+		
+		super(new Texture(buttonImage));
+		
+		yBasePosition = yPos;
+		finalPosition = new Vector2();
+		finalPosition.x = xPos; 
+		this.setPosition(xPos, yPos);
+		
+		if(xSize!=0)this.setSize(150, 75);
+	}
+	
+	// Button init with callback
+	public HerbButton(String buttonImage, float xPos, float yPos, int xSize, int ySize,
+			final IClickCallback callback, final Herbarium herbarium) {
+		
+		super(new Texture(buttonImage));
+		
+		yBasePosition = yPos;
+		finalPosition = new Vector2();
+		finalPosition.x = xPos; 
+		this.setPosition(xPos, yPos);
+		
+		if(xSize!=0)this.setSize(150, 75);
+		
+		this.addListener(new ClickListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
+				herbarium.getSoundService().playTapSound();
+				callback.onClick();
+
+				return super.touchDown(event, x, y, pointer, button);
+			}
+		});
+	}
+	
 	public HerbButton(int xPosition, final IClickCallback callback, Herbarium herbarium) {
 		super(new Texture("buttons/Singlebutton.png"));
 
@@ -61,29 +100,6 @@ public class HerbButton extends Image {
 
 	}
 
-	// drugi sposob jesli chce ustawic pozycje
-	public HerbButton(String buttonImage, float xPos, float yPos, final IClickCallback callback,
-			final Herbarium herbarium) {
-		super(new Texture(buttonImage));
-
-		yBasePosition = yPos;
-		finalPosition = new Vector2();
-
-		this.setPosition(xPos, yPos);
-		// this.setSize(150, 75);
-		this.addListener(new ClickListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
-				// herbarium.getSoundService().playTapSound();
-				callback.onClick();
-
-				return super.touchDown(event, x, y, pointer, button);
-			}
-		});
-
-	}
-
 	/*
 	 * Getters and Setters
 	 * 
@@ -96,6 +112,9 @@ public class HerbButton extends Image {
 	/////FinalPosition\\\\\\\\\  After scrolling positions
 	public float getFinalPositionY() {
 		return finalPosition.y;
+	}
+	public float getFinalPositionX() {
+		return finalPosition.x;
 	}
 
 	public void setFinalPositionY(float finalPosition) {
@@ -113,5 +132,6 @@ public class HerbButton extends Image {
 	public void addToBalanceView(float x){
 		this.balanceView += x;
 	}
+
 
 }

@@ -71,12 +71,12 @@ public class DraggScreenService {
 		if (dragImg.getBalanceView() > maxAtTop) {
 
 			dragImg.setBalanceView(maxAtTop);
-			dragImg.setPosition(0, dragImg.getBasePositionY());
+			dragImg.setPosition(dragImg.getFinalPositionX(), dragImg.getBasePositionY());
 			return false;
 		}
 		if (dragImg.getBalanceView() < maxAtBottom) {
 			dragImg.setBalanceView(maxAtBottom);
-			dragImg.setPosition(0, dragImg.getFinalPositionY());
+			dragImg.setPosition(dragImg.getFinalPositionX(), dragImg.getFinalPositionY());
 			return false;
 		}
 		return false;

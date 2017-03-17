@@ -9,8 +9,8 @@ import com.stormery.herbarium.ui.IClickCallback;
 public class HerbPage extends AbstractScreen {
 
 	private Image background;
-	
-	private HerbButton herbButton,bttBackground;
+
+	private HerbButton herbButton, bttBackground, secondButton;
 
 	public HerbPage(Herbarium herbarium) {
 		super(herbarium);
@@ -20,56 +20,44 @@ public class HerbPage extends AbstractScreen {
 
 	@Override
 	protected void init() {
-	
+
 		initBackgroundTexture();
 		initHerbButton();
-		
+		initSecondButton();
+
 	}
 
+	private void initSecondButton() {
 
-	
+		secondButton = new HerbButton("buttons/SingleButton.png", 200, 100, 150, 75, herbarium);
+		stage.addActor(secondButton);
+
+	}
 
 	private void initHerbButton() {
 
-		herbButton = new HerbButton("buttons/SingleButton.png", 0, 300, new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				// TODO Auto-generated method stub
-				
-			}
-		}, herbarium);
-		
+		herbButton = new HerbButton("buttons/SingleButton.png", 50, 300, 150	,75 , herbarium);
+
 		stage.addActor(herbButton);
 	}
 
 	private void initBackgroundTexture() {
 
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
-		//background.setPosition(0, -background.getHeight() + 700);
-		
-		bttBackground = new HerbButton("backgroundImg/HerbPage.png", 0, -background.getHeight() + 700, new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				// TODO Auto-generated method stub
-				
-			}
-		}, herbarium);
-		//stage.addActor(background);
+		// background.setPosition(0, -background.getHeight() + 700);
+
+		bttBackground = new HerbButton("backgroundImg/HerbPage.png", 0, -background.getHeight() + 700, 0, 0, herbarium);
+		// stage.addActor(background);
 		stage.addActor(bttBackground);
-		
 
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
-		herbarium.getDraggScreenService().draggScreen(bttBackground, herbButton); // Funkcja scroll
-		
-		
-		
+
+		herbarium.getDraggScreenService().draggScreen(bttBackground, herbButton, secondButton); // Funkcja
+																								// scroll
 
 		spriteBatch.begin();
 
@@ -78,6 +66,5 @@ public class HerbPage extends AbstractScreen {
 		spriteBatch.end();
 
 	}
-
 
 }
