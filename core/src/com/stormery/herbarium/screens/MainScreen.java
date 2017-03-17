@@ -3,6 +3,7 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
@@ -34,7 +35,7 @@ public class MainScreen extends AbstractScreen {
 			public void onClick() {
 				System.out.println("1 pozycja");
 
-				herbarium.setScreen(new HerbPage(herbarium));
+				herbarium.setScreen(new Pokrzywa(herbarium));
 				
 			}
 		}, herbarium);

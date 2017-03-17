@@ -1,20 +1,15 @@
 package com.stormery.herbarium.screens;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
 public class HerbPage extends AbstractScreen {
-
-	private Image background;
 	
-	private int windowHeight = 700;
-
-	private HerbImage herbButton, bttBackground;
+	protected int windowHeight = 700;
 	private HerbImage returnButton;
-
+	private HerbImage slider;
+	
 	public HerbPage(Herbarium herbarium) {
 		super(herbarium);
 		init();
@@ -26,11 +21,24 @@ public class HerbPage extends AbstractScreen {
 
 		initBackgroundTexture();
 		initReturnButton();
-		initHerbButton();
+		initSlider();
+		//initHerbButton();
 
 	}
 
-	private void initReturnButton() {
+	private void initSlider() {
+		slider = new HerbImage("buttons/Slider.png", -190, 200, 0, 0, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("wysow");
+				
+			}
+		}, herbarium);
+		stage.addActor(slider);
+	}
+
+	protected void initReturnButton() {
 		returnButton = new HerbImage("buttons/back.png", 0, 0, 100, 100, new IClickCallback() {
 			
 			@Override
@@ -45,19 +53,14 @@ public class HerbPage extends AbstractScreen {
 	}
 
 
-	private void initHerbButton() {
+//	private void initHerbButton() {
+//
+//		herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150	,75 , herbarium);
+//
+//		stage.addActor(herbButton);
+//	}
 
-		herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150	,75 , herbarium);
-
-		stage.addActor(herbButton);
-	}
-
-	private void initBackgroundTexture() {
-
-		background = new Image(new Texture("backgroundImg/HerbPage.png"));
-
-		bttBackground = new HerbImage("backgroundImg/HerbPage.png", 0, -background.getHeight() + windowHeight, 0, 0, herbarium);
-		stage.addActor(bttBackground);
+	protected void initBackgroundTexture() {
 
 	}
 
@@ -65,7 +68,7 @@ public class HerbPage extends AbstractScreen {
 	public void render(float delta) {
 		super.render(delta);
 
-		herbarium.getDraggScreenService().draggScreen(bttBackground, herbButton); // Funkcja
+		
 																								// scroll
 
 		spriteBatch.begin();
