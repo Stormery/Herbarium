@@ -1,15 +1,17 @@
 package com.stormery.herbarium.screens;
 
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.service.SliderService;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
 public class HerbPage extends AbstractScreen {
-	
+
 	protected int windowHeight = 700;
 	private HerbImage returnButton;
-	private HerbImage slider;
-	
+
+	private SliderService sliderService;
+
 	public HerbPage(Herbarium herbarium) {
 		super(herbarium);
 		init();
@@ -21,44 +23,37 @@ public class HerbPage extends AbstractScreen {
 
 		initBackgroundTexture();
 		initReturnButton();
-		initSlider();
-		//initHerbButton();
+		initSliderSerice();
+		// initHerbButton();
 
 	}
 
-	private void initSlider() {
-		slider = new HerbImage("buttons/Slider.png", -190, 200, 0, 0, new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				System.out.println("wysow");
-				
-			}
-		}, herbarium);
-		stage.addActor(slider);
+	public void initSliderSerice() {
+		sliderService = new SliderService(stage);
+
 	}
 
 	protected void initReturnButton() {
 		returnButton = new HerbImage("buttons/back.png", 0, 0, 100, 100, new IClickCallback() {
-			
+
 			@Override
 			public void onClick() {
 				herbarium.setScreen(new MainScreen(herbarium));
-				
+
 			}
 		}, herbarium);
-		
+
 		stage.addActor(returnButton);
-		
+
 	}
 
-
-//	private void initHerbButton() {
-//
-//		herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150	,75 , herbarium);
-//
-//		stage.addActor(herbButton);
-//	}
+	// private void initHerbButton() {
+	//
+	// herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150 ,75 ,
+	// herbarium);
+	//
+	// stage.addActor(herbButton);
+	// }
 
 	protected void initBackgroundTexture() {
 
@@ -68,8 +63,7 @@ public class HerbPage extends AbstractScreen {
 	public void render(float delta) {
 		super.render(delta);
 
-		
-																								// scroll
+		// scroll
 
 		spriteBatch.begin();
 
@@ -77,6 +71,10 @@ public class HerbPage extends AbstractScreen {
 
 		spriteBatch.end();
 
+	}
+
+	public SliderService getSliderService() {
+		return sliderService;
 	}
 
 }
