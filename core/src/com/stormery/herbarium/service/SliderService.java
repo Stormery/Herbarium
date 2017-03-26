@@ -14,7 +14,8 @@ public class SliderService extends Image{
 	private boolean sliderOpen;
 	Herbarium herbarium;
 	
-	public SliderService(Stage stage) {
+	public SliderService(Stage stage, Herbarium herbarium) {
+		this.herbarium = herbarium;
 		init(stage);
 	}
 

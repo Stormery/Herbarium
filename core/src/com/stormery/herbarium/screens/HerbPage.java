@@ -29,7 +29,7 @@ public class HerbPage extends AbstractScreen {
 	}
 
 	public void initSliderSerice() {
-		sliderService = new SliderService(stage);
+		sliderService = new SliderService(stage, herbarium);
 
 	}
 
