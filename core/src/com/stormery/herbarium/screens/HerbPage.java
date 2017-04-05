@@ -34,7 +34,7 @@ public class HerbPage extends AbstractScreen {
 	}
 
 	protected void initReturnButton() {
-		returnButton = new HerbImage("buttons/back.png", 0, 0, 100, 100, new IClickCallback() {
+		returnButton = new HerbImage("buttons/back.png", herbarium.WIDHT-100, 0, 100, 100, new IClickCallback() {
 
 			@Override
 			public void onClick() {
