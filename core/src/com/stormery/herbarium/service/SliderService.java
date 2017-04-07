@@ -40,6 +40,7 @@ public class SliderService extends Image{
 
 			for (int i = 0; i < 19; i++)
 				slider.moveBy(10, 0);
+				
 			//Action a = Actions.parallel(Actions.moveBy(10, 0, 0.5f));
 			//this.addAction
 			sliderOpen = true;

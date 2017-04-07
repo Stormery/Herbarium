@@ -5,7 +5,7 @@ import com.stormery.herbarium.service.SliderService;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
-public class HerbPage extends AbstractScreen {
+public class HerbPage extends MainScreen {
 
 	protected int windowHeight = 700;
 	private HerbImage returnButton;
@@ -73,8 +73,6 @@ public class HerbPage extends AbstractScreen {
 
 	}
 
-	public SliderService getSliderService() {
-		return sliderService;
-	}
+	
 
 }
