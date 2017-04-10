@@ -15,7 +15,7 @@ public class HerbImage extends Image {
 	private final float yBasePosition;
 
 	private float balanceView;
-	private Vector2 finalPosition;
+	private Vector2 finalPosition = new Vector2(0,0);
 	
 // Basic Button Implement with no callback
 	public HerbImage(String buttonImage, float xPos, float yPos, int xSize, int ySize,
@@ -23,8 +23,7 @@ public class HerbImage extends Image {
 		
 		super(new Texture(buttonImage));
 		
-		yBasePosition = yPos;
-		finalPosition = new Vector2();
+		yBasePosition = yPos;		
 		finalPosition.x = xPos; 
 		this.setPosition(xPos, yPos);
 		
@@ -38,7 +37,6 @@ public class HerbImage extends Image {
 		super(new Texture(buttonImage));
 		
 		yBasePosition = yPos;
-		finalPosition = new Vector2();
 		finalPosition.x = xPos; 
 		this.setPosition(xPos, yPos);
 		

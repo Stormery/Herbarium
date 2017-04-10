@@ -7,9 +7,11 @@ import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
-public class MainScreen extends AbstractScreen {
+public class MainScreen extends HerbPage {
 
+	
 	private Image background;
+	private HerbImage bttBackground;
 	private Image logo;
 	private HerbImage[] herbButton;
 
@@ -24,9 +26,9 @@ public class MainScreen extends AbstractScreen {
 		// TODO GET better background texture
 		initBackgroundTextures();
 		initHerbButton(herbarium);
-
+		
 	}
-
+	
 	private void initHerbButton(final Herbarium herbarium) {
 		herbButton = new HerbImage[3];
 
@@ -61,8 +63,9 @@ public class MainScreen extends AbstractScreen {
 
 	private void initBackgroundTextures() {
 
-		background = new Image(new Texture("backgroundImg/tlo01.png"));
-		stage.addActor(background);
+		background = new Image(new Texture("backgroundImg/tlo02.png"));
+		bttBackground = new HerbImage("backgroundImg/tlo02.png", 0, -background.getHeight() + windowHeight, 0, 0, herbarium);
+		stage.addActor(bttBackground);
 
 		logo = new Image(new Texture("backgroundImg/Logo.png"));
 		logo.setPosition(0, Herbarium.HEIGHT - logo.getHeight());
@@ -73,10 +76,9 @@ public class MainScreen extends AbstractScreen {
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		super.render(delta);
-		spriteBatch.begin();
-		stage.draw();
-
-		spriteBatch.end();
+		
+		draggScreen(bttBackground, herbButton);
+		
 	}
 
 }

@@ -13,13 +13,6 @@ public class DraggScreenService {
 	private int maxAtTopBalance = 0;
 	private int maxAtBottomBalance;
 
-	public DraggScreenService() {
-		init();
-	}
-
-	private void init() {
-	
-	}
 
 	public void draggScreen(HerbImage background, HerbImage... imgs) {
 		/*
