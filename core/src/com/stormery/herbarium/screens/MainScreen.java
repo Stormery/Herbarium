@@ -12,7 +12,6 @@ public class MainScreen extends HerbPage {
 	
 	private Image background;
 	private HerbImage bttBackground;
-	private Image logo;
 	private HerbImage[] herbButton;
 
 	public MainScreen(Herbarium herbarium) {
@@ -23,7 +22,7 @@ public class MainScreen extends HerbPage {
 
 	@Override
 	protected void init() {
-		// TODO GET better background texture
+		// TODO GET better background texture		
 		initBackgroundTextures();
 		initHerbButton(herbarium);
 		
@@ -67,9 +66,6 @@ public class MainScreen extends HerbPage {
 		bttBackground = new HerbImage("backgroundImg/tlo02.png", 0, -background.getHeight() + windowHeight, 0, 0, herbarium);
 		stage.addActor(bttBackground);
 
-		logo = new Image(new Texture("backgroundImg/Logo.png"));
-		logo.setPosition(0, Herbarium.HEIGHT - logo.getHeight());
-		stage.addActor(logo);
 	}
 
 	@Override

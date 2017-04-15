@@ -22,10 +22,11 @@ public class Pokrzywa extends  HerbPage{
 
 	@Override
 	protected void init() {
-		super.init();
+		initBackgroundTexture();
 		initHerbButton(herbarium);
 		initReturnButton(true);
 		initSliderSerice();
+		
 		
 	}
 	private void initHerbButton(final Herbarium herbarium) {
@@ -59,10 +60,9 @@ public class Pokrzywa extends  HerbPage{
 			stage.addActor(herbs);
 		}
 	}
-	@Override
+	
 	protected void initBackgroundTexture() {
-		super.initBackgroundTexture();
-		
+			
 		background = new Image(new Texture("backgroundImg/HerbPage.png"));
 
 		bttBackground = new HerbImage("backgroundImg/HerbPage.png", 0, -background.getHeight() + windowHeight, 0, 0, herbarium);

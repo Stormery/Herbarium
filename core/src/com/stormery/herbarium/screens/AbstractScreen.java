@@ -20,8 +20,8 @@ public abstract class AbstractScreen implements Screen{
 	protected OrthographicCamera camera;
 	protected SpriteBatch spriteBatch;
 	
+	
 	private Vector2 dragOld, dragNew;
-
 	private float dragDistance; // = dragNew.y - dragOld.y
 	private int maxAtTopBalance = 0;
 	private int maxAtBottomBalance;

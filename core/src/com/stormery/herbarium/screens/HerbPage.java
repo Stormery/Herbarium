@@ -22,9 +22,6 @@ public class HerbPage extends AbstractScreen {
 
 	@Override
 	protected void init() {
-		initBackgroundTexture();
-		
-		
 		
 
 	}
@@ -56,9 +53,7 @@ public class HerbPage extends AbstractScreen {
 	// stage.addActor(herbButton);
 	// }
 
-	protected void initBackgroundTexture() {
-
-	}
+	
 
 	@Override
 	public void render(float delta) {

@@ -14,10 +14,10 @@ public class Rumianek extends HerbPage{
 		// TODO Auto-generated method stub
 		super.init();
 	}
-	@Override
+
 	protected void initBackgroundTexture() {
 		// TODO Dodac texture
-		super.initBackgroundTexture();
+		
 	}
 	
 	@Override

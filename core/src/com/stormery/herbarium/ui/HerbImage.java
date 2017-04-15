@@ -11,8 +11,10 @@ public class HerbImage extends Image {
 
 	private float xPos;
 	private float yPos;
-
-	private final float yBasePosition;
+	
+	private final float xBasePosition;	 // keeping position for starting X position of button
+	private final float yBasePosition;  // keeping position for starting Y position of button
+	   
 
 	private float balanceView;
 	private Vector2 finalPosition = new Vector2(0,0);
@@ -60,11 +62,11 @@ public class HerbImage extends Image {
 		super(new Texture("buttons/Singlebutton.png"));
 
 		yBasePosition = 0;
-		init(xPosition, callback, herbarium);
+		setPositions(xPosition, callback, herbarium);
 
 	}
 
-	private void init(int xPosition, final IClickCallback callback, final Herbarium herbarium) {
+	private void setPositions(int xPosition, final IClickCallback callback, final Herbarium herbarium) {
 		this.setSize(150, 75);
 
 		yPos = Herbarium.HEIGHT - this.getHeight() - 150;
