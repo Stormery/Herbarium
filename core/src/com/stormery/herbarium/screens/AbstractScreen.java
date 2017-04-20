@@ -48,6 +48,7 @@ public abstract class AbstractScreen implements Screen{
 		 * end and at end.
 		 * 
 		 */
+		
 		//maxAtBottomBalance gets bottom edge
 		maxAtBottomBalance  = -((int) background.getHeight()-699);
 

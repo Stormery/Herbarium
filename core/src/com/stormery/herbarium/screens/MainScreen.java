@@ -12,7 +12,8 @@ public class MainScreen extends HerbPage {
 	
 	private Image background;
 	private HerbImage bttBackground;
-	private HerbImage[] herbButton;
+	private HerbImage herbButton;
+	private HerbImage bttPokrzywa;
 
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -24,41 +25,54 @@ public class MainScreen extends HerbPage {
 	protected void init() {
 		// TODO GET better background texture		
 		initBackgroundTextures();
-		initHerbButton(herbarium);
+		//initHerbButton(herbarium);
+		initHerbButton();
 		
 	}
 	
-	private void initHerbButton(final Herbarium herbarium) {
-		herbButton = new HerbImage[3];
-
-		herbButton[0] = new HerbImage(1, new IClickCallback() {
+	private void initHerbButton() {
+		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", 50, 600, 0, 0, new IClickCallback() {
+			
 			@Override
 			public void onClick() {
-				System.out.println("1 pozycja");
-
+				System.out.println("click pokrzywa");
 				herbarium.setScreen(new Pokrzywa(herbarium));
-				
 			}
 		}, herbarium);
-
-		herbButton[1] = new HerbImage(2, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println("2 pozycja");
-
-			}
-		}, herbarium);
-		herbButton[2] = new HerbImage(3, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println(" 3 pozycja");
-			}
-		}, herbarium);
-		
-		for (HerbImage herbs : herbButton) {
-			stage.addActor(herbs);
-		}
+		stage.addActor(bttPokrzywa);
 	}
+
+//	private void initHerbButton(final Herbarium herbarium) {
+//		herbButton = new HerbImage[3];
+//
+//		herbButton[0] = new HerbImage(1, new IClickCallback() {
+//			@Override
+//			public void onClick() {
+//				System.out.println("1 pozycja");
+//
+//				herbarium.setScreen(new Pokrzywa(herbarium));
+//				
+//			}
+//		}, herbarium);
+//
+//		herbButton[1] = new HerbImage(2, new IClickCallback() {
+//			@Override
+//			public void onClick() {
+//				System.out.println("2 pozycja");
+//
+//			}
+//		}, herbarium);
+//		herbButton[2] = new HerbImage(3, new IClickCallback() {
+//			@Override
+//			public void onClick() {
+//				System.out.println(" 3 pozycja");
+//			}
+//		}, herbarium);
+//		
+//		for (HerbImage herbs : herbButton) {
+//			stage.addActor(herbs);
+//		}
+//	}
 
 	private void initBackgroundTextures() {
 

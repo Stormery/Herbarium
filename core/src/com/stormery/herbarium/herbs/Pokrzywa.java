@@ -15,6 +15,8 @@ public class Pokrzywa extends  HerbPage{
 	
 	
 	private HerbImage[] herbButton;
+	private HerbImage bttPokrzywa;
+	
 	public Pokrzywa(Herbarium herbarium) {
 		super(herbarium);
 		
@@ -23,14 +25,30 @@ public class Pokrzywa extends  HerbPage{
 	@Override
 	protected void init() {
 		initBackgroundTexture();
-		initHerbButton(herbarium);
+		//initHerbButton(herbarium);
+		
+		herbButton = new HerbImage[1];
+		initHerbButton();
 		initReturnButton(true);
 		initSliderSerice();
 		
 		
+		
+	}
+	private void initHerbButton() {
+		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", 50, 600, 0, 0, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("click pokrzywa");
+				herbarium.setScreen(new Pokrzywa(herbarium));
+			}
+		}, herbarium);
+		stage.addActor(bttPokrzywa);
+		herbButton[0]= bttPokrzywa;
 	}
 	private void initHerbButton(final Herbarium herbarium) {
-		herbButton = new HerbImage[3];
+		
 
 		herbButton[0] = new HerbImage(1, new IClickCallback() {
 			@Override
