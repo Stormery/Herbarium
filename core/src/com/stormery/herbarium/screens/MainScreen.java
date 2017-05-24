@@ -40,14 +40,15 @@ public class MainScreen extends HerbPage {
 		
 	}
 	private void initHerbs() {
-// Add search engine for adding herbenums
+		// Add search engine for adding herbenums
+		//TODO rozmiar buttonow, kolejnosc buttonow, inaczej zrobic HERBIMAGE[2]
 		herbButton = new HerbImage[2];
 		herbList = new ArrayList<enumHerb>();
 		
 		herbList.add(enumHerb.POKRZYWA);
 		herbList.add(enumHerb.RUMIANEK);
 		
-		System.out.println(herbList.indexOf(enumHerb.RUMIANEK));
+		System.out.println(herbList.indexOf(enumHerb.RUMIANEK)); // to ma byc numer kolejnosci to daje int
 		
 		if(herbList.contains(enumHerb.POKRZYWA) ){
 			initPokrzywaButton();
@@ -59,6 +60,8 @@ public class MainScreen extends HerbPage {
 	
 
 	private void initRumianekButton() {
+		
+
 	bttRumianek = new HerbImage(0, "buttons/herbs/RumianekButton.png", 150, 500, 0, 0, new IClickCallback() {
 			
 			@Override
