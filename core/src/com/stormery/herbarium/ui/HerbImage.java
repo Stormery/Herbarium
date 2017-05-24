@@ -9,18 +9,18 @@ import com.stormery.herbarium.Herbarium;
 
 public class HerbImage extends Image {
 
-	private float xPos;
-	private float yPos;
+//	private float xPos;
+//	private float yPos; // moze beda jeszcze potrzebne uzywane
 	
 	private final float xBasePosition;	 // keeping position for starting X position of button
 	private final float yBasePosition;  // keeping position for starting Y position of button
 	   
 
 	private float balanceView;
-	private Vector2 finalPosition = new Vector2(0,0);
+	private Vector2 finalPosition = new Vector2(0,0); // pozycja po przesunieciu
 	
 	
-	public HerbImage(int number, String buttonImage, float xPos, float yPos, int xSize, int ySize,
+	public HerbImage(int positionNumber, String buttonImage, float xPos, float yPos, int xSize, int ySize,
 			final IClickCallback callback, final Herbarium herbarium) {
 		
 		super(new Texture(buttonImage));
@@ -35,7 +35,6 @@ public class HerbImage extends Image {
 		if(xSize==0)this.setSize(75, 35);
 		else this.setSize(ySize, xSize);
 			
-		
 		
 		this.addListener(new ClickListener() {
 			@Override
@@ -87,54 +86,6 @@ public class HerbImage extends Image {
 		});
 	}
 	
-	// REFACTOR
-	//Small buttons with static positions (need refactor imo)
-	public HerbImage(int xPosition, final IClickCallback callback, Herbarium herbarium) {
-		super(new Texture("buttons/Singlebutton.png"));
-
-		xBasePosition = 0;
-		yBasePosition = Herbarium.HEIGHT - this.getHeight() - 150;
-		
-		setPositions(xPosition, callback, herbarium);
-
-	}
-
-	private void setPositions(int xPosition, final IClickCallback callback, final Herbarium herbarium) {
-		this.setSize(150, 75);
-
-		
-		whatPosition(xPosition);
-		
-		this.setPosition(xPos, yPos);
-
-		this.addListener(new ClickListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
-				herbarium.getSoundService().playTapSound();
-				callback.onClick();
-
-				return super.touchDown(event, x, y, pointer, button);
-			}
-		});
-
-	}
-
-	private void whatPosition(int i) {
-		int adjust = 30;
-		switch (i) {
-		case 1:
-			this.xPos = 0 + adjust;
-			break;
-		case 2:
-			this.xPos = 130 + adjust;
-			break;
-		case 3:
-			this.xPos = 260 + adjust;
-			break;
-		}
-
-	}
 
 	/*
 	 * Getters and Setters

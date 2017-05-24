@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.screens.HerbPage;
-import com.stormery.herbarium.screens.MainScreen;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
@@ -29,7 +28,7 @@ public class Pokrzywa extends  HerbPage{
 		
 		herbButton = new HerbImage[1];
 		initHerbButton();
-		initReturnButton(true);
+		initReturnButton();
 		initSliderSerice();
 		
 		
@@ -47,37 +46,7 @@ public class Pokrzywa extends  HerbPage{
 		stage.addActor(bttPokrzywa);
 		herbButton[0]= bttPokrzywa;
 	}
-	private void initHerbButton(final Herbarium herbarium) {
-		
 
-		herbButton[0] = new HerbImage(1, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println("1 pozycja");
-
-				herbarium.setScreen(new Pokrzywa(herbarium));
-				
-			}
-		}, herbarium);
-
-		herbButton[1] = new HerbImage(2, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println("2 pozycja");
-				herbarium.setScreen(new MainScreen(herbarium));
-			}
-		}, herbarium);
-		herbButton[2] = new HerbImage(3, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println(" 3 pozycja");
-			}
-		}, herbarium);
-		
-		for (HerbImage herbs : herbButton) {
-			stage.addActor(herbs);
-		}
-	}
 	
 	protected void initBackgroundTexture() {
 			

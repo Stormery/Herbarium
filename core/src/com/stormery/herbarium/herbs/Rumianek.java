@@ -3,6 +3,9 @@ package com.stormery.herbarium.herbs;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.screens.HerbPage;
 
+
+//Caly rumianek jesty TODO
+
 public class Rumianek extends HerbPage{
 
 	public Rumianek(Herbarium herbarium) {

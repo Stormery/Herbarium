@@ -5,8 +5,11 @@ import com.stormery.herbarium.service.SliderService;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
-public class HerbPage extends AbstractScreen {
 
+/*
+ * Herb page to klasa po AbstractScreen ktora zawiera elementy uzywane w kolejnych stronach
+ */
+public class HerbPage extends AbstractScreen {
 	
 
 	protected int windowHeight = 700;
@@ -26,8 +29,7 @@ public class HerbPage extends AbstractScreen {
 
 	}
 	
-	protected void initReturnButton(boolean b) {
-		if(b){
+	protected void initReturnButton() {
 			returnButton = new HerbImage("buttons/back.png", Herbarium.WIDHT-100, 0, 100, 100, new IClickCallback() {
 				@Override
 				public void onClick() {
@@ -37,7 +39,6 @@ public class HerbPage extends AbstractScreen {
 			}, herbarium);
 
 			stage.addActor(returnButton);
-		}
 	}
 	public void initSliderSerice() {
 		sliderService = new SliderService(stage, herbarium);

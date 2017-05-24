@@ -69,10 +69,10 @@ public abstract class AbstractScreen implements Screen{
 
 					dragImg.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 
-					if (inRange2(dragImg)) {
+					if (inRange(dragImg)) {
 
 						dragImg.setFinalPositionY(dragImg.getBasePositionY() - dragImg.getBalanceView());
-						moveImagesBy(dragImg);
+						moveImageBy(dragImg);
 					}
 
 					System.err.println("Balance: " + dragImg.getBalanceView());
@@ -86,14 +86,14 @@ public abstract class AbstractScreen implements Screen{
 	private void moveBackground(HerbImage background) {
 		background.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 
-		if (inRange2(background)) {
+		if (inRange(background)) {
 
 			background.setFinalPositionY(background.getBasePositionY() - background.getBalanceView());
-			moveImagesBy(background);
+			moveImageBy(background);
 		}		
 	}
 
-	private boolean inRange2(HerbImage dragImg) {
+	private boolean inRange(HerbImage dragImg) {
 		if ((dragImg.getBalanceView() <= maxAtTopBalance) && dragImg.getBalanceView() >= maxAtBottomBalance) {
 
 			return true;
@@ -113,7 +113,7 @@ public abstract class AbstractScreen implements Screen{
 
 	}
 
-	private void moveImagesBy(Image dragImg) {
+	private void moveImageBy(Image dragImg) {
 		// Dla androida musi byc * 30 * delta
 		dragImg.moveBy(0, -dragDistance * 30 * Gdx.graphics.getDeltaTime());
 	}
