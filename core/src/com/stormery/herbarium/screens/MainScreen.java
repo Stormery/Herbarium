@@ -13,7 +13,11 @@ enum enumHerb{
 	POKRZYWA, RUMIANEK;
 	
 }
-
+// TODO
+/*
+ * Przeniesc cala mechanike do oddzielnej klasy
+ * wymyslec cos z Array HerbImage bo wywala nullpointer przy dragowaniu pustych indexow
+ */
 public class MainScreen extends HerbPage {
 
 	
@@ -26,19 +30,26 @@ public class MainScreen extends HerbPage {
 	//TherapeuticUse
 	private HerbImage bttPrzeciwbakt;
 	private HerbImage bttPrzeciwzap;
+	private HerbImage bttMoczopedne;
 	
-	private final int numberOfTherapeuticUseButtons = 2;
+	private final int numberOfTherapeuticUseButtons = 3;
+	
+	private int therapeuticUseBttHeigh = 40;
+	private int therapeuticUseBttWidth = 140;
+	
+	private int position01row = 500;
+	private int position01x = 30;
+	private int position02x = 200;
+	private int position02row = 440;
 	
 	//List of Herbs
 	private HerbImage bttPokrzywa;
 	private HerbImage bttRumianek;
 	
-	private final int numberOfAllHerbs = 2;
+	private final int numberOfAllHerbs = 1;
 	
 	/////
-	private int position01row = 500;
-	private int position01x = 30;
-	private int position02x = 200;
+
 
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -62,7 +73,7 @@ public class MainScreen extends HerbPage {
 	}
 	private void initTypeOfTherapeuticUseButton() {
 		
-		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", position01x, position01row, 140, 40, new IClickCallback() {
+		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", position01x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -74,8 +85,8 @@ public class MainScreen extends HerbPage {
 		
 		herbButton[0] = bttPrzeciwbakt;
 		stage.addActor(bttPrzeciwbakt);
-		
-		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, 140, 40, new IClickCallback() {
+		/////////////////////////////////
+		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -85,6 +96,21 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		herbButton[1] = bttPrzeciwzap;
 		stage.addActor(bttPrzeciwzap);
+		//////////////////////////////////////
+		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", position01x, position02row , therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("rosliny Moczopedne");
+				herbList.add(enumHerb.POKRZYWA);
+				initHerbs();
+				
+			}
+		}, herbarium);
+		herbButton[2] = bttMoczopedne;
+		stage.addActor(bttMoczopedne);
+	////////////////////////////////////
+		
 	}
 
 	private void initHerbs() {
@@ -94,7 +120,7 @@ public class MainScreen extends HerbPage {
 		
 		
 		//herbList.add(enumHerb.POKRZYWA);
-		herbList.add(enumHerb.RUMIANEK);		
+		//herbList.add(enumHerb.RUMIANEK);		
 	
 		if(herbList.contains(enumHerb.POKRZYWA) ){
 			initPokrzywaButton();
@@ -114,7 +140,7 @@ public class MainScreen extends HerbPage {
 	private void initRumianekButton() {
 		
 
-	bttRumianek = new HerbImage(0, "buttons/herbs/RumianekButton.png", position02x, position01row, 0, 0, new IClickCallback() {
+	bttRumianek = new HerbImage(herbList.indexOf(enumHerb.RUMIANEK), "buttons/herbs/RumianekButton.png", position02x, position01row, 0, 0, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -129,7 +155,7 @@ public class MainScreen extends HerbPage {
 	}
 
 	private void initPokrzywaButton() {
-		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", position01x, position01row, 0, 0, new IClickCallback() {
+		bttPokrzywa = new HerbImage(herbList.indexOf(enumHerb.POKRZYWA), "buttons/herbs/PokrzywaButton.png", position01x, position01row, 0, 0, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
