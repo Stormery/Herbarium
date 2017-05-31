@@ -40,7 +40,7 @@ public class HerbPage extends AbstractScreen {
 
 			stage.addActor(returnButton);
 	}
-	public void initSliderSerice() {
+	public void initSideSliderSerice() {
 		sliderService = new SliderService(stage, herbarium);
 
 	}

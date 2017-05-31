@@ -27,9 +27,9 @@ public class Pokrzywa extends  HerbPage{
 		//initHerbButton(herbarium);
 		
 		herbButton = new HerbImage[1];
-		initHerbButton();
+		initHerbButton(); //Test
 		initReturnButton();
-		initSliderSerice();
+		initSideSliderSerice();
 		
 		
 		
@@ -43,6 +43,7 @@ public class Pokrzywa extends  HerbPage{
 				herbarium.setScreen(new Pokrzywa(herbarium));
 			}
 		}, herbarium);
+		
 		stage.addActor(bttPokrzywa);
 		herbButton[0]= bttPokrzywa;
 	}
@@ -58,7 +59,6 @@ public class Pokrzywa extends  HerbPage{
 
 	@Override
 	public void render(float delta) {
-		// TODO do rendera dorzucic dragservice
 		super.render(delta);
 		draggScreen(bttBackground, herbButton); // Funkcja
 		

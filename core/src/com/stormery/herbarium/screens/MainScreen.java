@@ -48,7 +48,7 @@ public class MainScreen extends HerbPage {
 		herbList.add(enumHerb.POKRZYWA);
 		herbList.add(enumHerb.RUMIANEK);
 		
-		System.out.println(herbList.indexOf(enumHerb.RUMIANEK)); // to ma byc numer kolejnosci to daje int
+		System.out.println(herbList.indexOf(enumHerb.POKRZYWA)); // to ma byc numer kolejnosci to daje int
 		
 		if(herbList.contains(enumHerb.POKRZYWA) ){
 			initPokrzywaButton();
@@ -71,7 +71,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[0]= bttRumianek;
+		herbButton[herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
 		stage.addActor(bttRumianek);
 		
 	}
@@ -86,7 +86,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[1]= bttPokrzywa;
+		herbButton[herbList.indexOf(enumHerb.POKRZYWA)]= bttPokrzywa;
 		stage.addActor(bttPokrzywa);
 	}
 
