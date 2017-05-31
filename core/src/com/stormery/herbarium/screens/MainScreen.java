@@ -9,7 +9,6 @@ import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
-
 enum enumHerb{
 	POKRZYWA, RUMIANEK;
 	
@@ -23,9 +22,23 @@ public class MainScreen extends HerbPage {
 	
 	private ArrayList<enumHerb> herbList;
 	private HerbImage[] herbButton;
+	
+	//TherapeuticUse
+	private HerbImage bttPrzeciwbakt;
+	private HerbImage bttPrzeciwzap;
+	
+	private final int numberOfTherapeuticUseButtons = 2;
+	
+	//List of Herbs
 	private HerbImage bttPokrzywa;
 	private HerbImage bttRumianek;
 	
+	private final int numberOfAllHerbs = 2;
+	
+	/////
+	private int position01row = 500;
+	private int position01x = 30;
+	private int position02x = 200;
 
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
@@ -35,21 +48,54 @@ public class MainScreen extends HerbPage {
 
 	@Override
 	protected void init() {
-		initBackgroundTextures();		
+		
+		herbButton = new HerbImage[numberOfTherapeuticUseButtons + numberOfAllHerbs];
+		
+		herbList = new ArrayList<enumHerb>();
+		
+		initBackgroundTextures();
+		
+		initTypeOfTherapeuticUseButton();
+		
 		initHerbs();
 		
 	}
+	private void initTypeOfTherapeuticUseButton() {
+		
+		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", position01x, position01row, 140, 40, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("rosliny przeciwbakteryjne");
+				
+				
+			}
+		}, herbarium);
+		
+		herbButton[0] = bttPrzeciwbakt;
+		stage.addActor(bttPrzeciwbakt);
+		
+		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, 140, 40, new IClickCallback() {
+			
+			@Override
+			public void onClick() {
+				System.out.println("rosliny przeciwzapalne");
+				
+			}
+		}, herbarium);
+		herbButton[1] = bttPrzeciwzap;
+		stage.addActor(bttPrzeciwzap);
+	}
+
 	private void initHerbs() {
 		// Add search engine for adding herbenums
+		//System.out.println(herbList.indexOf(enumHerb.POKRZYWA)); // to ma byc numer kolejnosci to daje int
 		//TODO rozmiar buttonow, kolejnosc buttonow, inaczej zrobic HERBIMAGE[2]
-		herbButton = new HerbImage[2];
-		herbList = new ArrayList<enumHerb>();
 		
-		herbList.add(enumHerb.POKRZYWA);
-		herbList.add(enumHerb.RUMIANEK);
 		
-		System.out.println(herbList.indexOf(enumHerb.POKRZYWA)); // to ma byc numer kolejnosci to daje int
-		
+		//herbList.add(enumHerb.POKRZYWA);
+		herbList.add(enumHerb.RUMIANEK);		
+	
 		if(herbList.contains(enumHerb.POKRZYWA) ){
 			initPokrzywaButton();
 		}
@@ -59,10 +105,16 @@ public class MainScreen extends HerbPage {
 	}
 	
 
+/*
+ * herbButton[1+herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
+ * This 1+ is for buttons of therapeutic use, I can use only one Array of HerbButton so I need always 
+ * resize by 1+ 2+ 3+ depends of how many therapeuticUse buttons are. And after this is counting for number
+ * of needed herbs in array.
+ */
 	private void initRumianekButton() {
 		
 
-	bttRumianek = new HerbImage(0, "buttons/herbs/RumianekButton.png", 150, 500, 0, 0, new IClickCallback() {
+	bttRumianek = new HerbImage(0, "buttons/herbs/RumianekButton.png", position02x, position01row, 0, 0, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -71,13 +123,13 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
+		herbButton[numberOfTherapeuticUseButtons + herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
 		stage.addActor(bttRumianek);
 		
 	}
 
 	private void initPokrzywaButton() {
-		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", 50, 500, 0, 0, new IClickCallback() {
+		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", position01x, position01row, 0, 0, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -86,7 +138,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[herbList.indexOf(enumHerb.POKRZYWA)]= bttPokrzywa;
+		herbButton[numberOfTherapeuticUseButtons + herbList.indexOf(enumHerb.POKRZYWA)]= bttPokrzywa;
 		stage.addActor(bttPokrzywa);
 	}
 
