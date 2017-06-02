@@ -1,5 +1,7 @@
 package com.stormery.herbarium.herbs;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
@@ -13,7 +15,7 @@ public class Pokrzywa extends  HerbPage{
 	private HerbImage bttBackground;
 	
 	
-	private HerbImage[] herbButton;
+	private ArrayList<HerbImage> herbButton;
 	private HerbImage bttPokrzywa;
 	
 	public Pokrzywa(Herbarium herbarium) {
@@ -26,7 +28,7 @@ public class Pokrzywa extends  HerbPage{
 		initBackgroundTexture();
 		//initHerbButton(herbarium);
 		
-		herbButton = new HerbImage[1];
+		herbButton = new ArrayList<HerbImage>();
 		initHerbButton(); //Test
 		initReturnButton();
 		initSideSliderSerice();
@@ -45,7 +47,7 @@ public class Pokrzywa extends  HerbPage{
 		}, herbarium);
 		
 		stage.addActor(bttPokrzywa);
-		herbButton[0]= bttPokrzywa;
+		herbButton.add(bttPokrzywa);
 	}
 
 	

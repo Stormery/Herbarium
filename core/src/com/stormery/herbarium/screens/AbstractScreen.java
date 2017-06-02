@@ -1,5 +1,7 @@
 package com.stormery.herbarium.screens;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -38,7 +40,7 @@ public abstract class AbstractScreen implements Screen{
 	}
 
 	//////////////////DragScreen Service
-	public void draggScreen(HerbImage background, HerbImage... imgs) {
+	public void draggScreen(HerbImage background, ArrayList<HerbImage> herbButton) {
 		/*
 		 * If just touched, u get tap position, and if its changed (different
 		 * than dragOld) thats mean screen is dragging. dragDistance set how far
@@ -65,7 +67,7 @@ public abstract class AbstractScreen implements Screen{
 
 				dragDistance = dragNew.y - dragOld.y;
 				moveBackground(background);
-				for (HerbImage dragImg : imgs) {
+				for (HerbImage dragImg : herbButton) {
 
 					dragImg.addToBalanceView(dragDistance * 30 * Gdx.graphics.getDeltaTime());
 

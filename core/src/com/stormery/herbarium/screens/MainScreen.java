@@ -25,7 +25,8 @@ public class MainScreen extends HerbPage {
 	private HerbImage bttBackground;
 	
 	private ArrayList<enumHerb> herbList;
-	private HerbImage[] herbButton;
+	//private HerbImage[] herbButton;
+	private ArrayList<HerbImage> herbButton;
 	
 	//TherapeuticUse
 	private HerbImage bttPrzeciwbakt;
@@ -51,6 +52,7 @@ public class MainScreen extends HerbPage {
 	/////
 
 
+
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
 		init();
@@ -60,7 +62,7 @@ public class MainScreen extends HerbPage {
 	@Override
 	protected void init() {
 		
-		herbButton = new HerbImage[numberOfTherapeuticUseButtons + numberOfAllHerbs];
+		herbButton = new ArrayList<HerbImage>();
 		
 		herbList = new ArrayList<enumHerb>();
 		
@@ -83,7 +85,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[0] = bttPrzeciwbakt;
+		herbButton.add(bttPrzeciwbakt);
 		stage.addActor(bttPrzeciwbakt);
 		/////////////////////////////////
 		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
@@ -94,7 +96,7 @@ public class MainScreen extends HerbPage {
 				
 			}
 		}, herbarium);
-		herbButton[1] = bttPrzeciwzap;
+		herbButton.add(bttPrzeciwzap);
 		stage.addActor(bttPrzeciwzap);
 		//////////////////////////////////////
 		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", position01x, position02row , therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
@@ -107,7 +109,7 @@ public class MainScreen extends HerbPage {
 				
 			}
 		}, herbarium);
-		herbButton[2] = bttMoczopedne;
+		herbButton.add(bttMoczopedne);
 		stage.addActor(bttMoczopedne);
 	////////////////////////////////////
 		
@@ -149,7 +151,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[numberOfTherapeuticUseButtons + herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
+		herbButton.add(bttRumianek);
 		stage.addActor(bttRumianek);
 		
 	}
@@ -164,7 +166,7 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		
-		herbButton[numberOfTherapeuticUseButtons + herbList.indexOf(enumHerb.POKRZYWA)]= bttPokrzywa;
+		herbButton.add(bttPokrzywa);
 		stage.addActor(bttPokrzywa);
 	}
 
