@@ -33,8 +33,6 @@ public class MainScreen extends HerbPage {
 	private HerbImage bttPrzeciwzap;
 	private HerbImage bttMoczopedne;
 	
-	private final int numberOfTherapeuticUseButtons = 3;
-	
 	private int therapeuticUseBttHeigh = 40;
 	private int therapeuticUseBttWidth = 140;
 	
@@ -45,9 +43,11 @@ public class MainScreen extends HerbPage {
 	
 	//List of Herbs
 	private HerbImage bttPokrzywa;
+	private boolean isTherePokrzywa=false;
+	
 	private HerbImage bttRumianek;
 	
-	private final int numberOfAllHerbs = 1;
+
 	
 	/////
 
@@ -124,8 +124,9 @@ public class MainScreen extends HerbPage {
 		//herbList.add(enumHerb.POKRZYWA);
 		//herbList.add(enumHerb.RUMIANEK);		
 	
-		if(herbList.contains(enumHerb.POKRZYWA) ){
+		if((herbList.contains(enumHerb.POKRZYWA) )&& !isTherePokrzywa){
 			initPokrzywaButton();
+			isTherePokrzywa = true;
 		}
 		if(herbList.contains(enumHerb.RUMIANEK) ){
 			initRumianekButton();
