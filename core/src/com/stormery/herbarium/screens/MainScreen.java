@@ -2,8 +2,13 @@ package com.stormery.herbarium.screens;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
@@ -16,7 +21,7 @@ enum enumHerb{
 // TODO
 /*
  * Przeniesc cala mechanike do oddzielnej klasy
- * wymyslec cos z Array HerbImage bo wywala nullpointer przy dragowaniu pustych indexow
+ * 
  */
 public class MainScreen extends HerbPage {
 
@@ -50,7 +55,9 @@ public class MainScreen extends HerbPage {
 
 	
 	/////
-
+	private Table table;
+	private Table innerTable;
+	private Skin skin;
 
 
 	public MainScreen(Herbarium herbarium) {
@@ -62,17 +69,89 @@ public class MainScreen extends HerbPage {
 	@Override
 	protected void init() {
 		
+		
 		herbButton = new ArrayList<HerbImage>();
 		
 		herbList = new ArrayList<enumHerb>();
 		
 		initBackgroundTextures();
-		
+		initTable();
+			
 		initTypeOfTherapeuticUseButton();
 		
+		scrollViewInnerTableTest();
+			
 		initHerbs();
 		
+		
+		
+		
 	}
+	
+	private Image testHerb;
+	ScrollPane scrollPane;
+	private void scrollViewInnerTableTest() {
+		innerTable = new Table(skin);
+		innerTable.setDebug(false);
+		
+		
+		testHerb = new Image(new Texture("buttons/herbs/ChmielButton.png"));
+		
+		
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10).left();
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		innerTable.row();
+		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
+		
+		scrollPane = new ScrollPane(innerTable, skin);
+		scrollPane.setOverscroll(false, false);
+		
+		table.row();
+		table.add(scrollPane).colspan(3);
+		//stage.addActor(innerTable); // czy ja tego otrzebuje?
+		
+		
+	}
+
+
+	////////////////////Dodaje Scrollowanie przez Scrollview
+	public Image tableLogo;
+	private void initTable() {
+		tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
+		
+		skin = new Skin(Gdx.files.internal("ui/menuSkin.json"), new TextureAtlas("ui/atlas.pack"));
+		table = new Table(skin);
+		
+		table.setFillParent(true);
+		table.setDebug(false);
+		table.top().left();
+		
+		table.add(tableLogo).colspan(3).height(152f);
+		table.row();
+		
+		
+		stage.addActor(table);
+	}
+
 	private void initTypeOfTherapeuticUseButton() {
 		
 		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", position01x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
@@ -86,7 +165,8 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		
 		herbButton.add(bttPrzeciwbakt);
-		stage.addActor(bttPrzeciwbakt);
+		//stage.addActor(bttPrzeciwbakt);
+		table.add(bttPrzeciwbakt).pad(20);
 		/////////////////////////////////
 		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
@@ -97,7 +177,8 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		herbButton.add(bttPrzeciwzap);
-		stage.addActor(bttPrzeciwzap);
+		//stage.addActor(bttPrzeciwzap);
+		table.add(bttPrzeciwzap).pad(20);
 		//////////////////////////////////////
 		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", position01x, position02row , therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
@@ -110,7 +191,8 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium);
 		herbButton.add(bttMoczopedne);
-		stage.addActor(bttMoczopedne);
+		//stage.addActor(bttMoczopedne);
+		table.add(bttMoczopedne).pad(20);
 	////////////////////////////////////
 		
 	}
@@ -153,7 +235,9 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		
 		herbButton.add(bttRumianek);
-		stage.addActor(bttRumianek);
+		//stage.addActor(bttRumianek);
+		innerTable.add(bttRumianek);
+		
 		
 	}
 
@@ -168,7 +252,8 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		
 		herbButton.add(bttPokrzywa);
-		stage.addActor(bttPokrzywa);
+		//stage.addActor(bttPokrzywa);
+		innerTable.add(bttPokrzywa);
 	}
 
 
@@ -185,8 +270,8 @@ public class MainScreen extends HerbPage {
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		super.render(delta);
-		
-		draggScreen(bttBackground, herbButton);
+		stage.act();
+		//draggScreen(bttBackground, herbButton);
 		
 	}
 
