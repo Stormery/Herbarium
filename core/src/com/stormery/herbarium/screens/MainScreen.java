@@ -56,7 +56,8 @@ public class MainScreen extends HerbPage {
 	
 	/////
 	private Table table;
-	private Table innerTable;
+	private Table usageTypeTable;
+	private Table innerScrollableTable;
 	private Skin skin;
 
 
@@ -91,38 +92,16 @@ public class MainScreen extends HerbPage {
 	private Image testHerb;
 	ScrollPane scrollPane;
 	private void scrollViewInnerTableTest() {
-		innerTable = new Table(skin);
-		innerTable.setDebug(false);
+		innerScrollableTable = new Table(skin);
+		innerScrollableTable.setDebug(false);
 		
 		
-		testHerb = new Image(new Texture("buttons/herbs/ChmielButton.png"));
+		testHerb = new Image(new Texture("buttons/herbs/AloesButton.png"));
 		
 		
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10).left();
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		innerTable.row();
-		innerTable.add(new Image(new Texture("buttons/herbs/ChmielButton.png"))).pad(10);
-		
-		scrollPane = new ScrollPane(innerTable, skin);
+		innerScrollableTable.add(testHerb).pad(10);
+
+		scrollPane = new ScrollPane(innerScrollableTable, skin);
 		scrollPane.setOverscroll(false, false);
 		
 		table.row();
@@ -140,13 +119,18 @@ public class MainScreen extends HerbPage {
 		
 		skin = new Skin(Gdx.files.internal("ui/menuSkin.json"), new TextureAtlas("ui/atlas.pack"));
 		table = new Table(skin);
+		usageTypeTable = new Table(skin);
 		
 		table.setFillParent(true);
-		table.setDebug(false);
+		
+		table.setDebug(true);
+		usageTypeTable.setDebug(true);
+		
 		table.top().left();
 		
 		table.add(tableLogo).colspan(3).height(152f);
 		table.row();
+		table.add(usageTypeTable).height(100f);
 		
 		
 		stage.addActor(table);
@@ -166,19 +150,21 @@ public class MainScreen extends HerbPage {
 		
 		herbButton.add(bttPrzeciwbakt);
 		//stage.addActor(bttPrzeciwbakt);
-		table.add(bttPrzeciwbakt).pad(20);
+		usageTypeTable.add(bttPrzeciwbakt).pad(20);
 		/////////////////////////////////
 		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", position02x, position01row, therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
 				System.out.println("rosliny przeciwzapalne");
+				herbList.add(enumHerb.RUMIANEK);
+				initHerbs();
 				
 			}
 		}, herbarium);
 		herbButton.add(bttPrzeciwzap);
 		//stage.addActor(bttPrzeciwzap);
-		table.add(bttPrzeciwzap).pad(20);
+		usageTypeTable.add(bttPrzeciwzap).pad(20);
 		//////////////////////////////////////
 		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", position01x, position02row , therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
@@ -192,7 +178,7 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		herbButton.add(bttMoczopedne);
 		//stage.addActor(bttMoczopedne);
-		table.add(bttMoczopedne).pad(20);
+		usageTypeTable.add(bttMoczopedne).pad(20);
 	////////////////////////////////////
 		
 	}
@@ -236,7 +222,9 @@ public class MainScreen extends HerbPage {
 		
 		herbButton.add(bttRumianek);
 		//stage.addActor(bttRumianek);
-		innerTable.add(bttRumianek);
+		innerScrollableTable.row();
+		innerScrollableTable.add(new Image(new Texture("buttons/herbs/AloesButton.png"))).pad(10);
+		
 		
 		
 	}
@@ -253,7 +241,7 @@ public class MainScreen extends HerbPage {
 		
 		herbButton.add(bttPokrzywa);
 		//stage.addActor(bttPokrzywa);
-		innerTable.add(bttPokrzywa);
+		innerScrollableTable.add(bttPokrzywa);
 	}
 
 
