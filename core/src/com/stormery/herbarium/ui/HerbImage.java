@@ -9,77 +9,33 @@ import com.stormery.herbarium.Herbarium;
 
 public class HerbImage extends Image {
 
-	// private float xPos;
-	// private float yPos; // moze beda jeszcze potrzebne uzywane
 
-	private final float xBasePosition; // keeping position for starting X
-										// position of button
-	private final float yBasePosition; // keeping position for starting Y
-										// position of button
+	public HerbImage(String imageName, int xSize, int ySize, final IClickCallback callback, final Herbarium herbarium){
+		super(new Texture(imageName));
 
-	private float balanceView;
-	private Vector2 finalPosition = new Vector2(0, 0); // pozycja po
-														// przesunieciu
+		if (xSize != 0)
+			this.setSize(xSize, ySize);
 
-	public HerbImage(int positionNumber, String buttonImage, float xPos, float yPos, int xSize, int ySize,
-			final IClickCallback callback, final Herbarium herbarium) {
+        this.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-		super(new Texture(buttonImage));
+                herbarium.getSoundService().playTapSound();
+                callback.onClick();
 
-		switch (positionNumber) {
-		case 0:
-			yPos = 350;
-			xPos = 10;
-			break;
-		case 1:
-			yPos = 270;
-			xPos = 10;
-			break;
-		case 3:
-			yPos = 190;
-			xPos = 10;
-			break;
-		case 4:
-			yPos = 110;
-			xPos = 10;
-			break;
-		}
-
-		yBasePosition = yPos;
-		xBasePosition = xPos;
-
-		finalPosition.x = xPos;
-		this.setPosition(xPos, yPos);
-
-		// Jesli nie chce swojej Size, daje default
-		if (xSize == 0)
-			this.setSize(450, 70);
-		else
-			this.setSize(ySize, xSize);
-
-		this.addListener(new ClickListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
-				herbarium.getSoundService().playTapSound();
-				callback.onClick();
-
-				return super.touchDown(event, x, y, pointer, button);
-			}
-		});
-	}
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
+    }
 
 	// Basic Button Implement with no callback
 	public HerbImage(String buttonImage, float xPos, float yPos, int xSize, int ySize, Herbarium herbarium) {
 		super(new Texture(buttonImage));
 
-		yBasePosition = yPos;
-		xBasePosition = xPos;
-		finalPosition.x = xPos;
 		this.setPosition(xPos, yPos);
 
 		if (xSize != 0)
-			this.setSize(150, 75);
+            this.setSize(xSize, ySize);
 	}
 
 	// Button init with callback
@@ -88,9 +44,6 @@ public class HerbImage extends Image {
 
 		super(new Texture(buttonImage));
 
-		yBasePosition = yPos;
-		xBasePosition = xPos;
-		finalPosition.x = xPos;
 		this.setPosition(xPos, yPos);
 
 		if (xSize != 0)
@@ -107,47 +60,4 @@ public class HerbImage extends Image {
 			}
 		});
 	}
-
-	/*
-	 * Getters and Setters
-	 * 
-	 */
-	public float getBasePositionX() {
-		return xBasePosition;
-	}
-
-	public float getBasePositionY() {
-		return yBasePosition;
-	}
-
-	///// FinalPosition\\\\\\\\\ After scrolling positions
-	public float getFinalPositionX() {
-		return finalPosition.x;
-	}
-
-	public float getFinalPositionY() {
-		return finalPosition.y;
-	}
-
-	public void setFinalPositionX(float finalPosition) {
-		this.finalPosition.x = finalPosition;
-	}
-
-	public void setFinalPositionY(float finalPosition) {
-		this.finalPosition.y = finalPosition;
-	}
-
-	/// BalanceView\\\
-	public float getBalanceView() {
-		return balanceView;
-	}
-
-	public void setBalanceView(float balanceView) {
-		this.balanceView = balanceView;
-	}
-
-	public void addToBalanceView(float x) {
-		this.balanceView += x;
-	}
-
 }

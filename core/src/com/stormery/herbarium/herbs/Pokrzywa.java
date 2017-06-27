@@ -37,7 +37,7 @@ public class Pokrzywa extends  HerbPage{
 		
 	}
 	private void initHerbButton() {
-		bttPokrzywa = new HerbImage(0, "buttons/herbs/PokrzywaButton.png", 50, 600, 0, 0, new IClickCallback() {
+		bttPokrzywa = new HerbImage("buttons/herbs/PokrzywaButton.png", 50, 600, 0, 0, new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -62,8 +62,7 @@ public class Pokrzywa extends  HerbPage{
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		draggScreen(bttBackground, herbButton); // Funkcja
-		
+
 	}
 	
 	
