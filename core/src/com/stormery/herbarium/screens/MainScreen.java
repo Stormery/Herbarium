@@ -61,12 +61,7 @@ public class MainScreen extends HerbPage {
 
 		initTable();
 
-			
 		//initHerbs();
-		
-		
-		
-		
 	}
 	////////////////////Dodaje Scrollowanie przez Scrollview
 	private void initTable() {
@@ -80,8 +75,8 @@ public class MainScreen extends HerbPage {
 //FillParent
 		tableMain.setFillParent(true);
 //Debug
-		tableMain.setDebug(true);
-		tableUsageType.setDebug(true);
+		tableMain.setDebug(false);
+		tableUsageType.setDebug(false);
 //Set MainTable position
 		tableMain.top().left();
 
