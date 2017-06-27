@@ -15,7 +15,7 @@ import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
 enum enumHerb{
-	POKRZYWA, RUMIANEK;
+	POKRZYWA, RUMIANEK
 	
 }
 // TODO
@@ -30,21 +30,13 @@ public class MainScreen extends HerbPage {
 
 	
 	private ArrayList<enumHerb> herbList;
-	//private HerbImage[] herbButton;
 
-	//TherapeuticUse
-	private HerbImage bttPrzeciwbakt;
-	private HerbImage bttPrzeciwzap;
-	private HerbImage bttMoczopedne;
-	
+
 	private int therapeuticUseBttHeigh = 40;
 	private int therapeuticUseBttWidth = 140;
 
 	//List of Herbs
-	private HerbImage bttPokrzywa;
 	private boolean isTherePokrzywa=false;
-	
-	private HerbImage bttRumianek;
 	private boolean isThereRumianek=false;
 
 	
@@ -52,7 +44,7 @@ public class MainScreen extends HerbPage {
 	private Table tableMain;
 	private Table tableUsageType;
 	private Table tableInnerScrollable;
-	private Skin skin;
+	public static Skin skin;
 
 
 	public MainScreen(Herbarium herbarium) {
@@ -96,6 +88,7 @@ public class MainScreen extends HerbPage {
 		tableMain.add(tableLogo).colspan(3).height(152f);
 		tableMain.row();
 		tableMain.add(tableUsageType).height(100f);
+
 //Instantiate Box with Therapeutic use Buttons
 		tableWithTherapeuticUseTypes();
 //Instantiate Box with ScrollableButtons
@@ -110,21 +103,22 @@ public class MainScreen extends HerbPage {
 //		Image testHerb = new Image(new Texture("buttons/herbs/AloesButton.png"));
 //		tableInnerScrollable.add(testHerb).pad(10);
 
-		ScrollPane scrollPane = new ScrollPane(tableInnerScrollable, skin);
+		ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
 		scrollPane.setOverscroll(false, false);
 		
 		tableMain.row();
 		tableMain.add(scrollPane).colspan(3);
-		//stage.addActor(innerTable); // czy ja tego otrzebuje?
-		
 		
 	}
 
-
-
-
 	private void tableWithTherapeuticUseTypes() {
-		
+		//TherapeuticUse
+		 HerbImage bttPrzeciwbakt;
+		 HerbImage bttPrzeciwzap;
+		 HerbImage bttMoczopedne;
+
+
+
 		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
 			
 			@Override
@@ -177,7 +171,7 @@ public class MainScreen extends HerbPage {
 	
 		if((herbList.contains(enumHerb.POKRZYWA) )&& !isTherePokrzywa){
 			initPokrzywaButton();
-			isTherePokrzywa = true;
+			//isTherePokrzywa = true;
 		}
 		if(herbList.contains(enumHerb.RUMIANEK) && !isThereRumianek) {
 			initRumianekButton();
@@ -233,11 +227,9 @@ public class MainScreen extends HerbPage {
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		super.render(delta);
 		stage.act();
-		//draggScreen(bttBackground, herbButton);
-		
+
 	}
 
 }

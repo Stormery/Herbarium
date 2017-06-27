@@ -45,17 +45,6 @@ public class HerbPage extends AbstractScreen {
 
 	}
 
-
-	// private void initHerbButton() {
-	//
-	// herbButton = new HerbImage("buttons/Singlebutton.png", 50, 300, 150 ,75 ,
-	// herbarium);
-	//
-	// stage.addActor(herbButton);
-	// }
-
-	
-
 	@Override
 	public void render(float delta) {
 		super.render(delta);

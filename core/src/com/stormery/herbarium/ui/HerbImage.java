@@ -49,6 +49,7 @@ public class HerbImage extends Image {
 		if (xSize != 0)
 			this.setSize(xSize, ySize);
 
+
 		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
