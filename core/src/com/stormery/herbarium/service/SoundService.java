@@ -6,13 +6,17 @@ import com.badlogic.gdx.audio.Sound;
 public class SoundService {
 
 	private Sound tapSound;
+
+
 	public SoundService(){
 		init();
 	}
 	
 	private void init() {
 
-		tapSound = Gdx.audio.newSound(Gdx.files.internal("sound/tap.wav"));
+		tapSound = Gdx.audio.newSound(Gdx.files.internal("sound/tap2.ogg"));
+
+
 	}
 	public void playTapSound(){
 		tapSound.play();
