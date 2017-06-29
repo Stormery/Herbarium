@@ -105,6 +105,11 @@ public class Pokrzywa extends  HerbPage{
 		super.render(delta);
 		stage.act();
 	}
-	
-	
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		stage.dispose();
+
+	}
 }

@@ -44,7 +44,6 @@ public class MainScreen extends HerbPage {
 	private Table tableMain;
 	private Table tableUsageType;
 	private Table tableInnerScrollable;
-	public static Skin skin;
 
 
 	public MainScreen(Herbarium herbarium) {
@@ -68,10 +67,9 @@ public class MainScreen extends HerbPage {
 		//TODO zmienic skin i Atlas
 		Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
 
-		skin = new Skin(Gdx.files.internal("ui/menuSkin.json"), new TextureAtlas("ui/atlas.pack"));
 //InstantiateTables
-		tableMain = new Table(skin);
-		tableUsageType = new Table(skin);
+		tableMain = new Table();
+		tableUsageType = new Table();
 //FillParent
 		tableMain.setFillParent(true);
 //Debug
@@ -92,7 +90,7 @@ public class MainScreen extends HerbPage {
 	}
 
 	private void tableInnerWithScrollableHerbs() {
-		tableInnerScrollable = new Table(skin);
+		tableInnerScrollable = new Table();
 		tableInnerScrollable.setDebug(false);
 
 //		Image testHerb = new Image(new Texture("buttons/herbs/AloesButton.png"));
@@ -227,4 +225,10 @@ public class MainScreen extends HerbPage {
 
 	}
 
+	@Override
+	public void dispose() {
+		super.dispose();
+		stage.dispose();
+
+	}
 }
