@@ -1,18 +1,16 @@
 package com.stormery.herbarium.screens;
 
-import java.util.ArrayList;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
+
+import java.util.ArrayList;
 
 enum enumHerb{
 	POKRZYWA, RUMIANEK
@@ -27,7 +25,7 @@ public class MainScreen extends HerbPage {
 
 	
 	private Image background;
-
+	public static boolean isNotDragging = true;
 	
 	private ArrayList<enumHerb> herbList;
 
@@ -164,6 +162,13 @@ public class MainScreen extends HerbPage {
 	
 		if((herbList.contains(enumHerb.POKRZYWA) )&& !isTherePokrzywa){
 			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
+			initPokrzywaButton();
 			//isTherePokrzywa = true;
 		}
 		if(herbList.contains(enumHerb.RUMIANEK) && !isThereRumianek) {
@@ -222,6 +227,13 @@ public class MainScreen extends HerbPage {
 	public void render(float delta) {
 		super.render(delta);
 		stage.act();
+//		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+//			isNotDragging = false;
+//
+//		}else{
+//			isNotDragging = true;
+//
+//		}
 
 	}
 
@@ -231,4 +243,6 @@ public class MainScreen extends HerbPage {
 		stage.dispose();
 
 	}
+
+
 }

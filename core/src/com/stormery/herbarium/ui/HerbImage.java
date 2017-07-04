@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.screens.MainScreen;
 
 public class HerbImage extends Image {
 
@@ -16,16 +17,19 @@ public class HerbImage extends Image {
 		if (xSize != 0)
 			this.setSize(xSize, ySize);
 
-        this.addListener(new ClickListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-                herbarium.getSoundService().playTapSound();
-                callback.onClick();
+	this.addListener(new ClickListener() {
+		@Override
+		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			if(MainScreen.isNotDragging) {
+				herbarium.getSoundService().playTapSound();
+				callback.onClick();
+			}
 
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
+		}
+	});
+
+
     }
 
 	// Basic Button Implement with no callback
