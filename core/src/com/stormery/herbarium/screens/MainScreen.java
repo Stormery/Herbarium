@@ -1,7 +1,6 @@
 package com.stormery.herbarium.screens;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -16,11 +15,6 @@ enum enumHerb{
 	POKRZYWA, RUMIANEK
 	
 }
-// TODO
-/*
- * Przeniesc cala mechanike do oddzielnej klasy
- * 
- */
 public class MainScreen extends HerbPage {
 
 	
@@ -28,7 +22,6 @@ public class MainScreen extends HerbPage {
 	public static boolean isNotDragging = true;
 	
 	private ArrayList<enumHerb> herbList;
-
 
 	private int therapeuticUseBttHeigh = 40;
 	private int therapeuticUseBttWidth = 140;
@@ -38,7 +31,7 @@ public class MainScreen extends HerbPage {
 	private boolean isThereRumianek=false;
 
 	
-	/////
+	/////Tables
 	private Table tableMain;
 	private Table tableUsageType;
 	private Table tableInnerScrollable;
@@ -47,18 +40,14 @@ public class MainScreen extends HerbPage {
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
 		init();
-
 	}
 
 	@Override
 	protected void init() {
-
 		herbList = new ArrayList<enumHerb>();
 		initBackgroundTextures();
 
 		initTable();
-
-		//initHerbs();
 	}
 	////////////////////Dodaje Scrollowanie przez Scrollview
 	private void initTable() {
@@ -91,9 +80,6 @@ public class MainScreen extends HerbPage {
 		tableInnerScrollable = new Table();
 		tableInnerScrollable.setDebug(false);
 
-//		Image testHerb = new Image(new Texture("buttons/herbs/AloesButton.png"));
-//		tableInnerScrollable.add(testHerb).pad(10);
-
 		ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
 		scrollPane.setOverscroll(false, false);
 		
@@ -108,9 +94,7 @@ public class MainScreen extends HerbPage {
 		 HerbImage bttPrzeciwzap;
 		 HerbImage bttMoczopedne;
 
-
-
-		bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
+	bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -122,7 +106,7 @@ public class MainScreen extends HerbPage {
 		
 		tableUsageType.add(bttPrzeciwbakt).pad(20);
 		/////////////////////////////////
-		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png",therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
+		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -135,7 +119,7 @@ public class MainScreen extends HerbPage {
 		}, herbarium);
 		tableUsageType.add(bttPrzeciwzap).pad(20);
 		//////////////////////////////////////
-		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", therapeuticUseBttWidth, therapeuticUseBttHeigh, new IClickCallback() {
+		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", new IClickCallback() {
 			
 			@Override
 			public void onClick() {
@@ -143,7 +127,6 @@ public class MainScreen extends HerbPage {
 				//addMoczopedneHerbsToList();
 				herbList.add(enumHerb.POKRZYWA);//test
 				initHerbs();
-				
 			}
 		}, herbarium);
 		tableUsageType.add(bttMoczopedne).pad(20);

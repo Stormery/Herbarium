@@ -1,7 +1,5 @@
 package com.stormery.herbarium.screens;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -12,10 +10,8 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.ui.HerbImage;
 
 public abstract class AbstractScreen implements Screen, GestureListener{
 	
@@ -111,8 +107,6 @@ public abstract class AbstractScreen implements Screen, GestureListener{
 	public boolean fling(float velocityX, float velocityY, int button) {
 		return false;
 	}
-
-
 
 	@Override
 	public boolean zoom(float initialDistance, float distance) {

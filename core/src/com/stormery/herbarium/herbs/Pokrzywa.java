@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.screens.HerbPage;
-import com.stormery.herbarium.ui.HerbImage;
-import com.stormery.herbarium.ui.IClickCallback;
 
 public class Pokrzywa extends  HerbPage{
 
