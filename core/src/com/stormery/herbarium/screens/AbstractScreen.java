@@ -60,7 +60,18 @@ public abstract class AbstractScreen implements Screen, GestureListener{
 		Gdx.gl.glClearColor(1, 1, 1, 0); // Tlo jest biale na 1 1 1 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
-	
+
+	@Override
+	public boolean pan(float x, float y, float deltaX, float deltaY) {
+		MainScreen.isNotDragging = false;
+		return false;
+	}
+
+	@Override
+	public boolean panStop(float x, float y, int pointer, int button) {
+		MainScreen.isNotDragging = true;
+		return false;
+	}
 	@Override
 	public void resume(){
 		herbarium.setPause(false);
@@ -101,19 +112,7 @@ public abstract class AbstractScreen implements Screen, GestureListener{
 		return false;
 	}
 
-	@Override
-	public boolean pan(float x, float y, float deltaX, float deltaY) {
-		MainScreen.isNotDragging = false;
-		System.out.println("false");
-		return false;
-	}
 
-	@Override
-	public boolean panStop(float x, float y, int pointer, int button) {
-		MainScreen.isNotDragging = true;
-		System.out.println(true);
-		return false;
-	}
 
 	@Override
 	public boolean zoom(float initialDistance, float distance) {
