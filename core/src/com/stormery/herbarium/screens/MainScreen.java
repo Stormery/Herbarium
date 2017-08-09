@@ -20,7 +20,7 @@ public class MainScreen extends HerbPage {
 	
 	private Image background;
 	public static boolean isNotDragging = true;
-	
+	private boolean tableDebug = true;
 	private ArrayList<enumHerb> herbList;
 
 	private int therapeuticUseBttHeigh = 40;
@@ -60,8 +60,8 @@ public class MainScreen extends HerbPage {
 //FillParent
 		tableMain.setFillParent(true);
 //Debug
-		tableMain.setDebug(false);
-		tableUsageType.setDebug(false);
+		tableMain.setDebug(tableDebug);
+		tableUsageType.setDebug(tableDebug);
 //Set MainTable position
 		tableMain.top().left();
 
@@ -100,7 +100,6 @@ public class MainScreen extends HerbPage {
 			public void onClick() {
 				System.out.println("rosliny przeciwbakteryjne");
 				//addPrzeciwbakteryjneHerbstoList();
-				
 			}
 		}, herbarium);
 		
@@ -160,14 +159,7 @@ public class MainScreen extends HerbPage {
 
 		}
 	}
-	
 
-/*
- * herbButton[1+herbList.indexOf(enumHerb.RUMIANEK)]= bttRumianek;
- * This 1+ is for buttons of therapeutic use, I can use only one Array of HerbButton so I need always 
- * resize by 1+ 2+ 3+ depends of how many therapeuticUse buttons are. And after this is counting for number
- * of needed herbs in array.
- */
 	private void initRumianekButton() {
 
 		tableInnerScrollable.row();
@@ -180,28 +172,27 @@ public class MainScreen extends HerbPage {
 			}
 		}, herbarium)).pad(10);
 		
-		
-		
 	}
+	private HerbImage pokrzywa = new HerbImage("buttons/herbs/PokrzywaButton.png", 0, 0, new IClickCallback() {
+
+		@Override
+		public void onClick() {
+			System.out.println("click pokrzywa");
+			herbarium.setScreen(new Pokrzywa(herbarium));
+		}
+	}, herbarium);
 
 	private void initPokrzywaButton() {
 
 		tableInnerScrollable.row();
-		tableInnerScrollable.add(new HerbImage("buttons/herbs/PokrzywaButton.png", 0, 0, new IClickCallback() {
-
-			@Override
-			public void onClick() {
-				System.out.println("click pokrzywa");
-				herbarium.setScreen(new Pokrzywa(herbarium));
-			}
-		}, herbarium)).pad(10);
+		tableInnerScrollable.add(pokrzywa).pad(10);
 	}
 
 
 
 	private void initBackgroundTextures() {
 
-		background = new Image(new Texture("backgroundImg/tlo02.png"));
+		background = new Image(new Texture("backgroundImg/tlo03.png"));
 		stage.addActor(background);
 
 	}
@@ -210,14 +201,6 @@ public class MainScreen extends HerbPage {
 	public void render(float delta) {
 		super.render(delta);
 		stage.act();
-//		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
-//			isNotDragging = false;
-//
-//		}else{
-//			isNotDragging = true;
-//
-//		}
-
 	}
 
 	@Override
@@ -226,6 +209,5 @@ public class MainScreen extends HerbPage {
 		stage.dispose();
 
 	}
-
 
 }

@@ -59,6 +59,7 @@ public abstract class AbstractScreen implements Screen, GestureListener{
 
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
+		//Pan is used for dragging items and to tell if its dragged or not
 		MainScreen.isNotDragging = false;
 		return false;
 	}
@@ -109,6 +110,7 @@ public abstract class AbstractScreen implements Screen, GestureListener{
 	}
 
 	@Override
+	//TODO zoom
 	public boolean zoom(float initialDistance, float distance) {
 		return false;
 	}
