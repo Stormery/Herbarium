@@ -4,7 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.HerbListButton;
+import com.stormery.herbarium.buttons.TherapeuticUseButton;
 import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
@@ -17,15 +20,16 @@ enum enumHerb{
 }
 public class MainScreen extends HerbPage {
 
-	
+	protected Herbarium herbarium;
 	private Image background;
 	public static boolean isNotDragging = true;
 	private boolean tableDebug = true;
 	private ArrayList<enumHerb> herbList;
 
-	private int therapeuticUseBttHeigh = 40;
-	private int therapeuticUseBttWidth = 140;
-
+	//private int therapeuticUseBttHeigh = 40;
+	//private int therapeuticUseBttWidth = 140;
+	//Therapeutic Use
+	TherapeuticUseButton bttTherapeuticMoczopedne;
 	//List of Herbs
 	private boolean isTherePokrzywa=false;
 	private boolean isThereRumianek=false;
@@ -35,10 +39,12 @@ public class MainScreen extends HerbPage {
 	private Table tableMain;
 	private Table tableUsageType;
 	private Table tableInnerScrollable;
+	private Table tableBookmarkScrollable;
 
 
 	public MainScreen(Herbarium herbarium) {
 		super(herbarium);
+		this.herbarium = herbarium;
 		init();
 	}
 
@@ -46,9 +52,19 @@ public class MainScreen extends HerbPage {
 	protected void init() {
 		herbList = new ArrayList<enumHerb>();
 		initBackgroundTextures();
-
+		initButtons();
 		initTable();
 	}
+
+	private void initButtons() {
+		bttTherapeuticMoczopedne = new TherapeuticUseButton(1, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("Moczopedne click");
+			}
+		});
+	}
+
 	////////////////////Dodaje Scrollowanie przez Scrollview
 	private void initTable() {
 		//TODO zmienic skin i Atlas
@@ -63,11 +79,15 @@ public class MainScreen extends HerbPage {
 		tableMain.setDebug(tableDebug);
 		tableUsageType.setDebug(tableDebug);
 //Set MainTable position
-		tableMain.top().left();
+		tableMain.top().left().padRight(25f).padTop(10f);
 
-		tableMain.add(tableLogo).colspan(3).height(152f);
+		tableBookmarkScrollable();
+
+		tableMain.add(tableLogo).colspan(2).height(152f).top(); //LOGO
 		tableMain.row();
-		tableMain.add(tableUsageType).height(100f);
+
+		//TODO wyszukiwarki nie ma
+		tableMain.add().height(30f).colspan(2); // wyszukiwarka
 
 //Instantiate Box with Therapeutic use Buttons
 		tableWithTherapeuticUseTypes();
@@ -76,15 +96,30 @@ public class MainScreen extends HerbPage {
 		stage.addActor(tableMain);
 	}
 
+	private void tableBookmarkScrollable(){
+		Table tableInnerBookmark = new Table();
+		tableInnerBookmark.setDebug(tableDebug);
+		tableInnerBookmark.add(new Image(new Texture("backgroundImg/bookmarkproper.png")));
+
+		tableBookmarkScrollable = new Table();
+		tableBookmarkScrollable.setDebug(tableDebug);
+		//TODO bacground bookmark
+		tableBookmarkScrollable.background("backgroundImg/bookmarkproper.png");
+		ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
+		scrollPane.setOverscroll(false,false);
+
+		tableMain.add(scrollPane).width(160f).height(700f);//bookmark
+	}
+
 	private void tableInnerWithScrollableHerbs() {
 		tableInnerScrollable = new Table();
-		tableInnerScrollable.setDebug(false);
+		tableInnerScrollable.setDebug(tableDebug);
 
 		ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
 		scrollPane.setOverscroll(false, false);
 		
 		tableMain.row();
-		tableMain.add(scrollPane).colspan(3);
+		tableMain.add(scrollPane).colspan(2);
 		
 	}
 
