@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.TherapeuticUseButton;
 import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
@@ -15,19 +16,26 @@ enum enumHerb{
 	POKRZYWA, RUMIANEK
 	
 }
+enum enumTherapeuticProperties{
+	DIURETIC
+}
 public class MainScreen extends HerbPage {
 
 	protected Herbarium herbarium;
 	private Image background;
 	private Image redBookmark;
 	public static boolean isNotDragging = true;
-	private boolean tableDebug = true;
+
+
 	private ArrayList<enumHerb> herbList;
 
 	//private int therapeuticUseBttHeigh = 40;
 	//private int therapeuticUseBttWidth = 140;
+
 	//Therapeutic Use
-	//TherapeuticUseButton bttTherapeuticMoczopedne;
+	TherapeuticUseButton bttTherapeuticMoczopedne;
+	TherapeuticUseButton bttTherapeuticPrzeciwbakt;
+
 	//List of Herbs
 	private boolean isTherePokrzywa=false;
 	private boolean isThereRumianek=false;
@@ -38,7 +46,7 @@ public class MainScreen extends HerbPage {
 	private Table tableUsageType;
 	private Table tableInnerScrollable;
 	private Table tableBookmarkScrollable;
-
+	private boolean tableDebug = false;
 
 
 	public MainScreen(Herbarium herbarium) {
@@ -56,12 +64,20 @@ public class MainScreen extends HerbPage {
 	}
 
 	private void initButtons() {
-//		bttTherapeuticMoczopedne = new TherapeuticUseButton(1, new IClickCallback() {
-//			@Override
-//			public void onClick() {
-//				System.out.println("Moczopedne click");
-//			}
-//		});
+		//TODO Therapeutic properties buttons
+		bttTherapeuticMoczopedne = new TherapeuticUseButton(1, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("Moczopedne click");
+			}
+		});
+
+		bttTherapeuticPrzeciwbakt = new TherapeuticUseButton(2, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("Przeciwbakt click");
+			}
+		});
 	}
 
 	////////////////////Dodaje Scrollowanie przez Scrollview
@@ -71,15 +87,15 @@ public class MainScreen extends HerbPage {
 
 //InstantiateTables
 		tableMain = new Table();
-		tableUsageType = new Table();
+				//tableUsageType = new Table();
 //FillParent
 		tableMain.setFillParent(true);
 //Debug
 		tableMain.setDebug(tableDebug);
-		tableUsageType.setDebug(tableDebug);
+				//tableUsageType.setDebug(tableDebug);
 //Set MainTable position
 		tableMain.top().left().padRight(25f).padTop(10f);
-
+//Bookmark scrollable
 		tableBookmarkScrollable();
 
 		tableMain.add(tableLogo).colspan(2).height(152f).top(); //LOGO
@@ -102,7 +118,8 @@ public class MainScreen extends HerbPage {
 		ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
 		scrollPane.setOverscroll(false,false);
 
-		tableMain.add(scrollPane).width(130f).height(700f).padRight(10f);//bookmark
+		tableMain.add(scrollPane).top().left().width(100f).height(590f)
+				.padLeft(20f).padRight(20f).padBottom(55f);//bookmark
 	}
 
 	private void tableInnerWithScrollableHerbs() {
@@ -113,53 +130,76 @@ public class MainScreen extends HerbPage {
 		scrollPane.setOverscroll(false, false);
 		
 		tableMain.row();
-		tableMain.add(scrollPane).colspan(2);
+		tableMain.add(scrollPane).colspan(2).top();
 		
 	}
 
 	private void tableWithTherapeuticUseTypes() {
 		//TherapeuticUse
-		 HerbImage bttPrzeciwbakt;
-		 HerbImage bttPrzeciwzap;
-		 HerbImage bttMoczopedne;
-
-	bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				System.out.println("rosliny przeciwbakteryjne");
-				//addPrzeciwbakteryjneHerbstoList();
-			}
-		}, herbarium);
-		
-		tableUsageType.add(bttPrzeciwbakt).pad(20);
-		/////////////////////////////////
-		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				System.out.println("rosliny przeciwzapalne");
-				//addPrzeciwzapalneHerbsToList();
-				herbList.add(enumHerb.RUMIANEK); //test
-				initHerbs();
-				
-			}
-		}, herbarium);
-		tableUsageType.add(bttPrzeciwzap).pad(20);
-		//////////////////////////////////////
-		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", new IClickCallback() {
-			
-			@Override
-			public void onClick() {
-				System.out.println("rosliny Moczopedne");
-				//addMoczopedneHerbsToList();
-				herbList.add(enumHerb.POKRZYWA);//test
-				initHerbs();
-			}
-		}, herbarium);
-		tableUsageType.add(bttMoczopedne).pad(20);
+		tableBookmarkScrollable.add(bttTherapeuticMoczopedne).top().left();
+		tableBookmarkScrollable.row();
+		tableBookmarkScrollable.add(bttTherapeuticPrzeciwbakt).top().left().padTop(20f);
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+		testBookmarkTable();
+//	bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", new IClickCallback() {
+//
+//			@Override
+//			public void onClick() {
+//				System.out.println("rosliny przeciwbakteryjne");
+//				//addPrzeciwbakteryjneHerbstoList();
+//			}
+//		}, herbarium);
+//
+//		tableUsageType.add(bttPrzeciwbakt).pad(20);
+//		/////////////////////////////////
+//		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", new IClickCallback() {
+//
+//			@Override
+//			public void onClick() {
+//				System.out.println("rosliny przeciwzapalne");
+//				//addPrzeciwzapalneHerbsToList();
+//				herbList.add(enumHerb.RUMIANEK); //test
+//				initHerbs();
+//
+//			}
+//		}, herbarium);
+//		tableUsageType.add(bttPrzeciwzap).pad(20);
+//		//////////////////////////////////////
+//		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", new IClickCallback() {
+//
+//			@Override
+//			public void onClick() {
+//				System.out.println("rosliny Moczopedne");
+//				//addMoczopedneHerbsToList();
+//				herbList.add(enumHerb.POKRZYWA);//test
+//				initHerbs();
+//			}
+//		}, herbarium);
+//		tableUsageType.add(bttMoczopedne).pad(20);
 	////////////////////////////////////
 		
+	}
+
+	private void testBookmarkTable() {
+		tableBookmarkScrollable.row();
+		tableBookmarkScrollable.add(new TherapeuticUseButton(1, new IClickCallback() {
+			@Override
+			public void onClick() {
+
+			}
+		})).padTop(10f);
 	}
 
 	private void initHerbs() {

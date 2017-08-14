@@ -18,16 +18,13 @@ public  class TherapeuticUseButton extends Button {
     public static Skin skin;
     private String buttonUp;
     private String ButtonDown;
+    //TODO passby enum not number
     public TherapeuticUseButton(int number, final IClickCallback callback){
         super(prepareButton(number));
         init(callback);
     }
 
 
-    public TherapeuticUseButton(String buttonUp, String buttonDown, final IClickCallback callback){
-        super(prepareButton(buttonUp, buttonDown));
-        init(callback);
-    }
     private void init (final IClickCallback callback){
         this.addListener( new ClickListener(){
             @Override
@@ -43,22 +40,12 @@ public  class TherapeuticUseButton extends Button {
         buttonStyle = new ButtonStyle();
         switch(i){
             case 1: buttonStyle.up = skin.getDrawable("MoczopedneButton");
-                    buttonStyle.down = skin.getDrawable("MoczopedneButtonDown");break;
+                    buttonStyle.checked = skin.getDrawable("MoczopedneButtonDown");break;
+            case 2: buttonStyle.up = skin.getDrawable("PrezciwbaktButton");
+                    buttonStyle.checked = skin.getDrawable("PrezciwbaktButtonDown");
         }
 
         return buttonStyle;
     }
-
-    private static ButtonStyle prepareButton(String buttonUp, String buttonDown){
-        textureAtlas = new TextureAtlas("buttons/therapeuticUseButtons.pack");
-        skin = new Skin(textureAtlas);
-        buttonStyle = new ButtonStyle();
-        buttonStyle.up = skin.getDrawable(buttonUp.toString());
-        buttonStyle.down = skin.getDrawable(buttonDown.toString());
-        return buttonStyle;
-    }
-
-
-
 
 }
