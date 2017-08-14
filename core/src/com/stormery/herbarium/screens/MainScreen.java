@@ -7,15 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.buttons.TherapeuticUseButton;
+import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.herbs.Pokrzywa;
 import com.stormery.herbarium.ui.HerbImage;
 import com.stormery.herbarium.ui.IClickCallback;
 
-enum enumHerb{
-	POKRZYWA, RUMIANEK
-	
-}
 
 public class MainScreen extends HerbPage {
 
@@ -25,14 +21,14 @@ public class MainScreen extends HerbPage {
 	public static boolean isNotDragging = true;
 
 
-	private ArrayList<enumHerb> herbList;
+	private ArrayList<EnumHerb> herbList;
 
 	//private int therapeuticUseBttHeigh = 40;
 	//private int therapeuticUseBttWidth = 140;
 
 	//Therapeutic Use
-	TherapeuticUseButton bttTherapeuticMoczopedne;
-	TherapeuticUseButton bttTherapeuticPrzeciwbakt;
+	UseButton bttTherapeuticMoczopedne;
+	UseButton bttTherapeuticPrzeciwbakt;
 
 	//List of Herbs
 	private boolean isTherePokrzywa=false;
@@ -55,7 +51,7 @@ public class MainScreen extends HerbPage {
 
 	@Override
 	protected void init() {
-		herbList = new ArrayList<enumHerb>();
+		herbList = new ArrayList<EnumHerb>();
 		initBackgroundTextures();
 		initButtons();
 		initTable();
@@ -64,14 +60,14 @@ public class MainScreen extends HerbPage {
 
 	private void initButtons() {
 		//TODO Therapeutic properties buttons
-		bttTherapeuticMoczopedne = new TherapeuticUseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
+		bttTherapeuticMoczopedne = new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("Moczopedne click");
 			}
 		});
 
-		bttTherapeuticPrzeciwbakt = new TherapeuticUseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
+		bttTherapeuticPrzeciwbakt = new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("Przeciwbakt click");
@@ -193,7 +189,7 @@ public class MainScreen extends HerbPage {
 
 	private void testBookmarkTable() {
 		tableBookmarkScrollable.row();
-		tableBookmarkScrollable.add(new TherapeuticUseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
+		tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("TEST scrollable bookmark");
@@ -210,7 +206,7 @@ public class MainScreen extends HerbPage {
 		//herbList.add(enumHerb.POKRZYWA);
 		//herbList.add(enumHerb.RUMIANEK);		
 	
-		if((herbList.contains(enumHerb.POKRZYWA) )&& !isTherePokrzywa){
+		if((herbList.contains(EnumHerb.POKRZYWA) )&& !isTherePokrzywa){
 			initPokrzywaButton();
 			initPokrzywaButton();
 			initPokrzywaButton();
@@ -221,7 +217,7 @@ public class MainScreen extends HerbPage {
 			initPokrzywaButton();
 			//isTherePokrzywa = true;
 		}
-		if(herbList.contains(enumHerb.RUMIANEK) && !isThereRumianek) {
+		if(herbList.contains(EnumHerb.RUMIANEK) && !isThereRumianek) {
 			initRumianekButton();
 			isThereRumianek = true;
 
