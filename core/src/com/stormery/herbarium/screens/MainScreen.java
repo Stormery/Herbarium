@@ -16,9 +16,7 @@ enum enumHerb{
 	POKRZYWA, RUMIANEK
 	
 }
-enum enumTherapeuticProperties{
-	DIURETIC
-}
+
 public class MainScreen extends HerbPage {
 
 	protected Herbarium herbarium;
@@ -61,18 +59,19 @@ public class MainScreen extends HerbPage {
 		initBackgroundTextures();
 		initButtons();
 		initTable();
+
 	}
 
 	private void initButtons() {
 		//TODO Therapeutic properties buttons
-		bttTherapeuticMoczopedne = new TherapeuticUseButton(1, new IClickCallback() {
+		bttTherapeuticMoczopedne = new TherapeuticUseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("Moczopedne click");
 			}
 		});
 
-		bttTherapeuticPrzeciwbakt = new TherapeuticUseButton(2, new IClickCallback() {
+		bttTherapeuticPrzeciwbakt = new TherapeuticUseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
 			@Override
 			public void onClick() {
 				System.out.println("Przeciwbakt click");
@@ -194,10 +193,10 @@ public class MainScreen extends HerbPage {
 
 	private void testBookmarkTable() {
 		tableBookmarkScrollable.row();
-		tableBookmarkScrollable.add(new TherapeuticUseButton(1, new IClickCallback() {
+		tableBookmarkScrollable.add(new TherapeuticUseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
 			@Override
 			public void onClick() {
-
+				System.out.println("TEST scrollable bookmark");
 			}
 		})).padTop(10f);
 	}

@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.stormery.herbarium.screens.EnumTherapeuticProperties;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.sun.org.apache.xpath.internal.operations.String;
 
@@ -19,11 +20,10 @@ public  class TherapeuticUseButton extends Button {
     private String buttonUp;
     private String ButtonDown;
     //TODO passby enum not number
-    public TherapeuticUseButton(int number, final IClickCallback callback){
+    public TherapeuticUseButton(EnumTherapeuticProperties number, final IClickCallback callback){
         super(prepareButton(number));
         init(callback);
     }
-
 
     private void init (final IClickCallback callback){
         this.addListener( new ClickListener(){
@@ -34,15 +34,16 @@ public  class TherapeuticUseButton extends Button {
             }
         });
     }
-    private static ButtonStyle prepareButton(int i) {
+
+    private static ButtonStyle prepareButton(EnumTherapeuticProperties enumTherapeuticProperties) {
         textureAtlas = new TextureAtlas("buttons/therapeuticUseButtons.pack");
         skin = new Skin(textureAtlas);
         buttonStyle = new ButtonStyle();
-        switch(i){
-            case 1: buttonStyle.up = skin.getDrawable("MoczopedneButton");
-                    buttonStyle.checked = skin.getDrawable("MoczopedneButtonDown");break;
-            case 2: buttonStyle.up = skin.getDrawable("PrezciwbaktButton");
-                    buttonStyle.checked = skin.getDrawable("PrezciwbaktButtonDown");
+        switch(enumTherapeuticProperties){
+            case DIURETIC: buttonStyle.up = skin.getDrawable("MoczopedneButton");
+                buttonStyle.checked = skin.getDrawable("MoczopedneButtonDown");break;
+            case ANTIBACTERIAL: buttonStyle.up = skin.getDrawable("PrezciwbaktButton");
+                buttonStyle.checked = skin.getDrawable("PrezciwbaktButtonDown");
         }
 
         return buttonStyle;
