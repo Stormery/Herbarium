@@ -1,0 +1,271 @@
+
+therapeuticUseButtons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+DrogiMoczoweButton
+  rotate: false
+  xy: 1, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+DrogiMoczoweButtonDown
+  rotate: false
+  xy: 1, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+MoczopedneButton
+  rotate: false
+  xy: 143, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+MoczopedneButtonDown
+  rotate: false
+  xy: 1, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+NapotneButton
+  rotate: false
+  xy: 143, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+NapotneButtonDown
+  rotate: false
+  xy: 285, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+NiewydolnoscButton
+  rotate: false
+  xy: 1, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+NiewydolnoscButtonDown
+  rotate: false
+  xy: 143, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+OslaniajaceButton
+  rotate: false
+  xy: 285, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+OslaniajaceButtonDown
+  rotate: false
+  xy: 427, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PobudzajaceTrawienieButton
+  rotate: false
+  xy: 1, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PobudzajaceTrawienieButtonDown
+  rotate: false
+  xy: 143, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrezciwbaktButton
+  rotate: false
+  xy: 285, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrezciwbaktButtonDown
+  rotate: false
+  xy: 427, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwgoraczkoweButton
+  rotate: false
+  xy: 569, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwgoraczkoweButtonDown
+  rotate: false
+  xy: 1, 1
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwkaszloweButton
+  rotate: false
+  xy: 143, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwkaszloweButtonDown
+  rotate: false
+  xy: 285, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwskurczoweButton
+  rotate: false
+  xy: 427, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwskurczoweButtonDown
+  rotate: false
+  xy: 569, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwzapalneButton
+  rotate: false
+  xy: 711, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwzapalneButtonDown
+  rotate: false
+  xy: 143, 1
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwZapButton
+  rotate: false
+  xy: 285, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PrzeciwZapButtonDown
+  rotate: false
+  xy: 427, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PzeczyszczajaceButton
+  rotate: false
+  xy: 569, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+PzeczyszczajaceButtonDown
+  rotate: false
+  xy: 711, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+RozkurczajaceButton
+  rotate: false
+  xy: 853, 211
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+RozkurczajaceButtonDown
+  rotate: false
+  xy: 285, 1
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+SciagajaceButton
+  rotate: false
+  xy: 427, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+SciagajaceButtonDown
+  rotate: false
+  xy: 569, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+UspokajajaceButton
+  rotate: false
+  xy: 711, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+UspokajajaceButtonDown
+  rotate: false
+  xy: 853, 169
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+WiatropedneButton
+  rotate: false
+  xy: 427, 1
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+WiatropedneButtonDown
+  rotate: false
+  xy: 569, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+WykrztusneButton
+  rotate: false
+  xy: 711, 85
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+WykrztusneButtonDown
+  rotate: false
+  xy: 853, 127
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+ZolciopedneButton
+  rotate: false
+  xy: 569, 1
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
+ZolciopedneButtonDown
+  rotate: false
+  xy: 711, 43
+  size: 140, 40
+  orig: 140, 40
+  offset: 0, 0
+  index: -1
