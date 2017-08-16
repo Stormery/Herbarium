@@ -1,16 +1,11 @@
 package com.stormery.herbarium.screens;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.buttons.UseButton;
-import com.stormery.herbarium.herbs.Pokrzywa;
-import com.stormery.herbarium.ui.HerbImage;
-import com.stormery.herbarium.ui.IClickCallback;
+import com.stormery.herbarium.ui.MainScreenTableContainer;
+
+import java.util.ArrayList;
 
 
 public class MainScreen extends HerbPage {
@@ -21,19 +16,15 @@ public class MainScreen extends HerbPage {
 	public static boolean isNotDragging = true;
 
 
-	private ArrayList<EnumHerb> herbList;
 
+	//TODO z tym zadzialac
+	private ArrayList<EnumHerb> herbList;
 	//List of Herbs
 	private boolean isTherePokrzywa=false;
 	private boolean isThereRumianek=false;
 
 	
-	/////Tables
-	private Table tableMain;
-	private Table tableUsageType;
-	private Table tableInnerScrollable;
-	private Table tableBookmarkScrollable;
-	private boolean tableDebug = false;
+
 
 
 	public MainScreen(Herbarium herbarium) {
@@ -47,7 +38,8 @@ public class MainScreen extends HerbPage {
 		herbList = new ArrayList<EnumHerb>();
 		initBackgroundTextures();
 		initButtons();
-		initTable();
+		new MainScreenTableContainer(stage);
+		// initTable();
 
 	}
 
@@ -56,309 +48,55 @@ public class MainScreen extends HerbPage {
 	}
 
 	////////////////////Dodaje Scrollowanie przez Scrollview
-	private void initTable() {
-		//TODO zmienic skin i Atlas
-		Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
 
-//InstantiateTables
-		tableMain = new Table();
-				//tableUsageType = new Table();
-//FillParent
-		tableMain.setFillParent(true);
-//Debug
-		tableMain.setDebug(tableDebug);
-				//tableUsageType.setDebug(tableDebug);
-//Set MainTable position
-		tableMain.top().left().padRight(25f).padTop(10f);
-//Bookmark scrollable
-		tableBookmarkScrollable();
-
-		tableMain.add(tableLogo).colspan(2).height(152f).top(); //LOGO
-		tableMain.row();
-
-		//TODO wyszukiwarki nie ma
-		tableMain.add().height(30f).colspan(2); // wyszukiwarka
-
-//Instantiate Box with Therapeutic use Buttons
-		tableWithTherapeuticUseTypes();
-//Instantiate Box with ScrollableButtons
-		tableInnerWithScrollableHerbs();
-		stage.addActor(tableMain);
-	}
-
-	private void tableBookmarkScrollable(){
-
-		tableBookmarkScrollable = new Table();
-		tableBookmarkScrollable.setDebug(tableDebug);
-		ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
-		scrollPane.setOverscroll(false,false);
-
-		tableMain.add(scrollPane).top().left().width(100f).height(590f)
-				.padLeft(20f).padRight(20f).padBottom(55f);//bookmark
-	}
-
-	private void tableInnerWithScrollableHerbs() {
-		tableInnerScrollable = new Table();
-		tableInnerScrollable.setDebug(tableDebug);
-
-		ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
-		scrollPane.setOverscroll(false, false);
-		
-		tableMain.row();
-		tableMain.add(scrollPane).colspan(2).top();
-		
-	}
-
-	private void tableWithTherapeuticUseTypes() {
-		float therapeuticUsePadTop = 20f;
-		tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println("Przeciwbakt click");
-			}
-		})).top().left().padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTIPYRETIC, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("przeciwgoraczkowe click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTISPASMODIC, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Przeciwskurczowe  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTITUSSIVE, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Przeciwkaszlowe  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ASTRINGENTS, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Sciagajace  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("NiewydolnoscKrazenia  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CARMINATIVE, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Wiatropedne  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CHOLAGOGUES, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Zolciopedne  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DEMULCENT, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Przeciwzapalne  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DIAPHORETIC, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Napotne  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Moczopednt click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.EXPECTORANT, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Wykrztusne  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.IMPROVING_DIGESTION, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Pobudzatrawienie  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.LAXATIVE, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Przeczyszczajace  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.PROTECTIVE_SCREENING, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Oslaniajace  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.SEDATIVE, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Uspokajajace  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.SPASMOLYTIC, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Rozkurczajace  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-		tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT, new IClickCallback(){
-			@Override
-			public void onClick() {
-				System.out.println("Odkazajace drogi moczowe  click");
-			}
-		} )).padTop(therapeuticUsePadTop);
-		tableBookmarkScrollable.row();
-
-
-//	bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny przeciwbakteryjne");
-//				//addPrzeciwbakteryjneHerbstoList();
-//			}
-//		}, herbarium);
-//
-//		tableUsageType.add(bttPrzeciwbakt).pad(20);
-//		/////////////////////////////////
-//		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny przeciwzapalne");
-//				//addPrzeciwzapalneHerbsToList();
-//				herbList.add(enumHerb.RUMIANEK); //test
-//				initHerbs();
-//
-//			}
-//		}, herbarium);
-//		tableUsageType.add(bttPrzeciwzap).pad(20);
-//		//////////////////////////////////////
-//		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny Moczopedne");
-//				//addMoczopedneHerbsToList();
-//				herbList.add(enumHerb.POKRZYWA);//test
-//				initHerbs();
-//			}
-//		}, herbarium);
-//		tableUsageType.add(bttMoczopedne).pad(20);
-	////////////////////////////////////
-		
-	}
-
-	private void testBookmarkTable() {
-		tableBookmarkScrollable.row();
-		tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
-			@Override
-			public void onClick() {
-				System.out.println("TEST scrollable bookmark");
-			}
-		})).padTop(10f);
-	}
 
 	private void initHerbs() {
 		// Add search engine for adding herbenums
 		//System.out.println(herbList.indexOf(enumHerb.POKRZYWA)); // to ma byc numer kolejnosci to daje int
-		//TODO rozmiar buttonow, kolejnosc buttonow, inaczej zrobic HERBIMAGE[2]
-		
+	//TODO Refactor for enabling buttons pokrzyewa etc
 		
 		//herbList.add(enumHerb.POKRZYWA);
 		//herbList.add(enumHerb.RUMIANEK);		
 	
 		if((herbList.contains(EnumHerb.POKRZYWA) )&& !isTherePokrzywa){
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
-			initPokrzywaButton();
+		//	initPokrzywaButton();
+
 			//isTherePokrzywa = true;
 		}
 		if(herbList.contains(EnumHerb.RUMIANEK) && !isThereRumianek) {
-			initRumianekButton();
+		//	initRumianekButton();
 			isThereRumianek = true;
 
 		}
 	}
-
-	private void initRumianekButton() {
-
-		tableInnerScrollable.row();
-		tableInnerScrollable.add(new HerbImage( "buttons/herbs/RumianekButton.png", 0, 0, new IClickCallback() {
-
-			@Override
-			public void onClick() {
-				System.out.println("click rumianek");
-				herbarium.setScreen(new Pokrzywa(herbarium));
-			}
-		}, herbarium)).pad(10);
-		
-	}
-	private HerbImage pokrzywa = new HerbImage("buttons/herbs/PokrzywaButton.png", 0, 0, new IClickCallback() {
-
-		@Override
-		public void onClick() {
-			System.out.println("click pokrzywa");
-			herbarium.setScreen(new Pokrzywa(herbarium));
-		}
-	}, herbarium);
-
-	private void initPokrzywaButton() {
-
-		tableInnerScrollable.row();
-		tableInnerScrollable.add(pokrzywa).pad(10);
-	}
+//
+//	private void initRumianekButton() {
+//	//TODO ALL implementation for herbs
+//		tableInnerScrollable.row();
+//		tableInnerScrollable.add(new HerbImage( "buttons/herbs/RumianekButton.png", 0, 0, new IClickCallback() {
+//
+//			@Override
+//			public void onClick() {
+//				System.out.println("click rumianek");
+//				herbarium.setScreen(new Pokrzywa(herbarium));
+//			}
+//		}, herbarium)).pad(10);
+//
+//	}
+//	private HerbImage pokrzywa = new HerbImage("buttons/herbs/PokrzywaButton.png", 0, 0, new IClickCallback() {
+//
+//		@Override
+//		public void onClick() {
+//			System.out.println("click pokrzywa");
+//			herbarium.setScreen(new Pokrzywa(herbarium));
+//		}
+//	}, herbarium);
+//
+//	private void initPokrzywaButton() {
+//
+//		tableInnerScrollable.row();
+//		tableInnerScrollable.add(pokrzywa).pad(10);
+//	}
 
 
 
