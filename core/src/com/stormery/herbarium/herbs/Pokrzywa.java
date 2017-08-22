@@ -20,7 +20,7 @@ public class Pokrzywa extends  HerbPage{
 		initTableMain(background);
 
 
-		initReturnButton();
+
 		initSideSliderSerice();
 
 	}

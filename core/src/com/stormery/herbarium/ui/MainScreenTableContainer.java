@@ -7,10 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.screens.EnumTherapeuticProperties;
-import com.stormery.herbarium.screens.HerbPage;
-import com.stormery.herbarium.screens.MainScreen;
-
-import sun.applet.Main;
 
 /**
  * Created by Ayo on 2017-08-16.
@@ -26,7 +22,27 @@ public class MainScreenTableContainer {
 
     private Stage stage;
 
-    public MainScreenTableContainer(Stage stage){
+
+    private static boolean signForPrzeciwbakteryjne;
+    private static boolean signForPrzeciwkaszlowe;
+    private static boolean signForPrzeciwgoraczkowe;
+    private static boolean signForOdkazajaceDrogiMoczowe;
+    private static boolean signForPrzeciwskurczowe;
+    private static boolean signForSciagajace;
+    private static boolean signForNiewydolnoscKrazenia;
+    private static boolean signForWiatropedne;
+    private static boolean signForZolciopedne;
+    private static boolean signForPrzeciwzapalne;
+    private static boolean signForNapotne;
+    private static boolean signForMoczopedne;
+    private static boolean signForWykrztusne;
+    private static boolean signForPobudzanieTrawienia;
+    private static boolean signForPrzeczyszczajace;
+    private static boolean signForOslaniajace;
+    private static boolean signForUspokajajace;
+    private static boolean signForRozkurczajace;
+
+    public MainScreenTableContainer(Stage stage) {
         this.stage = stage;
         initTable();
     }
@@ -61,15 +77,15 @@ public class MainScreenTableContainer {
         stage.addActor(tableMain);
     }
 
-    private void tableBookmarkScrollable(){
+    private void tableBookmarkScrollable() {
 
         tableBookmarkScrollable = new Table();
         tableBookmarkScrollable.setDebug(tableDebug);
         ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
-        scrollPane.setOverscroll(false,false);
+        scrollPane.setOverscroll(false, false);
 
-        tableMain.add(scrollPane).top().left().width(100f).height(590f)
-                .padLeft(20f).padRight(20f).padBottom(55f);//bookmark
+        tableMain.add(scrollPane).top().left().width(90f).height(550f)
+                .padLeft(15f).padRight(30f).padBottom(5f).padTop(100f);//bookmark
     }
 
     private void tableInnerWithScrollableHerbs() {
@@ -90,144 +106,162 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeciwbakt click");
+                signForPrzeciwbakteryjne = true;
             }
         })).top().left().padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTIPYRETIC, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIPYRETIC, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("przeciwgoraczkowe click");
+                signForPrzeciwgoraczkowe = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTISPASMODIC, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTISPASMODIC, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Przeciwskurczowe  click");
+                signForPrzeciwskurczowe = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ANTITUSSIVE, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTITUSSIVE, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Przeciwkaszlowe  click");
+                signForPrzeciwkaszlowe = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.ASTRINGENTS, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ASTRINGENTS, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Sciagajace  click");
+                signForSciagajace = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("NiewydolnoscKrazenia  click");
+                signForNiewydolnoscKrazenia = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CARMINATIVE, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CARMINATIVE, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Wiatropedne  click");
+                signForWiatropedne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.CHOLAGOGUES, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CHOLAGOGUES, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Zolciopedne  click");
+                signForZolciopedne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DEMULCENT, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DEMULCENT, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Przeciwzapalne  click");
+                signForPrzeciwzapalne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DIAPHORETIC, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DIAPHORETIC, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Napotne  click");
+                signForNapotne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Moczopednt click");
+                signForMoczopedne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.EXPECTORANT, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.EXPECTORANT, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Wykrztusne  click");
+                signForWykrztusne = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.IMPROVING_DIGESTION, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.IMPROVING_DIGESTION, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Pobudzatrawienie  click");
+                signForPobudzanieTrawienia = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.LAXATIVE, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.LAXATIVE, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Przeczyszczajace  click");
+                signForPrzeczyszczajace = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.PROTECTIVE_SCREENING, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.PROTECTIVE_SCREENING, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Oslaniajace  click");
+                signForOslaniajace = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.SEDATIVE, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.SEDATIVE, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Uspokajajace  click");
+                signForUspokajajace = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.SPASMOLYTIC, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.SPASMOLYTIC, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Rozkurczajace  click");
+                signForRozkurczajace = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-        tableBookmarkScrollable.add( new UseButton(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT, new IClickCallback(){
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Odkazajace drogi moczowe  click");
+                signForOdkazajaceDrogiMoczowe = true;
             }
-        } )).padTop(therapeuticUsePadTop);
+        })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
 
@@ -278,5 +312,78 @@ public class MainScreenTableContainer {
                 System.out.println("TEST scrollable bookmark");
             }
         })).padTop(10f);
+    }
+
+    //////////////Getters and Setterrs/////////////
+    public static boolean isSignForPrzeciwbakteryjne() {
+        return signForPrzeciwbakteryjne;
+    }
+
+    public static boolean isSignForPrzeciwkaszlowe() {
+        return signForPrzeciwkaszlowe;
+    }
+
+    public static boolean isSignForPrzeciwgoraczkowe() {
+        return signForPrzeciwgoraczkowe;
+    }
+
+    public static boolean isSignForOdkazajaceDrogiMoczowe() {
+        return signForOdkazajaceDrogiMoczowe;
+    }
+
+    public static boolean isSignForPrzeciwskurczowe() {
+        return signForPrzeciwskurczowe;
+    }
+
+    public static boolean isSignForSciagajace() {
+        return signForSciagajace;
+    }
+
+    public static boolean isSignForNiewydolnoscKrazenia() {
+        return signForNiewydolnoscKrazenia;
+    }
+
+    public static boolean isSignForWiatropedne() {
+        return signForWiatropedne;
+    }
+
+    public static boolean isSignForZolciopedne() {
+        return signForZolciopedne;
+    }
+
+    public static boolean isSignForPrzeciwzapalne() {
+        return signForPrzeciwzapalne;
+    }
+
+    public static boolean isSignForNapotne() {
+        return signForNapotne;
+    }
+
+    public static boolean isSignForMoczopedne() {
+        return signForMoczopedne;
+    }
+
+    public static boolean isSignForWykrztusne() {
+        return signForWykrztusne;
+    }
+
+    public static boolean isSignForPobudzanieTrawienia() {
+        return signForPobudzanieTrawienia;
+    }
+
+    public static boolean isSignForPrzeczyszczajace() {
+        return signForPrzeczyszczajace;
+    }
+
+    public static boolean isSignForOslaniajace() {
+        return signForOslaniajace;
+    }
+
+    public static boolean isSignForUspokajajace() {
+        return signForUspokajajace;
+    }
+
+    public static boolean isSignForRozkurczajace() {
+        return signForRozkurczajace;
     }
 }

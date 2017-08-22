@@ -28,7 +28,7 @@ public class HerbPage extends AbstractScreen {
 		super(herbarium);
 		init();
 
-	}	
+	}
 
 	@Override
 	protected void init() {
@@ -78,7 +78,6 @@ public class HerbPage extends AbstractScreen {
 			@Override
 			public void onClick() {
 				System.out.println("click pokrzywa");
-				//herbarium.setScreen(new Pokrzywa(herbarium));
 			}
 		}, herbarium)).padLeft(20f);
 		tableInner.add().expandX();

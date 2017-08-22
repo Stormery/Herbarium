@@ -37,11 +37,10 @@ public  class UseButton extends Button {
     }
 
     private static ButtonStyle prepareButton(Enum enumeratio) {
-        textureAtlas = new TextureAtlas("buttons/TypeOfTherapeuticUse/therapeuticUseButtons.pack");
-        skin = new Skin(textureAtlas);
-        buttonStyle = new ButtonStyle();
+
         ifEnumIsTherapeuticProperties(enumeratio);
-        ifEnumIsHerb(enumeratio);
+        //TODO dodag grafike najpierw
+         ifEnumIsHerb(enumeratio);
 
         return buttonStyle;
     }
@@ -49,11 +48,135 @@ public  class UseButton extends Button {
     private static void ifEnumIsHerb(Enum enumeratio) {
         if(enumeratio instanceof EnumHerb){
 
+            textureAtlas = new TextureAtlas("buttons/herbs/herbBigButtons.pack");
+            skin = new Skin(textureAtlas);
+            buttonStyle = new ButtonStyle();
+            if (enumeratio.equals(EnumHerb.ALOE)) {
+                buttonStyle.up = skin.getDrawable("AloesButton");
+                buttonStyle.down = skin.getDrawable("AloesButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ANISEED)) {
+                buttonStyle.up = skin.getDrawable("AnyzButton");
+                buttonStyle.down = skin.getDrawable("AnyzButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ANGELICA)) {
+                buttonStyle.up = skin.getDrawable("ArcydziegielButton");
+                buttonStyle.down = skin.getDrawable("ArcydziegielButtonDown");
+            }else if (enumeratio.equals(EnumHerb.PLANTAGO_OVATA)) {
+                buttonStyle.up = skin.getDrawable("BabkaJajowataButton");
+                buttonStyle.down = skin.getDrawable("BabkaJajowataButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ELDER)) {
+                buttonStyle.up = skin.getDrawable("BezCzarnyButton");
+                buttonStyle.down = skin.getDrawable("BezCzarmuButtonDown");
+            }else if (enumeratio.equals(EnumHerb.CRANBERRY)) {
+                buttonStyle.up = skin.getDrawable("BrusznicaButton");
+                buttonStyle.down = skin.getDrawable("BrusznicaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.BIRCH_TREE)) {
+                buttonStyle.up = skin.getDrawable("BrzozaButton");
+                buttonStyle.down = skin.getDrawable("BrzozaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.COMMON_HOP)) {
+                buttonStyle.up = skin.getDrawable("ChmielButton");
+                buttonStyle.down = skin.getDrawable("ChmielButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ST_JOHNS_WORT)) {
+                buttonStyle.up = skin.getDrawable("DziurawiecButton");
+                buttonStyle.down = skin.getDrawable("DziurawiecButtonDown");
+            }else if (enumeratio.equals(EnumHerb.VIOLA_TRICOLOR)) {
+                buttonStyle.up = skin.getDrawable("FiolekTrojbarwnyButton");
+                buttonStyle.down = skin.getDrawable("FiolekTrojbarwnyButtonDown");
+            }else if (enumeratio.equals(EnumHerb.HAWTHORN)) {
+                buttonStyle.up = skin.getDrawable("GlogButton");
+                buttonStyle.down = skin.getDrawable("GlogButtonDown");
+            }else if (enumeratio.equals(EnumHerb.JUNIPER)) {
+                buttonStyle.up = skin.getDrawable("JalowiecButton");
+                buttonStyle.down = skin.getDrawable("JalowiecButtonDown");
+            }else if (enumeratio.equals(EnumHerb.CAROM)) {
+                buttonStyle.up = skin.getDrawable("KminekButton");
+                buttonStyle.down = skin.getDrawable("KminekButtonDown");
+            }else if (enumeratio.equals(EnumHerb.HELICHRYSUM)) {
+                buttonStyle.up = skin.getDrawable("KocankaButton");
+                buttonStyle.down = skin.getDrawable("KocankaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.CORIANDER)) {
+                buttonStyle.up = skin.getDrawable("KolendraButton");
+                buttonStyle.down = skin.getDrawable("KolendraButtonDown");
+            }else if (enumeratio.equals(EnumHerb.DILL)) {
+                buttonStyle.up = skin.getDrawable("KoperWloskiButton");
+                buttonStyle.down = skin.getDrawable("KoperWloskiButtonDown");
+            }else if (enumeratio.equals(EnumHerb.VALERIAN)) {
+                buttonStyle.up = skin.getDrawable("KozlekButton");
+                buttonStyle.down = skin.getDrawable("KozlekButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ALDER_BUCKTHORN)) {
+                buttonStyle.up = skin.getDrawable("KruszynaButton");
+                buttonStyle.down = skin.getDrawable("KruszynaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.YARROW)) {
+                buttonStyle.up = skin.getDrawable("KrwawnikButton");
+                buttonStyle.down = skin.getDrawable("KrwawnikButtonDown");
+            }else if (enumeratio.equals(EnumHerb.LAVENDER)) {
+                buttonStyle.up = skin.getDrawable("LawendaButton");
+                buttonStyle.down = skin.getDrawable("LawendaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.FLAX)) {
+                buttonStyle.up = skin.getDrawable("LenButton");
+                buttonStyle.down = skin.getDrawable("LenButtonDown");
+            }else if (enumeratio.equals(EnumHerb.TILIA)) {
+                buttonStyle.up = skin.getDrawable("LipaButton");
+                buttonStyle.down = skin.getDrawable("LipaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.LOVAGE)) {
+                buttonStyle.up = skin.getDrawable("LubczykButton");
+                buttonStyle.down = skin.getDrawable("LubczykButtonDown");
+            }else if (enumeratio.equals(EnumHerb.BEARBERRY)) {
+                buttonStyle.up = skin.getDrawable("MacznicaButton");
+                buttonStyle.down = skin.getDrawable("MacznicaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.LEMON_BALM)) {
+                buttonStyle.up = skin.getDrawable("MelisaButton");
+                buttonStyle.down = skin.getDrawable("MelisaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.PEPPERMINT)) {
+                buttonStyle.up = skin.getDrawable("MietaButton");
+                buttonStyle.down = skin.getDrawable("MietaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.GOLDEN_ROD)) {
+                buttonStyle.up = skin.getDrawable("NawlocButton");
+                buttonStyle.down = skin.getDrawable("NawlocButtonDown");
+            }else if (enumeratio.equals(EnumHerb.PSYLLIUM)) {
+                buttonStyle.up = skin.getDrawable("PlesznikButton");
+                buttonStyle.down = skin.getDrawable("PlesznikButtonDown");
+            }else if (enumeratio.equals(EnumHerb.ALTHEA)) {
+                buttonStyle.up = skin.getDrawable("PrawoslazButton");
+                buttonStyle.down = skin.getDrawable("PrawoslazButtonDown");
+            }else if (enumeratio.equals(EnumHerb.KNOTGRASS)) {
+                buttonStyle.up = skin.getDrawable("RdestPtasiButton");
+                buttonStyle.down = skin.getDrawable("RdestPtasiButtonDown");
+            }else if (enumeratio.equals(EnumHerb.CHAMOMILE)) {
+                buttonStyle.up = skin.getDrawable("RumianekButton");
+                buttonStyle.down = skin.getDrawable("RumianekButtonDown");
+            }else if (enumeratio.equals(EnumHerb.RHUBARB)) {
+                buttonStyle.up = skin.getDrawable("RzewienButton");
+                buttonStyle.down = skin.getDrawable("RzewienButtonDown");
+            }else if (enumeratio.equals(EnumHerb.SENNA)) {
+                buttonStyle.up = skin.getDrawable("SenesButton");
+                buttonStyle.down = skin.getDrawable("SenesButtonDown");
+            }else if (enumeratio.equals(EnumHerb.HORSETAIL)) {
+                buttonStyle.up = skin.getDrawable("SkrzypButton");
+                buttonStyle.down = skin.getDrawable("SkrzypButtonDown");
+            }else if (enumeratio.equals(EnumHerb.MALLOW)) {
+                buttonStyle.up = skin.getDrawable("SlazButton");
+                buttonStyle.down = skin.getDrawable("SlazButtonDown");
+            }else if (enumeratio.equals(EnumHerb.SAGE)) {
+                buttonStyle.up = skin.getDrawable("SzalwiaButton");
+                buttonStyle.down = skin.getDrawable("SzalwiaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.POPLAR)) {
+                buttonStyle.up = skin.getDrawable("TopolaButton");
+                buttonStyle.down = skin.getDrawable("TopolaButtonDown");
+            }else if (enumeratio.equals(EnumHerb.THYME)) {
+                buttonStyle.up = skin.getDrawable("TymianekButton");
+                buttonStyle.down = skin.getDrawable("TymianekButtonDown");
+            }else if (enumeratio.equals(EnumHerb.WILLOW)) {
+                buttonStyle.up = skin.getDrawable("WierzbaButton");
+                buttonStyle.down = skin.getDrawable("WierzbaButtonDown");
+            }
         }
     }
 
     private static void ifEnumIsTherapeuticProperties(Enum enumeratio) {
         if(enumeratio instanceof EnumTherapeuticProperties){
+            textureAtlas = new TextureAtlas("buttons/TypeOfTherapeuticUse/therapeuticUseButtons.pack");
+            skin = new Skin(textureAtlas);
+            buttonStyle = new ButtonStyle();
             if (enumeratio.equals(EnumTherapeuticProperties.ANTIBACTERIAL)) {
                 buttonStyle.up = skin.getDrawable("PrezciwbaktButton");
                 buttonStyle.checked = skin.getDrawable("PrezciwbaktButtonDown");

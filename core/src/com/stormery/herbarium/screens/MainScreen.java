@@ -2,6 +2,7 @@ package com.stormery.herbarium.screens;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Array;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
@@ -42,6 +43,7 @@ public class MainScreen extends HerbPage {
 		// initTable();
 
 	}
+
 
 	private void initButtons() {
 
@@ -102,11 +104,13 @@ public class MainScreen extends HerbPage {
 
 	private void initBackgroundTextures() {
 
-		background = new Image(new Texture("backgroundImg/tlo03.png"));
+		background = new Image(new Texture("backgroundImg/tlo04.jpg"));
+		background.setHeight(700);
+		background.setWidth(480);
 		stage.addActor(background);
 		redBookmark = new Image(new Texture("backgroundImg/bookmark.png"));
 		redBookmark.setPosition(5f, 0);
-		stage.addActor(redBookmark);
+		//stage.addActor(redBookmark);
 
 	}
 

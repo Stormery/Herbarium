@@ -1,0 +1,575 @@
+
+herbBigButtons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+AloesButton
+  rotate: false
+  xy: 1, 937
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+AloesButtonDown
+  rotate: false
+  xy: 1, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+AnyzButton
+  rotate: false
+  xy: 453, 937
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+AnyzButtonDown
+  rotate: false
+  xy: 1, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+ArcydziegielButton
+  rotate: false
+  xy: 453, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+ArcydziegielButtonDown
+  rotate: false
+  xy: 1, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BabkaJajowataButton
+  rotate: false
+  xy: 453, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BabkaJajowataButtonDown
+  rotate: false
+  xy: 1, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BezCzarnyButton
+  rotate: false
+  xy: 453, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BezCzarnyButtonDown
+  rotate: false
+  xy: 1, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BrusznicaButton
+  rotate: false
+  xy: 453, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BrusznicaButtonDown
+  rotate: false
+  xy: 1, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BrzozaButton
+  rotate: false
+  xy: 453, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+BrzozaButtonDown
+  rotate: false
+  xy: 1, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+ChmielButton
+  rotate: false
+  xy: 453, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+ChmielButtonDown
+  rotate: false
+  xy: 1, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+DziurawiecButton
+  rotate: false
+  xy: 453, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+DziurawiecButtonDown
+  rotate: false
+  xy: 1, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+FiolekTrojbarwnyButton
+  rotate: false
+  xy: 453, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+FiolekTrojbarwnyButtonDown
+  rotate: false
+  xy: 1, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+GlogButton
+  rotate: false
+  xy: 453, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+GlogButtonDown
+  rotate: false
+  xy: 1, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+JalowiecButton
+  rotate: false
+  xy: 453, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+JalowiecButtonDown
+  rotate: false
+  xy: 1, 73
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KminekButton
+  rotate: false
+  xy: 453, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KminekButtonDown
+  rotate: false
+  xy: 1, 1
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KocankaButton
+  rotate: false
+  xy: 453, 73
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KocankaButtonDown
+  rotate: false
+  xy: 453, 1
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+
+herbBigButtons2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+KolendraButton
+  rotate: false
+  xy: 1, 937
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KolendraButtonDown
+  rotate: false
+  xy: 1, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KoperWloskiButton
+  rotate: false
+  xy: 453, 937
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KoperWloskiButtonDown
+  rotate: false
+  xy: 1, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KozlekButton
+  rotate: false
+  xy: 453, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KozlekButtonDown
+  rotate: false
+  xy: 1, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KruszynaButton
+  rotate: false
+  xy: 453, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KruszynaButtonDown
+  rotate: false
+  xy: 1, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KrwawnikButton
+  rotate: false
+  xy: 453, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+KrwawnikButtonDown
+  rotate: false
+  xy: 1, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LawendaButton
+  rotate: false
+  xy: 453, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LawendaButtonDown
+  rotate: false
+  xy: 1, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LenButton
+  rotate: false
+  xy: 453, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LenButtonDown
+  rotate: false
+  xy: 1, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LipaButton
+  rotate: false
+  xy: 453, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LipaButtonDown
+  rotate: false
+  xy: 1, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LubczykButton
+  rotate: false
+  xy: 453, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+LubczykButtonDown
+  rotate: false
+  xy: 1, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MacznicaButton
+  rotate: false
+  xy: 453, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MacznicaButtonDown
+  rotate: false
+  xy: 1, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MelisaButton
+  rotate: false
+  xy: 453, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MelisaButtonDown
+  rotate: false
+  xy: 1, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MietaButton
+  rotate: false
+  xy: 453, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+MietaButtonDown
+  rotate: false
+  xy: 1, 73
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+NawloscButton
+  rotate: false
+  xy: 453, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+NawloscButtonDown
+  rotate: false
+  xy: 1, 1
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+PlesznikButton
+  rotate: false
+  xy: 453, 73
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+PlesznikButtonDown
+  rotate: false
+  xy: 453, 1
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+
+herbBigButtons3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+PokrzywaButton
+  rotate: false
+  xy: 1, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+PokrzywaButtonDown
+  rotate: false
+  xy: 1, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+PrawoslazButton
+  rotate: false
+  xy: 453, 865
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+PrawoslazButtonDown
+  rotate: false
+  xy: 1, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RdestPtasiButton
+  rotate: false
+  xy: 453, 793
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RdestPtasiButtonDown
+  rotate: false
+  xy: 1, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RumianekButton
+  rotate: false
+  xy: 453, 721
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RumianekButtonDown
+  rotate: false
+  xy: 1, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RzewienButton
+  rotate: false
+  xy: 453, 649
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+RzewienButtonDown
+  rotate: false
+  xy: 1, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SenesButton
+  rotate: false
+  xy: 453, 577
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SenesButtonDown
+  rotate: false
+  xy: 1, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SkrzypButton
+  rotate: false
+  xy: 453, 505
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SkrzypButtonDown
+  rotate: false
+  xy: 1, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SlazButton
+  rotate: false
+  xy: 453, 433
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SlazButtonDown
+  rotate: false
+  xy: 1, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SzalwiaButton
+  rotate: false
+  xy: 453, 361
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+SzalwiaButtonDown
+  rotate: false
+  xy: 1, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+TopolaButton
+  rotate: false
+  xy: 453, 289
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+TopolaButtonDown
+  rotate: false
+  xy: 1, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+TymianekButton
+  rotate: false
+  xy: 453, 217
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+TymianekButtonDown
+  rotate: false
+  xy: 1, 73
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+WierzbaButton
+  rotate: false
+  xy: 453, 145
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
+WierzbaButtonDown
+  rotate: false
+  xy: 1, 1
+  size: 450, 70
+  orig: 450, 70
+  offset: 0, 0
+  index: -1
