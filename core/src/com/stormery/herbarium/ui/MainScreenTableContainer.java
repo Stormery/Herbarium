@@ -15,10 +15,10 @@ import com.stormery.herbarium.screens.EnumTherapeuticProperties;
 public class MainScreenTableContainer {
     /////Tables
     private Table tableMain;
-    private Table tableUsageType;
-    private Table tableInnerScrollable;
+    private Table tableRight;
+    public static Table tableInnerScrollable;
     private Table tableBookmarkScrollable;
-    private boolean tableDebug = false;
+    private boolean tableDebug = true;
 
     private Stage stage;
 
@@ -53,22 +53,23 @@ public class MainScreenTableContainer {
 
 //InstantiateTables
         tableMain = new Table();
-        //tableUsageType = new Table();
+        tableRight = new Table();
 //FillParent
         tableMain.setFillParent(true);
 //Debug
         tableMain.setDebug(tableDebug);
+        tableRight.setDebug(tableDebug);
         //tableUsageType.setDebug(tableDebug);
 //Set MainTable position
         tableMain.top().left().padRight(25f).padTop(10f);
 //Bookmark scrollable
         tableBookmarkScrollable();
-
-        tableMain.add(tableLogo).colspan(2).height(152f).top(); //LOGO
-        tableMain.row();
-
+//LOGO
+        tableRight.add(tableLogo).height(152f).top(); //LOGO
+        tableRight.row();
+        tableMain.add(tableRight).top().left();
         //TODO wyszukiwarki nie ma
-        tableMain.add().height(30f).colspan(2); // wyszukiwarka
+       // tableMain.add().height(30f).colspan(2); // wyszukiwarka
 
 //Instantiate Box with Therapeutic use Buttons
         tableWithTherapeuticUseTypes();
@@ -95,8 +96,8 @@ public class MainScreenTableContainer {
         ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
         scrollPane.setOverscroll(false, false);
 
-        tableMain.row();
-        tableMain.add(scrollPane).colspan(2).top();
+        //tableMain.row();
+        tableRight.add(scrollPane).colspan(2).top();
 
     }
 
@@ -223,7 +224,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeczyszczajace  click");
-                signForPrzeczyszczajace = true;
+                if(signForPrzeczyszczajace)signForPrzeczyszczajace = false;
+                else signForPrzeczyszczajace = true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();

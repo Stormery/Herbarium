@@ -13,6 +13,7 @@ public class Aloe extends HerbPage{
         super(herbarium);
     }
 
+   public static boolean isThereAnyAloes = false;
     @Override
     protected void init() {
         initBackgroundTexture();
@@ -22,10 +23,8 @@ public class Aloe extends HerbPage{
     private void initBackgroundTexture() {
     }
 
-    public boolean checkIfAloe(){
-        if(MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            return true;
-        }
+
+    public static boolean checkIfAloe(){
         if(MainScreenTableContainer.isSignForPrzeciwbakteryjne()||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
@@ -44,8 +43,16 @@ public class Aloe extends HerbPage{
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace()
+                MainScreenTableContainer.isSignForRozkurczajace()||
+                isThereAnyAloes
                 )return false;
+
+        if(MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+            System.out.println("jest aloes przeczyszczajacy");
+
+            return true;
+    }
+
         
         return false;
     }

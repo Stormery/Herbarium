@@ -2,8 +2,10 @@ package com.stormery.herbarium.screens;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.utils.Array;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.herbs.Aloe;
+import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
@@ -21,8 +23,7 @@ public class MainScreen extends HerbPage {
 	//TODO z tym zadzialac
 	private ArrayList<EnumHerb> herbList;
 	//List of Herbs
-	private boolean isTherePokrzywa=false;
-	private boolean isThereRumianek=false;
+	UseButton aloeButton;
 
 	
 
@@ -46,31 +47,17 @@ public class MainScreen extends HerbPage {
 
 
 	private void initButtons() {
-
+		 aloeButton = new UseButton(EnumHerb.ALOE, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO ALOES PAGE");
+			}});
 	}
 
 	////////////////////Dodaje Scrollowanie przez Scrollview
 
 
-	private void initHerbs() {
-		// Add search engine for adding herbenums
-		//System.out.println(herbList.indexOf(enumHerb.POKRZYWA)); // to ma byc numer kolejnosci to daje int
-	//TODO Refactor for enabling buttons pokrzyewa etc
-		
-		//herbList.add(enumHerb.POKRZYWA);
-		//herbList.add(enumHerb.RUMIANEK);		
-	
-		if((herbList.contains(EnumHerb.POKRZYWA) )&& !isTherePokrzywa){
-		//	initPokrzywaButton();
 
-			//isTherePokrzywa = true;
-		}
-		if(herbList.contains(EnumHerb.RUMIANEK) && !isThereRumianek) {
-		//	initRumianekButton();
-			isThereRumianek = true;
-
-		}
-	}
 //
 //	private void initRumianekButton() {
 //	//TODO ALL implementation for herbs
@@ -117,7 +104,20 @@ public class MainScreen extends HerbPage {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+		whatHerbToShow();
 		stage.act();
+
+	}
+/*
+* To show a herb after choose a therapeutic propertie
+* first in Render it czeck
+*/
+	private void whatHerbToShow() {
+
+		if(Aloe.checkIfAloe()){
+				MainScreenTableContainer.tableInnerScrollable.add(aloeButton).colspan(2).width(450).height(100);
+				Aloe.isThereAnyAloes = true;
+		}
 	}
 
 	@Override
