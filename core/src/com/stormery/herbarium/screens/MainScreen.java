@@ -10,6 +10,8 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
 
+import sun.applet.Main;
+
 
 public class MainScreen extends HerbPage {
 
@@ -110,15 +112,22 @@ public class MainScreen extends HerbPage {
 	}
 /*
 * To show a herb after choose a therapeutic propertie
-* first in Render it czeck
+* first in Render - it is checking what herb need to be showed, according to checking list in
+* every herb. For example if I click on LAXATIVE it calls "signForPrzeczyszczajace" as TRUE ( MainScreenTable)
+* If it is TRUE and only this one is TRUE (it is checking in ALOE.java ) it turns checkIfAloe function to true
+* And this function when its true make button for aloe
 */
 	private void whatHerbToShow() {
+		if(!MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = false;
+		if(MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = true;
 
 		if(Aloe.checkIfAloe()){
-				MainScreenTableContainer.tableInnerScrollable.add(aloeButton).colspan(2).width(450).height(100);
-				Aloe.isThereAnyAloes = true;
+			MainScreenTableContainer.tableInnerScrollable.add(aloeButton).colspan(2).width(450).height(100);
+			//Czy tabela zawiera aktora juz
+			if(MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = true;
 		}
 	}
+
 
 	@Override
 	public void dispose() {

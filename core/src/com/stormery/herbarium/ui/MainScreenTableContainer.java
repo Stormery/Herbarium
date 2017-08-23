@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.screens.EnumTherapeuticProperties;
 
 /**
@@ -215,7 +216,12 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Pobudzatrawienie  click");
-                signForPobudzanieTrawienia = true;
+                tableInnerScrollable.clearChildren();
+                if(signForPobudzanieTrawienia){
+                    signForPobudzanieTrawienia = false;
+                }else {
+                    signForPobudzanieTrawienia = true;
+                }
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -224,8 +230,15 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeczyszczajace  click");
-                if(signForPrzeczyszczajace)signForPrzeczyszczajace = false;
-                else signForPrzeczyszczajace = true;
+                if(signForPrzeczyszczajace){
+                    tableInnerScrollable.clearChildren();
+                    signForPrzeczyszczajace = false;
+                   // Aloe.isThereAnyAloes = false;
+                }
+                else {
+                    tableInnerScrollable.clearChildren();
+                    signForPrzeczyszczajace = true;
+                }
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
