@@ -1,7 +1,10 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
+import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
@@ -9,11 +12,12 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class PlantagoOvata extends HerbPage {
+    static UseButton plantagoOvataButton;
+    public static boolean isThereAnyPlantagoOvata = false;
+
     public PlantagoOvata(Herbarium herbarium) {
         super(herbarium);
     }
-
-    public static boolean isThereAnyPlantagoOvata = false;
 
     @Override
     protected void init() {
@@ -39,7 +43,7 @@ public class PlantagoOvata extends HerbPage {
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForWykrztusne()||
+                MainScreenTableContainer.isSignForWykrztusne() ||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
@@ -55,6 +59,24 @@ public class PlantagoOvata extends HerbPage {
 
 
         return false;
+    }
+
+    public static void initPlantagoOvata() {
+        plantagoOvataButton = new UseButton(EnumHerb.PLANTAGO_OVATA, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO babka jajowata PAGE");
+            }
+        });
+    }
+
+    public static void getPlantagoOvataButton() {
+        if (PlantagoOvata.checkIfPlantagoOvata()) {
+            MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+            MainScreenTableContainer.tableInnerScrollable.row();
+        }
+        PlantagoOvata.isThereAnyPlantagoOvata = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(plantagoOvataButton) ? true : false;
+
     }
 }
 

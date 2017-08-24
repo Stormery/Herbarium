@@ -1,7 +1,10 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
+import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
@@ -9,11 +12,12 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Aniseed extends HerbPage {
+    static UseButton aniseedButton;
+    public static boolean isThereAnyAniseed = false;
+
     public Aniseed(Herbarium herbarium) {
         super(herbarium);
     }
-
-    public static boolean isThereAnyAniseed = false;
 
     @Override
     protected void init() {
@@ -23,7 +27,6 @@ public class Aniseed extends HerbPage {
 
     private void initBackgroundTexture() {
     }
-
 
     public static boolean checkIfAniseed() {
         if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
@@ -50,11 +53,26 @@ public class Aniseed extends HerbPage {
 
         if (MainScreenTableContainer.isSignForWykrztusne()) {
             System.out.println("jest anyz ");
-
             return true;
         }
-
-
         return false;
+    }
+
+    public static void initAniseed() {
+        aniseedButton = new UseButton(EnumHerb.ANISEED, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO ANYZ PAGE");
+            }
+        });
+    }
+
+    public static void getAniseedButton() {
+        if(Aniseed.checkIfAniseed()){
+            MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+            MainScreenTableContainer.tableInnerScrollable.row();
+        }
+        Aniseed.isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
+
     }
 }

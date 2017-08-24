@@ -65,7 +65,7 @@ public  class UseButton extends Button {
                 buttonStyle.down = skin.getDrawable("BabkaJajowataButtonDown");
             }else if (enumeratio.equals(EnumHerb.ELDER)) {
                 buttonStyle.up = skin.getDrawable("BezCzarnyButton");
-                buttonStyle.down = skin.getDrawable("BezCzarmuButtonDown");
+                buttonStyle.down = skin.getDrawable("BezCzarnyButtonDown");
             }else if (enumeratio.equals(EnumHerb.CRANBERRY)) {
                 buttonStyle.up = skin.getDrawable("BrusznicaButton");
                 buttonStyle.down = skin.getDrawable("BrusznicaButtonDown");

@@ -15,8 +15,9 @@ import com.stormery.herbarium.ui.IClickCallback;
  * Herb page to klasa po AbstractScreen ktora zawiera elementy uzywane w kolejnych stronach
  */
 public class HerbPage extends AbstractScreen {
-	
 
+	public static float herbButtonWidth = 320f;
+	public static float herbButtonHeight = 100f;
 	private HerbImage returnButton;
 	
 	private SliderService sliderService;

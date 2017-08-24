@@ -1,7 +1,10 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
+import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
@@ -9,11 +12,12 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Elder extends HerbPage {
+    static UseButton elderButton;
+    public static boolean isThereAnyElder = false;
+
     public Elder(Herbarium herbarium) {
         super(herbarium);
     }
-
-    public static boolean isThereAnyElder = false;
 
     @Override
     protected void init() {
@@ -56,5 +60,23 @@ public class Elder extends HerbPage {
 
 
         return false;
+    }
+
+    public static void initElder() {
+        elderButton = new UseButton(EnumHerb.ELDER, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO bez czarny PAGE");
+            }
+        });
+    }
+
+    public static void getElderButton() {
+        if (Elder.checkIfElder()) {
+            MainScreenTableContainer.tableInnerScrollable.add(elderButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+            MainScreenTableContainer.tableInnerScrollable.row();
+        }
+        Elder.isThereAnyElder = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(elderButton) ? true : false;
+
     }
 }

@@ -1,7 +1,10 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.buttons.UseButton;
+import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
+import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
@@ -9,11 +12,23 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Angelica extends HerbPage {
+
+    static UseButton angelicaButton;
+    public static boolean isThereAnyAngelica = false;
+
     public Angelica(Herbarium herbarium) {
         super(herbarium);
     }
 
-    public static boolean isThereAnyAngelica = false;
+    public static void initAngelica() {
+        angelicaButton = new UseButton(EnumHerb.ANGELICA, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Arcydziegiel PAGE");
+            }
+        });
+    }
+
 
     @Override
     protected void init() {
@@ -40,7 +55,7 @@ public class Angelica extends HerbPage {
                 MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForWykrztusne()||
+                MainScreenTableContainer.isSignForWykrztusne() ||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
@@ -50,11 +65,16 @@ public class Angelica extends HerbPage {
 
         if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
             System.out.println("jest Arcydziegiel ");
-
             return true;
         }
-
-
         return false;
     }
+    public static void getAngelicaButton() {
+        if(Angelica.checkIfAngelica()){
+            MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(320f).height(100f).padBottom(10f);
+            MainScreenTableContainer.tableInnerScrollable.row();
+        }
+        Angelica.isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
+    }
+
 }
