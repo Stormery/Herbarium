@@ -7,6 +7,8 @@ import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Angelica;
 import com.stormery.herbarium.herbs.Aniseed;
+import com.stormery.herbarium.herbs.BirchTree;
+import com.stormery.herbarium.herbs.CommonHop;
 import com.stormery.herbarium.herbs.Cranberry;
 import com.stormery.herbarium.herbs.Elder;
 import com.stormery.herbarium.herbs.PlantagoOvata;
@@ -50,6 +52,8 @@ public class MainScreen extends HerbPage {
         Cranberry.initCranberry();
         Elder.initElder();
         PlantagoOvata.initPlantagoOvata();
+        BirchTree.initBirchTree();
+        CommonHop.initCommonHop();
     }
 
     private void initBackgroundTextures() {
@@ -61,24 +65,14 @@ public class MainScreen extends HerbPage {
         redBookmark = new Image(new Texture("backgroundImg/bookmark.png"));
         redBookmark.setPosition(5f, 0);
     }
-
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-        whatHerbToShow();
-        stage.act();
-
-    }
-/*
+    /*
 * To show a herb after choose a therapeutic propertie
 * first in Render - it is checking what herb need to be showed, according to checking list in
 * every herb. For example if I click on LAXATIVE it calls "signForPrzeczyszczajace" as TRUE ( MainScreenTable)
 * If it is TRUE and only this one is TRUE (it is checking in ALOE.java ) it turns checkIfAloe function to true
 * And this function when its true make button for aloe
 */
-
     private void whatHerbToShow() {
-
         //TODO wybor jezyka tu jest na ENG
         Aloe.getAloeButton();
         Angelica.getAngelicaButton();
@@ -86,8 +80,20 @@ public class MainScreen extends HerbPage {
         Cranberry.getCranberryButton();
         Elder.getElderButton();
         PlantagoOvata.getPlantagoOvataButton();
+        BirchTree.getBirchTreeButton();
+        CommonHop.getCommonHopButton();
+///dotad
+
 
     }
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        whatHerbToShow();
+        stage.act();
+
+    }
+
 
 
     @Override

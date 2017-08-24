@@ -56,8 +56,6 @@ public class PlantagoOvata extends HerbPage {
 
             return true;
         }
-
-
         return false;
     }
 
