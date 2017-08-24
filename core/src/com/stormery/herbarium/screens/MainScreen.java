@@ -7,6 +7,8 @@ import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Angelica;
 import com.stormery.herbarium.herbs.Aniseed;
+import com.stormery.herbarium.herbs.Cranberry;
+import com.stormery.herbarium.herbs.Elder;
 import com.stormery.herbarium.herbs.PlantagoOvata;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
@@ -30,8 +32,10 @@ public class MainScreen extends HerbPage {
 	UseButton aniseedButton;
 	UseButton angelicaButton;
 	UseButton plantagoOvataButton;
+	UseButton elderButton;
+	UseButton cranberryButton;
 
-	
+
 
 
 
@@ -76,6 +80,18 @@ public class MainScreen extends HerbPage {
 				System.out.println("IDZIE DO babka jajowata PAGE");
 			}
 		});
+		elderButton = new UseButton(EnumHerb.ELDER, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO bez czarny PAGE");
+			}
+		});
+		cranberryButton = new UseButton(EnumHerb.CRANBERRY, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO Brusznica PAGE");
+			}
+		});
 	}
 
 	private void initBackgroundTextures() {
@@ -103,23 +119,51 @@ public class MainScreen extends HerbPage {
 * If it is TRUE and only this one is TRUE (it is checking in ALOE.java ) it turns checkIfAloe function to true
 * And this function when its true make button for aloe
 */
+	float herbButtonWidth = 320f;
+	float herbButtonHeight = 100f;
 	private void whatHerbToShow() {
-		float herbButtonWidth = 320f;
-		float herbButtonHeight = 100f;
+
 		//Czy tabela zawiera aktora juz
 		Aloe.isThereAnyAloes = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton)? true:false;
 		Aniseed.isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
 		Angelica.isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
 		PlantagoOvata.isThereAnyPlantagoOvata = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(plantagoOvataButton)? true:false;
+		Elder.isThereAnyElder = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(elderButton)? true:false;
+		Cranberry.isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
 
-		if(Aloe.checkIfAloe()) MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(herbButtonWidth).height(herbButtonHeight);
-		if(Aniseed.checkIfAniseed()) MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight);
-		if(Angelica.checkIfAngelica()) MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(herbButtonWidth).height(herbButtonHeight);
-		if(PlantagoOvata.checkIfPlantagoOvata()) MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight);
+		if(Aloe.checkIfAloe()){
+			MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
+		if(Aniseed.checkIfAniseed()){
+			MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
+		if(Angelica.checkIfAngelica()){
+			MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
+		if(PlantagoOvata.checkIfPlantagoOvata()){
+			MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
+		if(Elder.checkIfElder()){
+			MainScreenTableContainer.tableInnerScrollable.add(elderButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
+		if(Cranberry.checkIfCranberry()){
+			MainScreenTableContainer.tableInnerScrollable.add(cranberryButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+			MainScreenTableContainer.tableInnerScrollable.row();
+		}
 
-//TODO dodac row po kazdym
+
 	}
 
+	public UseButton whatButton() {
+		if(Aloe.checkIfAloe())return aloeButton;
+
+		return null;
+	}
 
 	@Override
 	public void dispose() {
