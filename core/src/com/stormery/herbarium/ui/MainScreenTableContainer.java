@@ -16,10 +16,10 @@ import com.stormery.herbarium.screens.EnumTherapeuticProperties;
 public class MainScreenTableContainer {
     /////Tables
     private Table tableMain;
+    private Table tableBookmarkScrollable;
     private Table tableRight;
     public static Table tableInnerScrollable;
-    private Table tableBookmarkScrollable;
-    private boolean tableDebug = true;
+    private boolean tableDebug = false;
 
     private Stage stage;
 
@@ -87,7 +87,7 @@ public class MainScreenTableContainer {
         scrollPane.setOverscroll(false, false);
 
         tableMain.add(scrollPane).top().left().width(90f).height(550f)
-                .padLeft(15f).padRight(30f).padBottom(5f).padTop(100f);//bookmark
+                .padLeft(15f).padRight(20f).padBottom(5f).padTop(100f);//bookmark
     }
 
     private void tableInnerWithScrollableHerbs() {
@@ -108,7 +108,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeciwbakt click");
-                signForPrzeciwbakteryjne = true;
+                tableInnerScrollable.clearChildren();
+                    signForPrzeciwbakteryjne=  signForPrzeciwbakteryjne ?  false :  true;
             }
         })).top().left().padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -117,7 +118,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("przeciwgoraczkowe click");
-                signForPrzeciwgoraczkowe = true;
+                tableInnerScrollable.clearChildren();
+                    signForPrzeciwgoraczkowe=  signForPrzeciwgoraczkowe ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -126,7 +128,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeciwskurczowe  click");
-                signForPrzeciwskurczowe = true;
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwskurczowe=  signForPrzeciwskurczowe ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -135,7 +138,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeciwkaszlowe  click");
-                signForPrzeciwkaszlowe = true;
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwkaszlowe=  signForPrzeciwkaszlowe ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -144,7 +148,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Sciagajace  click");
-                signForSciagajace = true;
+                tableInnerScrollable.clearChildren();
+                signForSciagajace=  signForSciagajace ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -153,7 +158,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("NiewydolnoscKrazenia  click");
-                signForNiewydolnoscKrazenia = true;
+                tableInnerScrollable.clearChildren();
+                signForNiewydolnoscKrazenia=  signForNiewydolnoscKrazenia ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -162,7 +168,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Wiatropedne  click");
-                signForWiatropedne = true;
+                tableInnerScrollable.clearChildren();
+                signForWiatropedne=  signForWiatropedne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -171,7 +178,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Zolciopedne  click");
-                signForZolciopedne = true;
+                tableInnerScrollable.clearChildren();
+                signForZolciopedne=  signForZolciopedne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -180,7 +188,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeciwzapalne  click");
-                signForPrzeciwzapalne = true;
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwzapalne=  signForPrzeciwzapalne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -189,7 +198,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Napotne  click");
-                signForNapotne = true;
+                tableInnerScrollable.clearChildren();
+                signForNapotne=  signForNapotne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -198,7 +208,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Moczopednt click");
-                signForMoczopedne = true;
+                tableInnerScrollable.clearChildren();
+                signForMoczopedne=  signForMoczopedne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -207,7 +218,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Wykrztusne  click");
-                signForWykrztusne = true;
+                    tableInnerScrollable.clearChildren();
+                    signForWykrztusne=  signForWykrztusne ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -217,11 +229,8 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("Pobudzatrawienie  click");
                 tableInnerScrollable.clearChildren();
-                if(signForPobudzanieTrawienia){
-                    signForPobudzanieTrawienia = false;
-                }else {
-                    signForPobudzanieTrawienia = true;
-                }
+                    tableInnerScrollable.clearChildren();
+                    signForPobudzanieTrawienia=  signForPobudzanieTrawienia ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -230,15 +239,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Przeczyszczajace  click");
-                if(signForPrzeczyszczajace){
                     tableInnerScrollable.clearChildren();
-                    signForPrzeczyszczajace = false;
-                   // Aloe.isThereAnyAloes = false;
-                }
-                else {
-                    tableInnerScrollable.clearChildren();
-                    signForPrzeczyszczajace = true;
-                }
+                    signForPrzeczyszczajace=  signForPrzeczyszczajace ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -247,7 +249,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Oslaniajace  click");
-                signForOslaniajace = true;
+                    tableInnerScrollable.clearChildren();
+                signForOslaniajace=  signForOslaniajace ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -256,7 +259,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Uspokajajace  click");
-                signForUspokajajace = true;
+                    tableInnerScrollable.clearChildren();
+                signForUspokajajace=  signForUspokajajace ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -265,7 +269,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Rozkurczajace  click");
-                signForRozkurczajace = true;
+                    tableInnerScrollable.clearChildren();
+                signForRozkurczajace=  signForRozkurczajace ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
@@ -274,7 +279,8 @@ public class MainScreenTableContainer {
             @Override
             public void onClick() {
                 System.out.println("Odkazajace drogi moczowe  click");
-                signForOdkazajaceDrogiMoczowe = true;
+                    tableInnerScrollable.clearChildren();
+                signForOdkazajaceDrogiMoczowe=  signForOdkazajaceDrogiMoczowe ?  false :  true;
             }
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();

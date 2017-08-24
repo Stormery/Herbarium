@@ -5,12 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.herbs.Aloe;
+import com.stormery.herbarium.herbs.Angelica;
+import com.stormery.herbarium.herbs.Aniseed;
+import com.stormery.herbarium.herbs.PlantagoOvata;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
-
-import sun.applet.Main;
 
 
 public class MainScreen extends HerbPage {
@@ -26,6 +27,9 @@ public class MainScreen extends HerbPage {
 	private ArrayList<EnumHerb> herbList;
 	//List of Herbs
 	UseButton aloeButton;
+	UseButton aniseedButton;
+	UseButton angelicaButton;
+	UseButton plantagoOvataButton;
 
 	
 
@@ -54,42 +58,25 @@ public class MainScreen extends HerbPage {
 			public void onClick() {
 				System.out.println("IDZIE DO ALOES PAGE");
 			}});
+		aniseedButton = new UseButton(EnumHerb.ANISEED, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO ANYZ PAGE");
+			}
+		});
+		angelicaButton = new UseButton(EnumHerb.ANGELICA, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO Arcydziegiel PAGE");
+			}
+		});
+		plantagoOvataButton = new UseButton(EnumHerb.PLANTAGO_OVATA, new IClickCallback() {
+			@Override
+			public void onClick() {
+				System.out.println("IDZIE DO babka jajowata PAGE");
+			}
+		});
 	}
-
-	////////////////////Dodaje Scrollowanie przez Scrollview
-
-
-
-//
-//	private void initRumianekButton() {
-//	//TODO ALL implementation for herbs
-//		tableInnerScrollable.row();
-//		tableInnerScrollable.add(new HerbImage( "buttons/herbs/RumianekButton.png", 0, 0, new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("click rumianek");
-//				herbarium.setScreen(new Pokrzywa(herbarium));
-//			}
-//		}, herbarium)).pad(10);
-//
-//	}
-//	private HerbImage pokrzywa = new HerbImage("buttons/herbs/PokrzywaButton.png", 0, 0, new IClickCallback() {
-//
-//		@Override
-//		public void onClick() {
-//			System.out.println("click pokrzywa");
-//			herbarium.setScreen(new Pokrzywa(herbarium));
-//		}
-//	}, herbarium);
-//
-//	private void initPokrzywaButton() {
-//
-//		tableInnerScrollable.row();
-//		tableInnerScrollable.add(pokrzywa).pad(10);
-//	}
-
-
 
 	private void initBackgroundTextures() {
 
@@ -99,7 +86,6 @@ public class MainScreen extends HerbPage {
 		stage.addActor(background);
 		redBookmark = new Image(new Texture("backgroundImg/bookmark.png"));
 		redBookmark.setPosition(5f, 0);
-		//stage.addActor(redBookmark);
 
 	}
 
@@ -118,14 +104,20 @@ public class MainScreen extends HerbPage {
 * And this function when its true make button for aloe
 */
 	private void whatHerbToShow() {
-		if(!MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = false;
-		if(MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = true;
+		float herbButtonWidth = 320f;
+		float herbButtonHeight = 100f;
+		//Czy tabela zawiera aktora juz
+		Aloe.isThereAnyAloes = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton)? true:false;
+		Aniseed.isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
+		Angelica.isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
+		PlantagoOvata.isThereAnyPlantagoOvata = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(plantagoOvataButton)? true:false;
 
-		if(Aloe.checkIfAloe()){
-			MainScreenTableContainer.tableInnerScrollable.add(aloeButton).colspan(2).width(450).height(100);
-			//Czy tabela zawiera aktora juz
-			if(MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton))Aloe.isThereAnyAloes = true;
-		}
+		if(Aloe.checkIfAloe()) MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(herbButtonWidth).height(herbButtonHeight);
+		if(Aniseed.checkIfAniseed()) MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight);
+		if(Angelica.checkIfAngelica()) MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(herbButtonWidth).height(herbButtonHeight);
+		if(PlantagoOvata.checkIfPlantagoOvata()) MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight);
+
+//TODO dodac row po kazdym
 	}
 
 

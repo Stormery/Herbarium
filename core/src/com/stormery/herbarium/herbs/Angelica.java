@@ -5,15 +5,16 @@ import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
- * Created by Ayo on 2017-08-22.
+ * Created by Ayo on 2017-08-24.
  */
 
-public class Aloe extends HerbPage{
-    public Aloe(Herbarium herbarium) {
+public class Angelica extends HerbPage {
+    public Angelica(Herbarium herbarium) {
         super(herbarium);
     }
 
-   public static boolean isThereAnyAloes = false;
+    public static boolean isThereAnyAngelica = false;
+
     @Override
     protected void init() {
         initBackgroundTexture();
@@ -24,37 +25,36 @@ public class Aloe extends HerbPage{
     }
 
 
-    public static boolean checkIfAloe(){
-        if(
+    public static boolean checkIfAngelica() {
+        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace()||
+                MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
                 MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne()||
+                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
+                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
+                MainScreenTableContainer.isSignForWykrztusne()||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace()||
-                isThereAnyAloes
-                )return false;
+                MainScreenTableContainer.isSignForRozkurczajace() ||
+                isThereAnyAngelica
+                ) return false;
 
-        if(MainScreenTableContainer.isSignForPrzeciwbakteryjne()||
-                MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            System.out.println("jest aloes ");
+        if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
+            System.out.println("jest Arcydziegiel ");
 
             return true;
-    }
+        }
 
-        
+
         return false;
     }
 }

@@ -5,15 +5,16 @@ import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
- * Created by Ayo on 2017-08-22.
+ * Created by Ayo on 2017-08-24.
  */
 
-public class Aloe extends HerbPage{
-    public Aloe(Herbarium herbarium) {
+public class PlantagoOvata extends HerbPage {
+    public PlantagoOvata(Herbarium herbarium) {
         super(herbarium);
     }
 
-   public static boolean isThereAnyAloes = false;
+    public static boolean isThereAnyPlantagoOvata = false;
+
     @Override
     protected void init() {
         initBackgroundTexture();
@@ -24,37 +25,36 @@ public class Aloe extends HerbPage{
     }
 
 
-    public static boolean checkIfAloe(){
-        if(
+    public static boolean checkIfPlantagoOvata() {
+        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace()||
+                MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
                 MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne()||
+                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
+                MainScreenTableContainer.isSignForWykrztusne()||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace()||
-                isThereAnyAloes
-                )return false;
+                MainScreenTableContainer.isSignForRozkurczajace() ||
+                isThereAnyPlantagoOvata
+                ) return false;
 
-        if(MainScreenTableContainer.isSignForPrzeciwbakteryjne()||
-                MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            System.out.println("jest aloes ");
+        if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+            System.out.println("jest Babka jajowata ");
 
             return true;
-    }
+        }
 
-        
+
         return false;
     }
 }
+
