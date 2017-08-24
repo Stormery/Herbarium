@@ -30,14 +30,12 @@ public class Aloe extends HerbPage {
 
     @Override
     protected void init() {
-
         initBackgroundTexture();
         initReturnButton();
     }
 
     private void initBackgroundTexture() {
     }
-
 
     public static boolean checkIfAloe() {
         if (
@@ -71,10 +69,10 @@ public class Aloe extends HerbPage {
     }
 
     public static void getAloeButton() {
-        if (Aloe.checkIfAloe()) {
+        if (checkIfAloe()) {
             MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        Aloe.isThereAnyAloes = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton) ? true : false;
+        isThereAnyAloes = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton) ? true : false;
     }
 }

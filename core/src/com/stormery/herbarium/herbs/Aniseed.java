@@ -68,11 +68,11 @@ public class Aniseed extends HerbPage {
     }
 
     public static void getAniseedButton() {
-        if(Aniseed.checkIfAniseed()){
+        if(checkIfAniseed()){
             MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        Aniseed.isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
+        isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
 
     }
 }

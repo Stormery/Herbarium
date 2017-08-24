@@ -72,11 +72,11 @@ public class Cranberry extends HerbPage {
     }
 
     public static void getCranberryButton() {
-        if(Cranberry.checkIfCranberry()){
+        if(checkIfCranberry()){
             MainScreenTableContainer.tableInnerScrollable.add(cranberryButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        Cranberry.isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
+        isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
 
     }
 }

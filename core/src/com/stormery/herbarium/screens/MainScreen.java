@@ -3,7 +3,6 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.buttons.UseButton;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Angelica;
 import com.stormery.herbarium.herbs.Aniseed;
@@ -12,7 +11,7 @@ import com.stormery.herbarium.herbs.CommonHop;
 import com.stormery.herbarium.herbs.Cranberry;
 import com.stormery.herbarium.herbs.Elder;
 import com.stormery.herbarium.herbs.PlantagoOvata;
-import com.stormery.herbarium.ui.IClickCallback;
+import com.stormery.herbarium.herbs.StJohnsWort;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
@@ -54,6 +53,7 @@ public class MainScreen extends HerbPage {
         PlantagoOvata.initPlantagoOvata();
         BirchTree.initBirchTree();
         CommonHop.initCommonHop();
+        StJohnsWort.initStJohnsWort();
     }
 
     private void initBackgroundTextures() {
@@ -73,16 +73,16 @@ public class MainScreen extends HerbPage {
 * And this function when its true make button for aloe
 */
     private void whatHerbToShow() {
-        //TODO wybor jezyka tu jest na ENG
+        //TODO wybor jezyka tu jest na POL
         Aloe.getAloeButton();
-        Angelica.getAngelicaButton();
         Aniseed.getAniseedButton();
-        Cranberry.getCranberryButton();
-        Elder.getElderButton();
+        Angelica.getAngelicaButton();
         PlantagoOvata.getPlantagoOvataButton();
+        Elder.getElderButton();
+        Cranberry.getCranberryButton();
         BirchTree.getBirchTreeButton();
         CommonHop.getCommonHopButton();
-///dotad
+        StJohnsWort.getStJohnsWortButton();
 
 
     }

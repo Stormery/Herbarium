@@ -72,11 +72,11 @@ public class Elder extends HerbPage {
     }
 
     public static void getElderButton() {
-        if (Elder.checkIfElder()) {
+        if (checkIfElder()) {
             MainScreenTableContainer.tableInnerScrollable.add(elderButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        Elder.isThereAnyElder = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(elderButton) ? true : false;
+        isThereAnyElder = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(elderButton) ? true : false;
 
     }
 }

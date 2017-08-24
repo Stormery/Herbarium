@@ -10,26 +10,26 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 /**
  * Created by Ayo on 2017-08-24.
  */
-public class BirchTree extends HerbPage {
-    public static boolean isThereAnyBirchTree= false;
-    static UseButton birchTreeButton;
 
-    public BirchTree(Herbarium herbarium) {
+public class StJohnsWort extends HerbPage {
+    public static boolean isThereAnyStJohnsWort = false;
+    static UseButton stJohnsWortButton;
+
+    public StJohnsWort(Herbarium herbarium) {
         super(herbarium);
     }
 
-    public static void initBirchTree() {
-        birchTreeButton = new UseButton(EnumHerb.BIRCH_TREE, new IClickCallback() {
+    public static void initStJohnsWort() {
+        stJohnsWortButton = new UseButton(EnumHerb.ST_JOHNS_WORT, new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("IDZIE DO Brzoza PAGE");
+                System.out.println("IDZIE DO Dziurawiec PAGE");
             }
         });
     }
 
     @Override
     protected void init() {
-
         initBackgroundTexture();
         initReturnButton();
     }
@@ -37,9 +37,8 @@ public class BirchTree extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfBirchTree() {
-        if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ||
+    public static boolean checkIfStJohnsWort() {
+        if (
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                         MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                         MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
@@ -51,29 +50,29 @@ public class BirchTree extends HerbPage {
                         MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                         MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                         MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                        MainScreenTableContainer.isSignForMoczopedne() ||
                         MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
+                        MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                        MainScreenTableContainer.isSignForPrzeczyszczajace()||
                         MainScreenTableContainer.isSignForOslaniajace() ||
                         MainScreenTableContainer.isSignForUspokajajace() ||
                         MainScreenTableContainer.isSignForUspokajajace() ||
                         MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyBirchTree
+                        isThereAnyStJohnsWort
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
-               ) {
-            System.out.println("jest Brzoza ");
+        if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
+            System.out.println("jest Dziurawiec ");
             return true;
         }
         return false;
     }
 
-    public static void getBirchTreeButton() {
-        if (checkIfBirchTree()) {
-            MainScreenTableContainer.tableInnerScrollable.add(birchTreeButton).width(320).height(100).padBottom(10f);
+    public static void getStJohnsWortButton() {
+        if (checkIfStJohnsWort()) {
+            MainScreenTableContainer.tableInnerScrollable.add(stJohnsWortButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyBirchTree = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(birchTreeButton) ? true : false;
+       isThereAnyStJohnsWort = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(stJohnsWortButton) ? true : false;
     }
 }

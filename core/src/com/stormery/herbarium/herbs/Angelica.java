@@ -70,11 +70,11 @@ public class Angelica extends HerbPage {
         return false;
     }
     public static void getAngelicaButton() {
-        if(Angelica.checkIfAngelica()){
+        if(checkIfAngelica()){
             MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(320f).height(100f).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        Angelica.isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
+       isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
     }
 
 }
