@@ -10,8 +10,10 @@ import com.stormery.herbarium.herbs.BirchTree;
 import com.stormery.herbarium.herbs.CommonHop;
 import com.stormery.herbarium.herbs.Cranberry;
 import com.stormery.herbarium.herbs.Elder;
+import com.stormery.herbarium.herbs.Hawthorn;
 import com.stormery.herbarium.herbs.PlantagoOvata;
 import com.stormery.herbarium.herbs.StJohnsWort;
+import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
@@ -54,6 +56,8 @@ public class MainScreen extends HerbPage {
         BirchTree.initBirchTree();
         CommonHop.initCommonHop();
         StJohnsWort.initStJohnsWort();
+        ViolaTricolor.initViolaTricolor();
+        Hawthorn.initHawthorn();
     }
 
     private void initBackgroundTextures() {
@@ -83,7 +87,8 @@ public class MainScreen extends HerbPage {
         BirchTree.getBirchTreeButton();
         CommonHop.getCommonHopButton();
         StJohnsWort.getStJohnsWortButton();
-
+        ViolaTricolor.getViolaTricolorButton();
+        Hawthorn.getHawthornButton();
 
     }
     @Override
