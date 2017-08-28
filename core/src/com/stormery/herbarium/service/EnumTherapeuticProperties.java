@@ -1,4 +1,4 @@
-package com.stormery.herbarium.screens;
+package com.stormery.herbarium.service;
 
 public enum EnumTherapeuticProperties {
     ANTIBACTERIAL, ANTIPYRETIC, ANTISPASMODIC, ANTITUSSIVE, ASTRINGENTS,

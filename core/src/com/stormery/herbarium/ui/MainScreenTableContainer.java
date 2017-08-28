@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.stormery.herbarium.screens.EnumTherapeuticProperties;
+import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
 /**
  * Created by Ayo on 2017-08-16.
@@ -283,44 +283,6 @@ public class MainScreenTableContainer {
         })).padTop(therapeuticUsePadTop);
         tableBookmarkScrollable.row();
 
-
-//	bttPrzeciwbakt = new HerbImage("buttons/TypeOfTherapeuticUse/PrezciwbaktButton.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny przeciwbakteryjne");
-//				//addPrzeciwbakteryjneHerbstoList();
-//			}
-//		}, herbarium);
-//
-//		tableUsageType.add(bttPrzeciwbakt).pad(20);
-//		/////////////////////////////////
-//		bttPrzeciwzap = new HerbImage("buttons/TypeOfTherapeuticUse/PrzeciwZapButtone.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny przeciwzapalne");
-//				//addPrzeciwzapalneHerbsToList();
-//				herbList.add(enumHerb.RUMIANEK); //test
-//				initHerbs();
-//
-//			}
-//		}, herbarium);
-//		tableUsageType.add(bttPrzeciwzap).pad(20);
-//		//////////////////////////////////////
-//		bttMoczopedne = new HerbImage("buttons/TypeOfTherapeuticUse/MoczopedneButton.png", new IClickCallback() {
-//
-//			@Override
-//			public void onClick() {
-//				System.out.println("rosliny Moczopedne");
-//				//addMoczopedneHerbsToList();
-//				herbList.add(enumHerb.POKRZYWA);//test
-//				initHerbs();
-//			}
-//		}, herbarium);
-//		tableUsageType.add(bttMoczopedne).pad(20);
-        ////////////////////////////////////
-
     }
 
     private void testBookmarkTable() {
@@ -334,6 +296,7 @@ public class MainScreenTableContainer {
     }
 
     //////////////Getters and Setterrs/////////////
+
     public static boolean isSignForPrzeciwbakteryjne() {
         return signForPrzeciwbakteryjne;
     }

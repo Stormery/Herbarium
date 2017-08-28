@@ -3,6 +3,9 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.service.EnumLanguage;
+import com.stormery.herbarium.ui.LanguageAndHerbShow;
+import com.stormery.herbarium.ui.MainScreenTableContainer;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Althea;
@@ -42,8 +45,6 @@ import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.herbs.Willow;
 import com.stormery.herbarium.herbs.Yarrow;
-import com.stormery.herbarium.ui.MainScreenTableContainer;
-
 import java.util.ArrayList;
 
 
@@ -56,7 +57,7 @@ public class MainScreen extends HerbPage {
 
 
     //TODO z tym zadzialac
-    private ArrayList<EnumHerb> herbList;
+    private ArrayList<com.stormery.herbarium.service.EnumHerb> herbList;
 
     public MainScreen(Herbarium herbarium) {
         super(herbarium);
@@ -66,7 +67,7 @@ public class MainScreen extends HerbPage {
 
     @Override
     protected void init() {
-        herbList = new ArrayList<EnumHerb>();
+        herbList = new ArrayList<com.stormery.herbarium.service.EnumHerb>();
         initBackgroundTextures();
         initButtons();
         new MainScreenTableContainer(stage);
@@ -134,53 +135,11 @@ public class MainScreen extends HerbPage {
 * If it is TRUE and only this one is TRUE (it is checking in ALOE.java ) it turns checkIfAloe function to true
 * And this function when its true make button for aloe
 */
-    private void whatHerbToShow() {
-        //TODO wybor jezyka tu jest na POL
-        Aloe.getAloeButton();
-        Aniseed.getAniseedButton();
-        Angelica.getAngelicaButton();
-        PlantagoOvata.getPlantagoOvataButton();
-        Elder.getElderButton();
-        Cranberry.getCranberryButton();
-        BirchTree.getBirchTreeButton();
-        CommonHop.getCommonHopButton();
-        StJohnsWort.getStJohnsWortButton();
-        ViolaTricolor.getViolaTricolorButton();
-        Hawthorn.getHawthornButton();
-        Juniper.getJuniperButton();
-        Carom.getCaromButton();
-        Helichrysum.getHelichrysumButton();
-        Coriander.getCorianderButton();
-        Dill.getDillButton();
-        Valerian.getValerianButton();
-        AlderBuckthorn.getAlderBuckthornButton();
-        Yarrow.getYarrowButton();
-        Lavender.getLavenderButton();
-        Flax.getFlaxButton();
-        Tilia.getTiliaButton();
-        Lovage.getLovageButton();
-        Bearberry.getLovageButton();
-        LemonBalm.getLemonBalmButton();
-        Peppermint.getPeppermintButton();
-        GoldenRod.getGoldenRodButton();
-        Psyllium.getPsylliumButton();
-        Althea.getAltheaButton();
-        Knotgrass.getKnotgrassButton();
-        Chamomile.getChamomileButton();
-        Rhubarb.getRhubarbButton();
-        Senna.getSennaButton();
-        Horsetail.getHorsetailButton();
-        Mallow.getMallowButton();
-        Sage.getSageButton();
-        Poplar.getPoplarButton();
-        Thyme.getThymeButton();
-        Willow.getWillowButton();
 
-    }
     @Override
     public void render(float delta) {
         super.render(delta);
-        whatHerbToShow();
+        LanguageAndHerbShow.checkLanguageAndInitHerbs(EnumLanguage.POLISH);
         stage.act();
 
     }

@@ -1,4 +1,4 @@
-package com.stormery.herbarium.screens;
+package com.stormery.herbarium.service;
 
 /**
  * Created by Ayo on 2017-08-14.

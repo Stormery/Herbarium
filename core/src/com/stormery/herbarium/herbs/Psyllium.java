@@ -1,7 +1,7 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.screens.EnumHerb;
+import com.stormery.herbarium.service.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;

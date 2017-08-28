@@ -5,9 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.stormery.herbarium.screens.EnumHerb;
-import com.stormery.herbarium.screens.EnumTherapeuticProperties;
-import com.stormery.herbarium.ui.IClickCallback;
+import com.stormery.herbarium.service.EnumHerb;
+import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
 /**
  * Created by Ayo on 2017-08-09.
