@@ -1,22 +1,31 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.ui.UseButton;
 import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
+import com.stormery.herbarium.ui.UseButton;
 
 /**
- * Created by Ayo on 2017-08-22.
+ * Created by Ayo on 2017-08-28.
  */
 
-public class Aniseed extends HerbPage {
-    static UseButton aniseedButton;
-    public static boolean isThereAnyAniseed = false;
+public class Psyllium extends HerbPage {
+    public static boolean isThereAnyPsyllium = false;
+    static UseButton psylliumButton;
 
-    public Aniseed(Herbarium herbarium) {
+    public Psyllium(Herbarium herbarium) {
         super(herbarium);
+    }
+
+    public static void initPsyllium() {
+        psylliumButton = new UseButton(EnumHerb.PSYLLIUM, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Plesznik PAGE");
+            }
+        });
     }
 
     @Override
@@ -28,51 +37,38 @@ public class Aniseed extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfAniseed() {
+    public static boolean checkIfPsyllium() {
         if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
                 MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
+                MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
+                MainScreenTableContainer.isSignForWykrztusne() ||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyAniseed
+                isThereAnyPsyllium
                 ) return false;
 
-        else  if (MainScreenTableContainer.isSignForWykrztusne()) {
-            System.out.println("jest anyz ");
+        else  if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+            System.out.println("jest Plesznik ");
             return true;
         }
         return false;
     }
 
-    public static void initAniseed() {
-        aniseedButton = new UseButton(EnumHerb.ANISEED, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO ANYZ PAGE");
-            }
-        });
-    }
-
-    public static void getAniseedButton() {
-        if(checkIfAniseed()){
-            MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+    public static void getPsylliumButton() {
+        if (checkIfPsyllium()) {
+            MainScreenTableContainer.tableInnerScrollable.add(psylliumButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
-
+        isThereAnyPsyllium = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(psylliumButton) ? true : false;
     }
 }

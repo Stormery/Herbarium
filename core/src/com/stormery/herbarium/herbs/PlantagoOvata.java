@@ -51,7 +51,7 @@ public class PlantagoOvata extends HerbPage {
                 isThereAnyPlantagoOvata
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+        else  if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
             System.out.println("jest Babka jajowata ");
 
             return true;

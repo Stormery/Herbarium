@@ -58,7 +58,7 @@ public class Helichrysum extends HerbPage {
                 isThereAnyHelichrysum
                 ) return false;
 
-        if ( MainScreenTableContainer.isSignForZolciopedne()) {
+        else  if ( MainScreenTableContainer.isSignForZolciopedne()) {
             System.out.println("jest Kocanka ");
             return true;
         }

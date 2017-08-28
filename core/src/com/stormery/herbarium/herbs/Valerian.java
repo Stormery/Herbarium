@@ -58,7 +58,7 @@ public class Valerian extends HerbPage {
                 isThereAnyValerian
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForUspokajajace()) {
+        else    if (MainScreenTableContainer.isSignForUspokajajace()) {
             System.out.println("jest Kozlek ");
             return true;
         }

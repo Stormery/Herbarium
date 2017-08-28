@@ -58,7 +58,7 @@ public class Coriander extends HerbPage {
                 isThereAnyCoriander
                 ) return false;
 
-        if ( MainScreenTableContainer.isSignForWiatropedne()) {
+        else  if ( MainScreenTableContainer.isSignForWiatropedne()) {
             System.out.println("jest Kolendra ");
             return true;
         }

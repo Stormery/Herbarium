@@ -57,7 +57,7 @@ public class Flax extends HerbPage {
                 isThereAnyFlax
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+        else    if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
             System.out.println("jest Len ");
             return true;
         }

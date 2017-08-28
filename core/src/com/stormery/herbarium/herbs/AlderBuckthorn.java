@@ -58,7 +58,7 @@ public class AlderBuckthorn extends HerbPage {
                 isThereAnyAlderBuckthorn
                 ) return false;
 
-        if ( MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+        else   if ( MainScreenTableContainer.isSignForPrzeczyszczajace()) {
             System.out.println("jest Kruszyna ");
             return true;
         }

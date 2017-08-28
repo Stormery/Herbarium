@@ -61,7 +61,7 @@ public class StJohnsWort extends HerbPage {
                         isThereAnyStJohnsWort
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
+        else   if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
             System.out.println("jest Dziurawiec ");
             return true;
         }

@@ -56,7 +56,7 @@ public class ViolaTricolor extends HerbPage {
                 isThereAnyViolaTricolor
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne() ||
+        else    if (MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForSciagajace()) {
             System.out.println("jest Fiolek ");

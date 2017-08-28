@@ -58,7 +58,7 @@ public class Carom extends HerbPage {
                 isThereAnyCarom
                 ) return false;
 
-        if ( MainScreenTableContainer.isSignForWiatropedne()) {
+        else  if ( MainScreenTableContainer.isSignForWiatropedne()) {
             System.out.println("jest Kminek ");
             return true;
         }

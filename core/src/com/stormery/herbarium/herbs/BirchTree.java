@@ -61,7 +61,7 @@ public class BirchTree extends HerbPage {
                         isThereAnyBirchTree
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
+        else   if (MainScreenTableContainer.isSignForMoczopedne()
                ) {
             System.out.println("jest Brzoza ");
             return true;

@@ -57,7 +57,7 @@ public class Dill extends HerbPage {
                 isThereAnyDill
                 ) return false;
 
-        if ( MainScreenTableContainer.isSignForWiatropedne() || MainScreenTableContainer.isSignForWykrztusne()) {
+        else  if ( MainScreenTableContainer.isSignForWiatropedne() || MainScreenTableContainer.isSignForWykrztusne()) {
             System.out.println("jest Koper ");
             return true;
         }

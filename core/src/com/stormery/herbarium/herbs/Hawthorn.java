@@ -60,7 +60,7 @@ public class Hawthorn extends HerbPage {
                         isThereAnyHawthorn
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForNiewydolnoscKrazenia()) {
+        else  if (MainScreenTableContainer.isSignForNiewydolnoscKrazenia()) {
             System.out.println("jest glog ");
             return true;
         }

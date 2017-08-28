@@ -51,7 +51,7 @@ public class Elder extends HerbPage {
                 isThereAnyElder
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne() ||
+        else  if (MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForNapotne()) {
             System.out.println("jest BezCzarny ");
 

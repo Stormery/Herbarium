@@ -58,7 +58,7 @@ public class Lovage extends HerbPage {
                 isThereAnyLovage
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()) {
+        else  if (MainScreenTableContainer.isSignForMoczopedne()) {
             System.out.println("jest Lubczyk ");
             return true;
         }

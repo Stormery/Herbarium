@@ -1,22 +1,31 @@
 package com.stormery.herbarium.herbs;
 
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.ui.UseButton;
 import com.stormery.herbarium.screens.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
+import com.stormery.herbarium.ui.UseButton;
 
 /**
- * Created by Ayo on 2017-08-22.
+ * Created by Ayo on 2017-08-28.
  */
 
-public class Aniseed extends HerbPage {
-    static UseButton aniseedButton;
-    public static boolean isThereAnyAniseed = false;
+public class Thyme extends HerbPage {
+    public static boolean isThereAnyThyme = false;
+    static UseButton thymeButton;
 
-    public Aniseed(Herbarium herbarium) {
+    public Thyme(Herbarium herbarium) {
         super(herbarium);
+    }
+
+    public static void initThyme() {
+        thymeButton = new UseButton(EnumHerb.THYME, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Tymianek PAGE");
+            }
+        });
     }
 
     @Override
@@ -28,51 +37,39 @@ public class Aniseed extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfAniseed() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+    private static boolean checkIfThyme() {
+        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
+                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
+                MainScreenTableContainer.isSignForWiatropedne()||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForMoczopedne() ||
+                MainScreenTableContainer.isSignForZolciopedne() ||
+                MainScreenTableContainer.isSignForNapotne() ||
                 MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyAniseed
+                isThereAnyThyme
                 ) return false;
 
-        else  if (MainScreenTableContainer.isSignForWykrztusne()) {
-            System.out.println("jest anyz ");
+        else  if (MainScreenTableContainer.isSignForWykrztusne()  ) {
+            System.out.println("jest Tymianek ");
             return true;
         }
         return false;
     }
 
-    public static void initAniseed() {
-        aniseedButton = new UseButton(EnumHerb.ANISEED, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO ANYZ PAGE");
-            }
-        });
-    }
-
-    public static void getAniseedButton() {
-        if(checkIfAniseed()){
-            MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+    public static void getThymeButton() {
+        if (checkIfThyme()) {
+            MainScreenTableContainer.tableInnerScrollable.add(thymeButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
-
+        isThereAnyThyme = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(thymeButton) ? true : false;
     }
 }

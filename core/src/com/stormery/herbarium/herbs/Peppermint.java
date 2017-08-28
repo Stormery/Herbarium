@@ -58,7 +58,7 @@ public class Peppermint extends HerbPage {
                 isThereAnyPeppermint
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForPobudzanieTrawienia() ) {
+        else  if (MainScreenTableContainer.isSignForPobudzanieTrawienia() ) {
             System.out.println("jest Mieta ");
             return true;
         }

@@ -58,7 +58,7 @@ public class GoldenRod extends HerbPage {
                 isThereAnyGoldenRod
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne() ) {
+        else  if (MainScreenTableContainer.isSignForMoczopedne() ) {
             System.out.println("jest Nawloc ");
             return true;
         }

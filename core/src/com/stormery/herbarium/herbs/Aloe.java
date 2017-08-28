@@ -60,7 +60,7 @@ public class Aloe extends HerbPage {
                         isThereAnyAloes
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+        else  if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
                 MainScreenTableContainer.isSignForPrzeczyszczajace()) {
             System.out.println("jest aloes ");
             return true;

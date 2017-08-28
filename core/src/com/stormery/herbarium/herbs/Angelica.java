@@ -63,7 +63,7 @@ public class Angelica extends HerbPage {
                 isThereAnyAngelica
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
+        else   if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
             System.out.println("jest Arcydziegiel ");
             return true;
         }

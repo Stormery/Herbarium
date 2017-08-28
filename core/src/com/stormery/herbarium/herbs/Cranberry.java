@@ -51,7 +51,7 @@ public class Cranberry extends HerbPage {
                 isThereAnyCranberry
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
+        else   if (MainScreenTableContainer.isSignForMoczopedne()
                 ) {
             System.out.println("jest Brusznica ");
 

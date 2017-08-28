@@ -57,7 +57,7 @@ public class Tilia extends HerbPage {
                 isThereAnyTilia
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForZolciopedne() ||  MainScreenTableContainer.isSignForPrzeciwgoraczkowe()) {
+        else    if (MainScreenTableContainer.isSignForZolciopedne() ||  MainScreenTableContainer.isSignForPrzeciwgoraczkowe()) {
             System.out.println("jest Lipa ");
             return true;
         }

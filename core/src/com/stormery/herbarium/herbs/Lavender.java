@@ -58,7 +58,7 @@ public class Lavender extends HerbPage {
                 isThereAnyLavender
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForUspokajajace() ) {
+        else   if (MainScreenTableContainer.isSignForUspokajajace() ) {
             System.out.println("jest Lawenda ");
             return true;
         }

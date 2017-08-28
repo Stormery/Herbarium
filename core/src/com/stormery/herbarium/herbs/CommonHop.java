@@ -63,7 +63,7 @@ public class CommonHop extends HerbPage {
                 ) return false;
 
 
-        if (MainScreenTableContainer.isSignForUspokajajace()) {
+        else  if (MainScreenTableContainer.isSignForUspokajajace()) {
             System.out.println("jest Chmiel ");
             return true;
         }

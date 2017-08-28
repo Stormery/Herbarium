@@ -58,7 +58,7 @@ public class Yarrow extends HerbPage {
                 isThereAnyYarrow
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForZolciopedne() ) {
+        else   if (MainScreenTableContainer.isSignForZolciopedne() ) {
             System.out.println("jest Krwawnik ");
             return true;
         }

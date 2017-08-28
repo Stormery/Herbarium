@@ -58,7 +58,7 @@ public class Bearberry extends HerbPage {
                 isThereAnyBearberry
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()) {
+        else   if (MainScreenTableContainer.isSignForMoczopedne()) {
             System.out.println("jest Macznica ");
             return true;
         }
