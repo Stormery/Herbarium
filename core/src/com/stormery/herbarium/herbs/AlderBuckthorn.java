@@ -8,14 +8,24 @@ import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
- * Created by Ayo on 2017-08-24.
+ * Created by Ayo on 2017-08-28.
  */
-public class Cranberry extends HerbPage {
-    static UseButton cranberryButton;
-    public static boolean isThereAnyCranberry = false;
 
-    public Cranberry(Herbarium herbarium) {
+public class AlderBuckthorn extends HerbPage {
+    public static boolean isThereAnyAlderBuckthorn = false;
+    static UseButton alderBuckthornButton;
+
+    public AlderBuckthorn(Herbarium herbarium) {
         super(herbarium);
+    }
+
+    public static void initAlderBuckthorn() {
+        alderBuckthornButton = new UseButton(EnumHerb.ALDER_BUCKTHORN, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Kruszyna PAGE");
+            }
+        });
     }
 
     @Override
@@ -27,57 +37,40 @@ public class Cranberry extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfCranberry() {
+    public static boolean checkIfAlderBuckthorn() {
         if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
                 MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
+                MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForWykrztusne() ||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyCranberry
+                isThereAnyAlderBuckthorn
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
-                ) {
-            System.out.println("jest Brusznica ");
-
+        if ( MainScreenTableContainer.isSignForPrzeczyszczajace()) {
+            System.out.println("jest Kruszyna ");
             return true;
         }
-
-
         return false;
     }
 
-    public static void initCranberry() {
-        cranberryButton = new UseButton(EnumHerb.CRANBERRY, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO Brusznica PAGE");
-            }
-        });
-    }
-
-    public static void getCranberryButton() {
-        if(checkIfCranberry()){
-            MainScreenTableContainer.tableInnerScrollable.add(cranberryButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+    public static void getAlderBuckthornButton() {
+        if (checkIfAlderBuckthorn()) {
+            MainScreenTableContainer.tableInnerScrollable.add(alderBuckthornButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
-
+        isThereAnyAlderBuckthorn = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(alderBuckthornButton) ? true : false;
     }
 }
 

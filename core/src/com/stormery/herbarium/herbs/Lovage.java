@@ -8,14 +8,24 @@ import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
- * Created by Ayo on 2017-08-24.
+ * Created by Ayo on 2017-08-28.
  */
-public class Cranberry extends HerbPage {
-    static UseButton cranberryButton;
-    public static boolean isThereAnyCranberry = false;
 
-    public Cranberry(Herbarium herbarium) {
+public class Lovage extends HerbPage {
+    public static boolean isThereAnyLovage = false;
+    static UseButton lovageButton;
+
+    public Lovage(Herbarium herbarium) {
         super(herbarium);
+    }
+
+    public static void initLovage() {
+        lovageButton = new UseButton(EnumHerb.LOVAGE, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Lubczyk PAGE");
+            }
+        });
     }
 
     @Override
@@ -27,9 +37,9 @@ public class Cranberry extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfCranberry() {
+    public static boolean checkIfLovage() {
         if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
@@ -39,45 +49,28 @@ public class Cranberry extends HerbPage {
                 MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForWykrztusne() ||
                 MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyCranberry
+                isThereAnyLovage
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
-                ) {
-            System.out.println("jest Brusznica ");
-
+        if (MainScreenTableContainer.isSignForMoczopedne()) {
+            System.out.println("jest Lubczyk ");
             return true;
         }
-
-
         return false;
     }
 
-    public static void initCranberry() {
-        cranberryButton = new UseButton(EnumHerb.CRANBERRY, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO Brusznica PAGE");
-            }
-        });
-    }
-
-    public static void getCranberryButton() {
-        if(checkIfCranberry()){
-            MainScreenTableContainer.tableInnerScrollable.add(cranberryButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+    public static void getLovageButton() {
+        if (checkIfLovage()) {
+            MainScreenTableContainer.tableInnerScrollable.add(lovageButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
-
+        isThereAnyLovage = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(lovageButton) ? true : false;
     }
 }
 

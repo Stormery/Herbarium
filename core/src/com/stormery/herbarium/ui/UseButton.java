@@ -1,4 +1,4 @@
-package com.stormery.herbarium.buttons;
+package com.stormery.herbarium.ui;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -23,7 +23,6 @@ public  class UseButton extends Button {
         super(prepareButton(whichEnum));
         init(callback);
     }
-
 
 
     private void init (final IClickCallback callback){
@@ -130,8 +129,8 @@ public  class UseButton extends Button {
                 buttonStyle.up = skin.getDrawable("MietaButton");
                 buttonStyle.down = skin.getDrawable("MietaButtonDown");
             }else if (enumeratio.equals(EnumHerb.GOLDEN_ROD)) {
-                buttonStyle.up = skin.getDrawable("NawlocButton");
-                buttonStyle.down = skin.getDrawable("NawlocButtonDown");
+                buttonStyle.up = skin.getDrawable("NawloscButton"); // Tu jest blad nawloc
+                buttonStyle.down = skin.getDrawable("NawloscButtonDown");
             }else if (enumeratio.equals(EnumHerb.PSYLLIUM)) {
                 buttonStyle.up = skin.getDrawable("PlesznikButton");
                 buttonStyle.down = skin.getDrawable("PlesznikButtonDown");

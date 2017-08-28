@@ -8,14 +8,24 @@ import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 /**
- * Created by Ayo on 2017-08-24.
+ * Created by Ayo on 2017-08-28.
  */
-public class Cranberry extends HerbPage {
-    static UseButton cranberryButton;
-    public static boolean isThereAnyCranberry = false;
 
-    public Cranberry(Herbarium herbarium) {
+public class Peppermint extends HerbPage {
+    public static boolean isThereAnyPeppermint = false;
+    static UseButton peppermintButton;
+
+    public Peppermint(Herbarium herbarium) {
         super(herbarium);
+    }
+
+    public static void initPeppermint() {
+        peppermintButton = new UseButton(EnumHerb.PEPPERMINT, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("IDZIE DO Mieta PAGE");
+            }
+        });
     }
 
     @Override
@@ -27,57 +37,40 @@ public class Cranberry extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfCranberry() {
+    public static boolean checkIfPeppermint() {
         if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
+                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
                 MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
                 MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
                 MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
                 MainScreenTableContainer.isSignForSciagajace() ||
                 MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
+                MainScreenTableContainer.isSignForMoczopedne() ||
                 MainScreenTableContainer.isSignForZolciopedne() ||
                 MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
                 MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
                 MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
+                MainScreenTableContainer.isSignForWiatropedne() ||
                 MainScreenTableContainer.isSignForOslaniajace() ||
                 MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
                 MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyCranberry
+                isThereAnyPeppermint
                 ) return false;
 
-        if (MainScreenTableContainer.isSignForMoczopedne()
-                ) {
-            System.out.println("jest Brusznica ");
-
+        if (MainScreenTableContainer.isSignForPobudzanieTrawienia() ) {
+            System.out.println("jest Mieta ");
             return true;
         }
-
-
         return false;
     }
 
-    public static void initCranberry() {
-        cranberryButton = new UseButton(EnumHerb.CRANBERRY, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO Brusznica PAGE");
-            }
-        });
-    }
-
-    public static void getCranberryButton() {
-        if(checkIfCranberry()){
-            MainScreenTableContainer.tableInnerScrollable.add(cranberryButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+    public static void getPeppermintButton() {
+        if (checkIfPeppermint()) {
+            MainScreenTableContainer.tableInnerScrollable.add(peppermintButton).width(320).height(100).padBottom(10f);
             MainScreenTableContainer.tableInnerScrollable.row();
         }
-        isThereAnyCranberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(cranberryButton)? true:false;
-
+        isThereAnyPeppermint = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(peppermintButton) ? true : false;
     }
 }
 

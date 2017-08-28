@@ -3,17 +3,33 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
+import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Angelica;
 import com.stormery.herbarium.herbs.Aniseed;
+import com.stormery.herbarium.herbs.Bearberry;
 import com.stormery.herbarium.herbs.BirchTree;
+import com.stormery.herbarium.herbs.Carom;
 import com.stormery.herbarium.herbs.CommonHop;
+import com.stormery.herbarium.herbs.Coriander;
 import com.stormery.herbarium.herbs.Cranberry;
+import com.stormery.herbarium.herbs.Dill;
 import com.stormery.herbarium.herbs.Elder;
+import com.stormery.herbarium.herbs.Flax;
+import com.stormery.herbarium.herbs.GoldenRod;
 import com.stormery.herbarium.herbs.Hawthorn;
+import com.stormery.herbarium.herbs.Helichrysum;
+import com.stormery.herbarium.herbs.Juniper;
+import com.stormery.herbarium.herbs.Lavender;
+import com.stormery.herbarium.herbs.LemonBalm;
+import com.stormery.herbarium.herbs.Lovage;
+import com.stormery.herbarium.herbs.Peppermint;
 import com.stormery.herbarium.herbs.PlantagoOvata;
 import com.stormery.herbarium.herbs.StJohnsWort;
+import com.stormery.herbarium.herbs.Tilia;
+import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
+import com.stormery.herbarium.herbs.Yarrow;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 import java.util.ArrayList;
@@ -58,7 +74,24 @@ public class MainScreen extends HerbPage {
         StJohnsWort.initStJohnsWort();
         ViolaTricolor.initViolaTricolor();
         Hawthorn.initHawthorn();
+        Juniper.initJuniper();
+        Carom.initCarom();
+        Helichrysum.initHelichrysum();
+        Coriander.initCoriander();
+        Dill.initDill();
+        Valerian.initValerian();
+        AlderBuckthorn.initAlderBuckthorn();
+        Yarrow.initYarrow();
+        Lavender.initLavender();
+        Flax.initFlax();
+        Tilia.initTilia();
+        Lovage.initLovage();
+        Bearberry.initBearberry();
+        LemonBalm.initLemonBalm();
+        Peppermint.initPeppermint();
+        GoldenRod.initGoldenRod();
     }
+
 
     private void initBackgroundTextures() {
 
@@ -89,6 +122,22 @@ public class MainScreen extends HerbPage {
         StJohnsWort.getStJohnsWortButton();
         ViolaTricolor.getViolaTricolorButton();
         Hawthorn.getHawthornButton();
+        Juniper.getJuniperButton();
+        Carom.getCaromButton();
+        Helichrysum.getHelichrysumButton();
+        Coriander.getCorianderButton();
+        Dill.getDillButton();
+        Valerian.getValerianButton();
+        AlderBuckthorn.getAlderBuckthornButton();
+        Yarrow.getYarrowButton();
+        Lavender.getLavenderButton();
+        Flax.getFlaxButton();
+        Tilia.getTiliaButton();
+        Lovage.getLovageButton();
+        Bearberry.getLovageButton();
+        LemonBalm.getLemonBalmButton();
+        Peppermint.getPeppermintButton();
+        GoldenRod.getGoldenRodButton();
 
     }
     @Override
