@@ -54,6 +54,7 @@ public class MainScreen extends HerbPage {
     private Image background;
     private Image redBookmark;
     public static boolean isNotDragging = true;
+    private static int finishedLoading=0;
 
 
     //TODO z tym zadzialac
@@ -62,15 +63,15 @@ public class MainScreen extends HerbPage {
     public MainScreen(Herbarium herbarium) {
         super(herbarium);
         this.herbarium = herbarium;
-        init();
-    }
-
-    @Override
-    protected void init() {
         herbList = new ArrayList<com.stormery.herbarium.service.EnumHerb>();
         initBackgroundTextures();
-        initButtons();
         new MainScreenTableContainer(stage);
+        initButtons();
+    }
+
+
+    protected void init() {
+
         // initTable();
 
     }
@@ -135,7 +136,9 @@ public class MainScreen extends HerbPage {
 * If it is TRUE and only this one is TRUE (it is checking in ALOE.java ) it turns checkIfAloe function to true
 * And this function when its true make button for aloe
 */
-
+    public static void countLoading(Enum herbEnum){
+        System.out.println(finishedLoading++ + " Loaded asset: "+herbEnum.toString());
+    }
     @Override
     public void render(float delta) {
         super.render(delta);
