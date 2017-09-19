@@ -2,6 +2,7 @@ package com.stormery.herbarium.ui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -21,9 +22,27 @@ public class MainScreenTableContainer {
     private boolean tableDebug = false;
 
     private Stage stage;
+
+    ButtonGroup buttonGroup;
 //Therapeutic Use buttons
     private UseButton bttAntibacterial;
-
+    private UseButton bttAntipyretic;
+    private UseButton bttAntispasmodic;
+    private UseButton bttAntitussive;
+    private UseButton bttAstrigents;
+    private UseButton bttCardiacInsufficiency;
+    private UseButton bttCarminative;
+    private UseButton bttCholagogues;
+    private UseButton bttDiaphoretic;
+    private UseButton bttDemulcent;
+    private UseButton bttDiuretic;
+    private UseButton bttExpectorant;
+    private UseButton bttImprovingDigestion;
+    private UseButton bttLaxative;
+    private UseButton bttProtectiveScreening;
+    private UseButton bttSedative;
+    private UseButton bttSpasmolytic;
+    private UseButton bttUrinaryTractDisinfectant;
     ///
     private static boolean signForPrzeciwbakteryjne;
     private static boolean signForPrzeciwkaszlowe;
@@ -43,23 +62,7 @@ public class MainScreenTableContainer {
     private static boolean signForOslaniajace;
     private static boolean signForUspokajajace;
     private static boolean signForRozkurczajace;
-    private UseButton bttAntipyretic;
-    private UseButton bttAntispasmodic;
-    private UseButton bttAntitussive;
-    private UseButton bttAstrigents;
-    private UseButton bttCardiacInsufficiency;
-    private UseButton bttCarminative;
-    private UseButton bttCholagogues;
-    private UseButton bttDiaphoretic;
-    private UseButton bttDemulcent;
-    private UseButton bttDiuretic;
-    private UseButton bttExpectorant;
-    private UseButton bttImprovingDigestion;
-    private UseButton bttLaxative;
-    private UseButton bttProtectiveScreening;
-    private UseButton bttSedative;
-    private UseButton bttSpasmolytic;
-    private UseButton bttUrinaryTractDisinfectant;
+
 
     public MainScreenTableContainer(EnumLanguage language, Stage stage) {
         this.stage = stage;
@@ -359,7 +362,17 @@ public class MainScreenTableContainer {
                 signForOdkazajaceDrogiMoczowe= !signForOdkazajaceDrogiMoczowe;
             }
         });
-    }
+
+
+        buttonGroup = new ButtonGroup(bttAntibacterial,bttAntipyretic,bttAntispasmodic,bttAntitussive,bttAstrigents,
+                                        bttCardiacInsufficiency,bttCarminative,bttCholagogues,bttDiaphoretic,bttDemulcent,
+                                        bttDiuretic, bttExpectorant, bttImprovingDigestion, bttLaxative, bttProtectiveScreening,
+                                        bttSedative,bttSpasmolytic,bttUrinaryTractDisinfectant);
+        buttonGroup.setMaxCheckCount(1);
+        buttonGroup.setMinCheckCount(0);
+//i
+        buttonGroup.setUncheckLast(true); //If true,
+    }//initbuttonsENG
 
 
     // TODO Zmienic kolejnosc dla polskiej wersji
