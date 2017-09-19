@@ -15,8 +15,8 @@ import static com.stormery.herbarium.ui.UseButton.skin;
 public class SplashScreen extends AbstractScreen{
 
 	private SplashScreenButton splashScreenButton;
-	public static int finishedLoading=0;
-	protected String splashInfo= new String("Tap to continue");
+
+	private String splashInfo= new String("Tap to continue");
 	private Table table;
 	private TextField splashText;
 	public SplashScreen(Herbarium herbarium) {
@@ -48,11 +48,7 @@ public class SplashScreen extends AbstractScreen{
 		stage.addActor(table);
 	}
 
-protected void showLoadingAssets(){
 
-	table.add(splashText).width(200f).height(100f).center().padTop(200f).padLeft(20f);
-
-}
 	private void initContinueButton(Herbarium herbarium){
 	//TODO get better button texture
 		splashScreenButton = new SplashScreenButton(herbarium);
