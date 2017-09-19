@@ -11,7 +11,7 @@ public class SplashScreenButton extends Image {
 	
 	
 	public SplashScreenButton(final Herbarium herbarium){
-		super(new Texture("backgroundImg/SplashBg.png"));
+		super(new Texture("backgroundImg/SplashBg.jpg"));
 	
 		this.setOrigin(Herbarium.WIDHT/2, Herbarium.HEIGHT/2);
 		this.setSize(Herbarium.WIDHT, Herbarium.HEIGHT);
@@ -21,6 +21,7 @@ public class SplashScreenButton extends Image {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				
 				herbarium.getSoundService().playTapSound();
+
 				herbarium.setScreen(new MainScreen(herbarium));
 				
 				return super.touchDown(event, x, y, pointer, button);

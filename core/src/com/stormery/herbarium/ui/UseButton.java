@@ -250,63 +250,98 @@ public  class UseButton extends Button {
 
     private static void ifEnumIsTherapeuticProperties(Enum enumeratio) {
         if(enumeratio instanceof EnumTherapeuticProperties){
-            textureAtlas = new TextureAtlas("buttons/TypeOfTherapeuticUse/therapeuticUseButtons.pack");
+            textureAtlas = new TextureAtlas("buttons/TypeOfTherapeuticUse/therapeuticUseButtonsENG.pack");
             skin = new Skin(textureAtlas);
             buttonStyle = new ButtonStyle();
             if (enumeratio.equals(EnumTherapeuticProperties.ANTIBACTERIAL)) {
-                buttonStyle.up = skin.getDrawable("PrezciwbaktButton");
+                buttonStyle.up = skin.getDrawable("PrzeciwbaktButton");
                 buttonStyle.checked = skin.getDrawable("PrezciwbaktButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.ANTIBACTERIAL);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.ANTIPYRETIC)) {
                 buttonStyle.up = skin.getDrawable("PrzeciwgoraczkoweButton");
                 buttonStyle.checked = skin.getDrawable("PrzeciwgoraczkoweButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.ANTIPYRETIC);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.ANTISPASMODIC)) {
                 buttonStyle.up = skin.getDrawable("PrzeciwskurczoweButton");
                 buttonStyle.checked = skin.getDrawable("PrzeciwskurczoweButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.ANTISPASMODIC);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.ANTITUSSIVE)) {
                 buttonStyle.up = skin.getDrawable("PrzeciwkaszloweButton");
                 buttonStyle.checked = skin.getDrawable("PrzeciwkaszloweButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.ANTITUSSIVE);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.ASTRINGENTS)) {
                 buttonStyle.up = skin.getDrawable("SciagajaceButton");
                 buttonStyle.checked = skin.getDrawable("SciagajaceButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.ASTRINGENTS);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY)) {
                 buttonStyle.up = skin.getDrawable("NiewydolnoscButton");
                 buttonStyle.checked = skin.getDrawable("NiewydolnoscButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.CARMINATIVE)) {
                 buttonStyle.up = skin.getDrawable("WiatropedneButton");
                 buttonStyle.checked = skin.getDrawable("WiatropedneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.CARMINATIVE);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.CHOLAGOGUES)) {
                 buttonStyle.up = skin.getDrawable("ZolciopedneButton");
                 buttonStyle.checked = skin.getDrawable("ZolciopedneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.CHOLAGOGUES);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.DEMULCENT)) {
                 buttonStyle.up = skin.getDrawable("PrzeciwzapalneButton");
                 buttonStyle.checked = skin.getDrawable("PrzeciwzapalneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.DEMULCENT);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.DIAPHORETIC)) {
                 buttonStyle.up = skin.getDrawable("NapotneButton");
                 buttonStyle.checked = skin.getDrawable("NapotneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.DIAPHORETIC);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.DIURETIC)) {
                 buttonStyle.up = skin.getDrawable("MoczopedneButton");
                 buttonStyle.checked = skin.getDrawable("MoczopedneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.DIURETIC);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.EXPECTORANT)) {
                 buttonStyle.up = skin.getDrawable("WykrztusneButton");
                 buttonStyle.checked = skin.getDrawable("WykrztusneButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.EXPECTORANT);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.IMPROVING_DIGESTION)) {
                 buttonStyle.up = skin.getDrawable("PobudzajaceTrawienieButton");
                 buttonStyle.checked = skin.getDrawable("PobudzajaceTrawienieButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.IMPROVING_DIGESTION);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.LAXATIVE)) {
                 buttonStyle.up = skin.getDrawable("PzeczyszczajaceButton");
                 buttonStyle.checked = skin.getDrawable("PzeczyszczajaceButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.LAXATIVE);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.PROTECTIVE_SCREENING)) {
                 buttonStyle.up = skin.getDrawable("OslaniajaceButton");
                 buttonStyle.checked = skin.getDrawable("OslaniajaceButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.PROTECTIVE_SCREENING);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.SEDATIVE)) {
                 buttonStyle.up = skin.getDrawable("UspokajajaceButton");
                 buttonStyle.checked = skin.getDrawable("UspokajajaceButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.SEDATIVE);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.SPASMOLYTIC)) {
                 buttonStyle.up = skin.getDrawable("RozkurczajaceButton");
                 buttonStyle.checked = skin.getDrawable("RozkurczajaceButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.SPASMOLYTIC);
+
             }else if (enumeratio.equals(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT)) {
                 buttonStyle.up = skin.getDrawable("DrogiMoczoweButton");
                 buttonStyle.checked = skin.getDrawable("DrogiMoczoweButtonDown");
+                MainScreen.countLoading(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT);
             }
 
         } // if EnumTherapeuticProperties

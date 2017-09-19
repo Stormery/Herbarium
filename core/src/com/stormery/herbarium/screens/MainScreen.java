@@ -54,7 +54,7 @@ public class MainScreen extends HerbPage {
     private Image background;
     private Image redBookmark;
     public static boolean isNotDragging = true;
-    private static int finishedLoading=0;
+
 
 
     //TODO z tym zadzialac
@@ -63,15 +63,18 @@ public class MainScreen extends HerbPage {
     public MainScreen(Herbarium herbarium) {
         super(herbarium);
         this.herbarium = herbarium;
+        initialize();
+    }
+
+    private void initialize() {
         herbList = new ArrayList<com.stormery.herbarium.service.EnumHerb>();
         initBackgroundTextures();
-        new MainScreenTableContainer(stage);
+        new MainScreenTableContainer(EnumLanguage.ENGLISH,stage);
         initButtons();
     }
 
-
+    @Override
     protected void init() {
-
         // initTable();
 
     }
@@ -122,12 +125,12 @@ public class MainScreen extends HerbPage {
 
     private void initBackgroundTextures() {
 
-        background = new Image(new Texture("backgroundImg/tlo04.jpg"));
+        background = new Image(new Texture("backgroundImg/Background.png"));
         background.setHeight(700);
         background.setWidth(480);
-        stage.addActor(background);
         redBookmark = new Image(new Texture("backgroundImg/bookmark.png"));
-        redBookmark.setPosition(5f, 0);
+        stage.addActor(background);
+        stage.addActor(redBookmark);
     }
     /*
 * To show a herb after choose a therapeutic propertie
@@ -137,7 +140,7 @@ public class MainScreen extends HerbPage {
 * And this function when its true make button for aloe
 */
     public static void countLoading(Enum herbEnum){
-        System.out.println(finishedLoading++ + " Loaded asset: "+herbEnum.toString());
+        System.out.println(SplashScreen.finishedLoading++ + " Loaded asset: "+herbEnum.toString());
     }
     @Override
     public void render(float delta) {

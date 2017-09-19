@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
 /**
@@ -41,12 +42,12 @@ public class MainScreenTableContainer {
     private static boolean signForUspokajajace;
     private static boolean signForRozkurczajace;
 
-    public MainScreenTableContainer(Stage stage) {
+    public MainScreenTableContainer(EnumLanguage language, Stage stage) {
         this.stage = stage;
-        initTable();
+        initTable(language);
     }
 
-    private void initTable() {
+    private void initTable(EnumLanguage language) {
         //TODO zmienic skin i Atlas
         Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
 
@@ -64,18 +65,29 @@ public class MainScreenTableContainer {
 //Bookmark scrollable
         tableBookmarkScrollable();
 //LOGO
-        tableRight.add(tableLogo).height(152f).top(); //LOGO
-        tableRight.row();
-        tableMain.add(tableRight).top().left();
+//        tableRight.add(tableLogo).height(152f).top(); //LOGO
+//        tableRight.row();
+     //   tableMain.add(tableRight).top().left();
         //TODO wyszukiwarki nie ma
        // tableMain.add().height(30f).colspan(2); // wyszukiwarka
 
 //Instantiate Box with Therapeutic use Buttons
-        tableWithTherapeuticUseTypes();
+        LanguageChangeTableOfTherapeuticUse(language);
+
 //Instantiate Box with ScrollableButtons
         tableInnerWithScrollableHerbs();
         stage.addActor(tableMain);
     }
+
+    private void LanguageChangeTableOfTherapeuticUse(EnumLanguage language) {
+        if(language.equals(EnumLanguage.POLISH)){
+            tableWithTherapeuticUseTypesPolish();
+        }else if(language.equals(EnumLanguage.ENGLISH)){
+            tableWithTherapeuticUseTypesEnglish();
+        }
+    }
+
+
 
     private void tableBookmarkScrollable() {
 
@@ -84,8 +96,8 @@ public class MainScreenTableContainer {
         ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
         scrollPane.setOverscroll(false, false);
 
-        tableMain.add(scrollPane).top().left().width(90f).height(550f)
-                .padLeft(15f).padRight(20f).padBottom(5f).padTop(100f);//bookmark
+        tableMain.add(scrollPane).top().left().width(120f).height(535f)
+                .padLeft(20f).padRight(20f).padBottom(5f).padTop(115f);//bookmark
     }
 
     private void tableInnerWithScrollableHerbs() {
@@ -99,8 +111,195 @@ public class MainScreenTableContainer {
         tableRight.add(scrollPane).colspan(2).top();
 
     }
+    private void tableWithTherapeuticUseTypesEnglish() {
+        float therapeuticUsePadTop = 20f;
+        float therapeuticWidth = 110;
+        float therapeuticHeight = 50f;
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Przeciwbakt click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwbakteryjne=  signForPrzeciwbakteryjne ?  false :  true;
+            }
+        })).top().left().padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
 
-    private void tableWithTherapeuticUseTypes() {
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIPYRETIC, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("przeciwgoraczkowe click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwgoraczkowe=  signForPrzeciwgoraczkowe ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTISPASMODIC, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Przeciwskurczowe  click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwskurczowe=  signForPrzeciwskurczowe ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTITUSSIVE, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Przeciwkaszlowe  click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwkaszlowe=  signForPrzeciwkaszlowe ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ASTRINGENTS, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Sciagajace  click");
+                tableInnerScrollable.clearChildren();
+                signForSciagajace=  signForSciagajace ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("NiewydolnoscKrazenia  click");
+                tableInnerScrollable.clearChildren();
+                signForNiewydolnoscKrazenia=  signForNiewydolnoscKrazenia ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CARMINATIVE, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Wiatropedne  click");
+                tableInnerScrollable.clearChildren();
+                signForWiatropedne=  signForWiatropedne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.CHOLAGOGUES, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Zolciopedne  click");
+                tableInnerScrollable.clearChildren();
+                signForZolciopedne=  signForZolciopedne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DEMULCENT, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Przeciwzapalne  click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeciwzapalne=  signForPrzeciwzapalne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DIAPHORETIC, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Napotne  click");
+                tableInnerScrollable.clearChildren();
+                signForNapotne=  signForNapotne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Moczopednt click");
+                tableInnerScrollable.clearChildren();
+                signForMoczopedne=  signForMoczopedne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.EXPECTORANT, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Wykrztusne  click");
+                tableInnerScrollable.clearChildren();
+                signForWykrztusne=  signForWykrztusne ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.IMPROVING_DIGESTION, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Pobudzatrawienie  click");
+                tableInnerScrollable.clearChildren();
+                tableInnerScrollable.clearChildren();
+                signForPobudzanieTrawienia=  signForPobudzanieTrawienia ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.LAXATIVE, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Przeczyszczajace  click");
+                tableInnerScrollable.clearChildren();
+                signForPrzeczyszczajace=  signForPrzeczyszczajace ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.PROTECTIVE_SCREENING, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Oslaniajace  click");
+                tableInnerScrollable.clearChildren();
+                signForOslaniajace=  signForOslaniajace ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.SEDATIVE, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Uspokajajace  click");
+                tableInnerScrollable.clearChildren();
+                signForUspokajajace=  signForUspokajajace ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.SPASMOLYTIC, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Rozkurczajace  click");
+                tableInnerScrollable.clearChildren();
+                signForRozkurczajace=  signForRozkurczajace ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
+        tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT, new IClickCallback() {
+            @Override
+            public void onClick() {
+                System.out.println("Odkazajace drogi moczowe  click");
+                tableInnerScrollable.clearChildren();
+                signForOdkazajaceDrogiMoczowe=  signForOdkazajaceDrogiMoczowe ?  false :  true;
+            }
+        })).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+    }// EnglishProperties table
+
+
+    // TODO Zmienic kolejnosc dla polskiej wersji
+    private void tableWithTherapeuticUseTypesPolish() {
         float therapeuticUsePadTop = 20f;
         tableBookmarkScrollable.add(new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
             @Override
