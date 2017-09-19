@@ -20,12 +20,16 @@ public class Aloe extends HerbPage {
     }
 
     public static void initAloe() {
-        aloeButton = new UseButton(EnumHerb.ALOE, new IClickCallback() {
-            @Override
-            public void onClick() {
-                System.out.println("IDZIE DO ALOES PAGE");
-            }
-        });
+        if(!isThereAnyAloes){
+            aloeButton = new UseButton(EnumHerb.ALOE, new IClickCallback() {
+                @Override
+                public void onClick() {
+                    System.out.println("IDZIE DO ALOES PAGE");
+                }
+            });
+            isThereAnyAloes = true;
+        }
+
     }
 
     @Override

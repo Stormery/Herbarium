@@ -70,6 +70,7 @@ public class MainScreen extends HerbPage {
         herbList = new ArrayList<com.stormery.herbarium.service.EnumHerb>();
         initBackgroundTextures();
         new MainScreenTableContainer(EnumLanguage.ENGLISH,stage);
+
         initButtons();
     }
 
