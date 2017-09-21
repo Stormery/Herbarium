@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class GoldenRod extends HerbPage {
-    public static boolean isThereAnyGoldenRod = false;
     static UseButton goldenRodButton;
 
     public GoldenRod(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class GoldenRod extends HerbPage {
                 System.out.println("IDZIE DO Nawloc PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(goldenRodButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,42 +36,6 @@ public class GoldenRod extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfGoldenRod() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyGoldenRod
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForMoczopedne() ) {
-            System.out.println("jest Nawloc ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getGoldenRodButton() {
-        if (checkIfGoldenRod()) {
-            MainScreenTableContainer.tableInnerScrollable.add(goldenRodButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyGoldenRod = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(goldenRodButton) ? true : false;
     }
 }
 

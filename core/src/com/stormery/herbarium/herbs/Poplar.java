@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Poplar extends HerbPage {
-    public static boolean isThereAnyPoplar = false;
     static UseButton poplarButton;
 
     public Poplar(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Poplar extends HerbPage {
                 System.out.println("IDZIE DO Topola PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(poplarButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,38 +38,4 @@ public class Poplar extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    private static boolean checkIfPoplar() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyPoplar
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace() ) {
-            System.out.println("jest Topola ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getPoplarButton() {
-        if (checkIfPoplar()) {
-            MainScreenTableContainer.tableInnerScrollable.add(poplarButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyPoplar = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(poplarButton) ? true : false;
-    }
 }

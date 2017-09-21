@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Tilia extends HerbPage {
-    public static boolean isThereAnyTilia = false;
     static UseButton tiliaButton;
 
     public Tilia(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Tilia extends HerbPage {
                 System.out.println("IDZIE DO Lipa PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(tiliaButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +36,6 @@ public class Tilia extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfTilia() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyTilia
-                ) return false;
-
-        else    if (MainScreenTableContainer.isSignForZolciopedne() ||  MainScreenTableContainer.isSignForPrzeciwgoraczkowe()) {
-            System.out.println("jest Lipa ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getTiliaButton() {
-        if (checkIfTilia()) {
-            MainScreenTableContainer.tableInnerScrollable.add(tiliaButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyTilia = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(tiliaButton) ? true : false;
     }
 }
 

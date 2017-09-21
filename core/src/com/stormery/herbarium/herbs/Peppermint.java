@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Peppermint extends HerbPage {
-    public static boolean isThereAnyPeppermint = false;
     static UseButton peppermintButton;
 
     public Peppermint(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Peppermint extends HerbPage {
                 System.out.println("IDZIE DO Mieta PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(peppermintButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,42 +36,6 @@ public class Peppermint extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfPeppermint() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyPeppermint
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForPobudzanieTrawienia() ) {
-            System.out.println("jest Mieta ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getPeppermintButton() {
-        if (checkIfPeppermint()) {
-            MainScreenTableContainer.tableInnerScrollable.add(peppermintButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyPeppermint = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(peppermintButton) ? true : false;
     }
 }
 

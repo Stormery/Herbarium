@@ -6,6 +6,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.stormery.herbarium.herbs.Aloe;
+import com.stormery.herbarium.herbs.Althea;
+import com.stormery.herbarium.herbs.Chamomile;
+import com.stormery.herbarium.herbs.Knotgrass;
+import com.stormery.herbarium.herbs.Sage;
+import com.stormery.herbarium.herbs.Tilia;
+import com.stormery.herbarium.herbs.ViolaTricolor;
+import com.stormery.herbarium.herbs.Willow;
+import com.stormery.herbarium.herbs.Yarrow;
 import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
@@ -19,7 +28,7 @@ public class MainScreenTableContainer {
     private Table tableBookmarkScrollable;
     private Table tableRight;
     public static Table tableInnerScrollable;
-    private boolean tableDebug = false;
+    private boolean tableDebug = true;
 
     private Stage stage;
 
@@ -76,7 +85,6 @@ public class MainScreenTableContainer {
 //InstantiateTables
         tableMain = new Table();
         tableRight = new Table();
-//FillParent
         tableMain.setFillParent(true);
 //Debug
         tableMain.setDebug(tableDebug);
@@ -84,19 +92,20 @@ public class MainScreenTableContainer {
         //tableUsageType.setDebug(tableDebug);
 //Set MainTable position
         tableMain.top().left().padRight(25f).padTop(10f);
-//Bookmark scrollable
+/*
+LEFT
+        Bookmark scrollable
+*/
         tableBookmarkScrollable();
-//LOGO
-//        tableRight.add(tableLogo).height(152f).top(); //LOGO
-//        tableRight.row();
-     //   tableMain.add(tableRight).top().left();
-        //TODO wyszukiwarki nie ma
-       // tableMain.add().height(30f).colspan(2); // wyszukiwarka
-
-//Instantiate Box with Therapeutic use Buttons
+        /* Instantiate Box with Therapeutic use Buttons */
         LanguageChangeTableOfTherapeuticUse(language);
-
-//Instantiate Box with ScrollableButtons
+/*
+RIGHT
+        TODO wyszukiwarki nie ma
+        tableRight.add().height(152f).top(); //LOGO
+        tableRight.row();
+        Instantiate Box with ScrollableButtons
+        */
         tableInnerWithScrollableHerbs();
         stage.addActor(tableMain);
     }
@@ -131,7 +140,7 @@ public class MainScreenTableContainer {
 
         //tableMain.row();
         tableRight.add(scrollPane).colspan(2).top();
-
+        tableMain.add(tableRight).top().left();
     }
     private void tableWithTherapeuticUseTypesEnglish() {
         float therapeuticUsePadTop = 20f;
@@ -205,6 +214,9 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("Przeciwbakt click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeciwbakteryjne){
+                    Aloe.initAloe();
+                }
                 signForPrzeciwbakteryjne= !signForPrzeciwbakteryjne;
             }
         });
@@ -214,6 +226,10 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("przeciwgoraczkowe click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeciwgoraczkowe){
+                    Tilia.initTilia();
+                    Willow.initWillow();
+                }
                 signForPrzeciwgoraczkowe= !signForPrzeciwgoraczkowe;
             }
         });
@@ -223,6 +239,10 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("Przeciwskurczowe  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeciwskurczowe){
+                    Chamomile.initChamomile();
+                    Yarrow.initYarrow();
+                }
                 signForPrzeciwskurczowe= !signForPrzeciwskurczowe;
             }
         });
@@ -232,6 +252,9 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("Przeciwkaszlowe  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeciwkaszlowe){
+                    Althea.initAlthea();
+                }
                 signForPrzeciwkaszlowe= !signForPrzeciwkaszlowe;
             }
         });
@@ -241,6 +264,13 @@ public class MainScreenTableContainer {
             public void onClick() {
                 System.out.println("Sciagajace  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForSciagajace){
+                    Chamomile.initChamomile();
+                    Knotgrass.initKnotgrass();
+                    Sage.initSage();
+                    ViolaTricolor.initViolaTricolor();
+                    Willow.initWillow();
+                }
                 signForSciagajace= !signForSciagajace;
             }
         });

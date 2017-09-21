@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Knotgrass extends HerbPage {
-    public static boolean isThereAnyKnotgrass = false;
     static UseButton knotgrassButton;
 
     public Knotgrass(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Knotgrass extends HerbPage {
                 System.out.println("IDZIE DO Rdest PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(knotgrassButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,40 +36,5 @@ public class Knotgrass extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfKnotgrass() {
-        if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyKnotgrass
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForSciagajace() || MainScreenTableContainer.isSignForPrzeciwzapalne()) {
-            System.out.println("jest Rdest ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getKnotgrassButton() {
-        if (checkIfKnotgrass()) {
-            MainScreenTableContainer.tableInnerScrollable.add(knotgrassButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyKnotgrass = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(knotgrassButton) ? true : false;
     }
 }

@@ -20,15 +20,15 @@ public class Aloe extends HerbPage {
     }
 
     public static void initAloe() {
-        if(!isThereAnyAloes){
+
             aloeButton = new UseButton(EnumHerb.ALOE, new IClickCallback() {
                 @Override
                 public void onClick() {
                     System.out.println("IDZIE DO ALOES PAGE");
                 }
             });
-            isThereAnyAloes = true;
-        }
+        MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
 
     }
 
@@ -41,42 +41,5 @@ public class Aloe extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfAloe() {
-        if (
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                        MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                        MainScreenTableContainer.isSignForSciagajace() ||
-                        MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                        MainScreenTableContainer.isSignForWiatropedne() ||
-                        MainScreenTableContainer.isSignForZolciopedne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForMoczopedne() ||
-                        MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                        MainScreenTableContainer.isSignForOslaniajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyAloes
-                ) return false;
 
-        else  if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            System.out.println("jest aloes ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getAloeButton() {
-        if (checkIfAloe()) {
-            MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyAloes = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aloeButton) ? true : false;
-    }
 }

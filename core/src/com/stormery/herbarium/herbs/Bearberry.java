@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Bearberry extends HerbPage {
-    public static boolean isThereAnyBearberry = false;
     static UseButton bearberryButton;
 
     public Bearberry(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Bearberry extends HerbPage {
                 System.out.println("IDZIE DO Macznica PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(bearberryButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,42 +36,6 @@ public class Bearberry extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfBearberry() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyBearberry
-                ) return false;
-
-        else   if (MainScreenTableContainer.isSignForMoczopedne()) {
-            System.out.println("jest Macznica ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getLovageButton() {
-        if (checkIfBearberry()) {
-            MainScreenTableContainer.tableInnerScrollable.add(bearberryButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyBearberry = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(bearberryButton) ? true : false;
     }
 }
 

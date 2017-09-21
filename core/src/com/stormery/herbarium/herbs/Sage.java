@@ -26,6 +26,8 @@ public class Sage extends HerbPage {
                 System.out.println("IDZIE DO Szalwia PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(sageButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +37,5 @@ public class Sage extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    private static boolean checkIfSage() {
-        if (
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                        MainScreenTableContainer.isSignForPrzeczyszczajace()||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnySage
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForPrzeciwzapalne() || MainScreenTableContainer.isSignForSciagajace()  ) {
-            System.out.println("jest Szalwia ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getSageButton() {
-        if (checkIfSage()) {
-            MainScreenTableContainer.tableInnerScrollable.add(sageButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnySage = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(sageButton) ? true : false;
     }
 }

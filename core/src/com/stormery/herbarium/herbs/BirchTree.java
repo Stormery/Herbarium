@@ -11,7 +11,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  * Created by Ayo on 2017-08-24.
  */
 public class BirchTree extends HerbPage {
-    public static boolean isThereAnyBirchTree= false;
     static UseButton birchTreeButton;
 
     public BirchTree(Herbarium herbarium) {
@@ -25,6 +24,8 @@ public class BirchTree extends HerbPage {
                 System.out.println("IDZIE DO Brzoza PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(birchTreeButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,43 +38,4 @@ public class BirchTree extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfBirchTree() {
-        if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                        MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                        MainScreenTableContainer.isSignForSciagajace() ||
-                        MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                        MainScreenTableContainer.isSignForWiatropedne() ||
-                        MainScreenTableContainer.isSignForZolciopedne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                        MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                        MainScreenTableContainer.isSignForOslaniajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyBirchTree
-                ) return false;
-
-        else   if (MainScreenTableContainer.isSignForMoczopedne()
-               ) {
-            System.out.println("jest Brzoza ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getBirchTreeButton() {
-        if (checkIfBirchTree()) {
-            MainScreenTableContainer.tableInnerScrollable.add(birchTreeButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyBirchTree = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(birchTreeButton) ? true : false;
-    }
 }

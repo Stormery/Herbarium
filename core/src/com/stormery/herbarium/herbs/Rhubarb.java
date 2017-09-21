@@ -26,6 +26,8 @@ public class Rhubarb extends HerbPage {
                 System.out.println("IDZIE DO Rzewien PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(rhubarbButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +37,5 @@ public class Rhubarb extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    private static boolean checkIfRhubarb() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyRhubarb
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ) {
-            System.out.println("jest Rzewien ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getRhubarbButton() {
-        if (checkIfRhubarb()) {
-            MainScreenTableContainer.tableInnerScrollable.add(rhubarbButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyRhubarb = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(rhubarbButton) ? true : false;
     }
 }

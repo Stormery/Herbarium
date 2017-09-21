@@ -26,6 +26,8 @@ public class Thyme extends HerbPage {
                 System.out.println("IDZIE DO Tymianek PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(thymeButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +39,4 @@ public class Thyme extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    private static boolean checkIfThyme() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyThyme
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForWykrztusne()  ) {
-            System.out.println("jest Tymianek ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getThymeButton() {
-        if (checkIfThyme()) {
-            MainScreenTableContainer.tableInnerScrollable.add(thymeButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyThyme = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(thymeButton) ? true : false;
-    }
 }

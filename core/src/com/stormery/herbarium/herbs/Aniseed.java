@@ -13,7 +13,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 public class Aniseed extends HerbPage {
     static UseButton aniseedButton;
-    public static boolean isThereAnyAniseed = false;
 
     public Aniseed(Herbarium herbarium) {
         super(herbarium);
@@ -28,36 +27,6 @@ public class Aniseed extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfAniseed() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyAniseed
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForWykrztusne()) {
-            System.out.println("jest anyz ");
-            return true;
-        }
-        return false;
-    }
-
     public static void initAniseed() {
         aniseedButton = new UseButton(EnumHerb.ANISEED, new IClickCallback() {
             @Override
@@ -65,14 +34,9 @@ public class Aniseed extends HerbPage {
                 System.out.println("IDZIE DO ANYZ PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
-    public static void getAniseedButton() {
-        if(checkIfAniseed()){
-            MainScreenTableContainer.tableInnerScrollable.add(aniseedButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyAniseed = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(aniseedButton)? true:false;
 
-    }
 }

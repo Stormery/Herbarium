@@ -26,6 +26,8 @@ public class Mallow extends HerbPage {
                 System.out.println("IDZIE DO Slaz PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(mallowButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +39,4 @@ public class Mallow extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    private static boolean checkIfMallow() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace()||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyMallow
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForOslaniajace()  ) {
-            System.out.println("jest Slaz ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getMallowButton() {
-        if (checkIfMallow()) {
-            MainScreenTableContainer.tableInnerScrollable.add(mallowButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyMallow = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(mallowButton) ? true : false;
-    }
 }

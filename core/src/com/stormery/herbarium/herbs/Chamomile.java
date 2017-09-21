@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Chamomile extends HerbPage {
-    public static boolean isThereAnyChamomile = false;
     static UseButton chamomileButton;
 
     public Chamomile(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Chamomile extends HerbPage {
                 System.out.println("IDZIE DO Rumianek PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(chamomileButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,40 +36,5 @@ public class Chamomile extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    private static boolean checkIfChamomile() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyChamomile
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||  MainScreenTableContainer.isSignForSciagajace()) {
-            System.out.println("jest Rumianek ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getChamomileButton() {
-        if (checkIfChamomile()) {
-            MainScreenTableContainer.tableInnerScrollable.add(chamomileButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyChamomile = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(chamomileButton) ? true : false;
     }
 }

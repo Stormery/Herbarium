@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Lovage extends HerbPage {
-    public static boolean isThereAnyLovage = false;
     static UseButton lovageButton;
 
     public Lovage(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Lovage extends HerbPage {
                 System.out.println("IDZIE DO Lubczyk PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(lovageButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,42 +36,6 @@ public class Lovage extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfLovage() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyLovage
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForMoczopedne()) {
-            System.out.println("jest Lubczyk ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getLovageButton() {
-        if (checkIfLovage()) {
-            MainScreenTableContainer.tableInnerScrollable.add(lovageButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyLovage = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(lovageButton) ? true : false;
     }
 }
 

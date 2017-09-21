@@ -26,6 +26,8 @@ public class Althea extends HerbPage {
                 System.out.println("IDZIE DO Prawoslaz PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(altheaButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,40 +37,5 @@ public class Althea extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfAlthea() {
-        if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyAlthea
-                ) return false;
-
-      else  if (MainScreenTableContainer.isSignForOslaniajace() ||MainScreenTableContainer.isSignForPrzeciwkaszlowe()) {
-            System.out.println("jest Prawoslaz ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getAltheaButton() {
-        if (checkIfAlthea()) {
-            MainScreenTableContainer.tableInnerScrollable.add(altheaButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyAlthea = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(altheaButton) ? true : false;
     }
 }

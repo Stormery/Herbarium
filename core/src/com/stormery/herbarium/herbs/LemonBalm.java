@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class LemonBalm extends HerbPage {
-    public static boolean isThereAnyLemonBalm = false;
     static UseButton lemonBalmButton;
 
     public LemonBalm(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class LemonBalm extends HerbPage {
                 System.out.println("IDZIE DO Melisa PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(lemonBalmButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +36,5 @@ public class LemonBalm extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfLemonBalm() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyLemonBalm
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForUspokajajace()) {
-            System.out.println("jest Melisa ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getLemonBalmButton() {
-        if (checkIfLemonBalm()) {
-            MainScreenTableContainer.tableInnerScrollable.add(lemonBalmButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyLemonBalm = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(lemonBalmButton) ? true : false;
     }
 }

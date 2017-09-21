@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Helichrysum extends HerbPage {
-    public static boolean isThereAnyHelichrysum = false;
     static UseButton helichrysumButton;
 
     public Helichrysum(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Helichrysum extends HerbPage {
                 System.out.println("IDZIE DO Kocanka PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(helichrysumButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +36,5 @@ public class Helichrysum extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfHelichrysum() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyHelichrysum
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForZolciopedne()) {
-            System.out.println("jest Kocanka ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getHelichrysumButton() {
-        if (checkIfHelichrysum()) {
-            MainScreenTableContainer.tableInnerScrollable.add(helichrysumButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyHelichrysum = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(helichrysumButton) ? true : false;
     }
 }

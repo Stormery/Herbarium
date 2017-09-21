@@ -13,7 +13,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 public class Elder extends HerbPage {
     static UseButton elderButton;
-    public static boolean isThereAnyElder = false;
 
     public Elder(Herbarium herbarium) {
         super(herbarium);
@@ -29,38 +28,7 @@ public class Elder extends HerbPage {
     }
 
 
-    public static boolean checkIfElder() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyElder
-                ) return false;
 
-        else  if (MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForNapotne()) {
-            System.out.println("jest BezCzarny ");
-
-            return true;
-        }
-
-
-        return false;
-    }
 
     public static void initElder() {
         elderButton = new UseButton(EnumHerb.ELDER, new IClickCallback() {
@@ -69,14 +37,8 @@ public class Elder extends HerbPage {
                 System.out.println("IDZIE DO bez czarny PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(elderButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
-    public static void getElderButton() {
-        if (checkIfElder()) {
-            MainScreenTableContainer.tableInnerScrollable.add(elderButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyElder = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(elderButton) ? true : false;
-
-    }
 }

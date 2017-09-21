@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Carom extends HerbPage {
-    public static boolean isThereAnyCarom = false;
     static UseButton caromButton;
 
     public Carom(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Carom extends HerbPage {
                 System.out.println("IDZIE DO Kminku PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(caromButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +38,4 @@ public class Carom extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfCarom() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyCarom
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForWiatropedne()) {
-            System.out.println("jest Kminek ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getCaromButton() {
-        if (checkIfCarom()) {
-            MainScreenTableContainer.tableInnerScrollable.add(caromButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyCarom = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(caromButton) ? true : false;
-    }
 }

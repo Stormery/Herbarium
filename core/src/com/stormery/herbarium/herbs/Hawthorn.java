@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Hawthorn extends HerbPage {
-    public static boolean isThereAnyHawthorn = false;
     static UseButton hawthornButton;
 
     public Hawthorn(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Hawthorn extends HerbPage {
                 System.out.println("IDZIE DO Glog PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(hawthornButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,41 +38,4 @@ public class Hawthorn extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfHawthorn() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace()||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                        MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                        MainScreenTableContainer.isSignForSciagajace() ||
-                        MainScreenTableContainer.isSignForWiatropedne() ||
-                        MainScreenTableContainer.isSignForZolciopedne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForMoczopedne() ||
-                        MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                        MainScreenTableContainer.isSignForOslaniajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyHawthorn
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForNiewydolnoscKrazenia()) {
-            System.out.println("jest glog ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getHawthornButton() {
-        if (checkIfHawthorn()) {
-            MainScreenTableContainer.tableInnerScrollable.add(hawthornButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyHawthorn = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(hawthornButton) ? true : false;
-    }
 }

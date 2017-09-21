@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Senna extends HerbPage {
-    public static boolean isThereAnySenna = false;
     static UseButton sennaButton;
 
     public Senna(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Senna extends HerbPage {
                 System.out.println("IDZIE DO Senes PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(sennaButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,41 +36,5 @@ public class Senna extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    private static boolean checkIfSenna() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnySenna
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForPrzeczyszczajace() ) {
-            System.out.println("jest Senes ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getSennaButton() {
-        if (checkIfSenna()) {
-            MainScreenTableContainer.tableInnerScrollable.add(sennaButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnySenna = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(sennaButton) ? true : false;
     }
 }

@@ -26,6 +26,8 @@ public class Flax extends HerbPage {
                 System.out.println("IDZIE DO Len PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(flaxButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +39,5 @@ public class Flax extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfFlax() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyFlax
-                ) return false;
-
-        else    if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            System.out.println("jest Len ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getFlaxButton() {
-        if (checkIfFlax()) {
-            MainScreenTableContainer.tableInnerScrollable.add(flaxButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyFlax = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(flaxButton) ? true : false;
-    }
 }
 

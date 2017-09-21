@@ -14,7 +14,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 public class Angelica extends HerbPage {
 
     static UseButton angelicaButton;
-    public static boolean isThereAnyAngelica = false;
 
     public Angelica(Herbarium herbarium) {
         super(herbarium);
@@ -27,6 +26,8 @@ public class Angelica extends HerbPage {
                 System.out.println("IDZIE DO Arcydziegiel PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(320f).height(100f).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
 
@@ -39,42 +40,5 @@ public class Angelica extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfAngelica() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyAngelica
-                ) return false;
-
-        else   if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
-            System.out.println("jest Arcydziegiel ");
-            return true;
-        }
-        return false;
-    }
-    public static void getAngelicaButton() {
-        if(checkIfAngelica()){
-            MainScreenTableContainer.tableInnerScrollable.add(angelicaButton).width(320f).height(100f).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-       isThereAnyAngelica = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(angelicaButton)? true:false;
-    }
 
 }

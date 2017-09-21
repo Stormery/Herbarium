@@ -49,49 +49,14 @@ public class LanguageAndHerbShow {
     public static void checkLanguageAndInitHerbs(EnumLanguage language) {
         if (language.equals(EnumLanguage.POLISH)){
             whatHerbToShowInPL();
+        }else if(language.equals(EnumLanguage.ENGLISH)){
+
         }
     }
     public static void whatHerbToShowInPL() {
         //TODO wybor jezyka tu jest na POL
-        Aloe.getAloeButton();
-        Aniseed.getAniseedButton();
-        Angelica.getAngelicaButton();
-        PlantagoOvata.getPlantagoOvataButton();
-        Elder.getElderButton();
-        Cranberry.getCranberryButton();
-        BirchTree.getBirchTreeButton();
-        CommonHop.getCommonHopButton();
-        StJohnsWort.getStJohnsWortButton();
-        ViolaTricolor.getViolaTricolorButton();
-        Hawthorn.getHawthornButton();
-        Juniper.getJuniperButton();
-        Carom.getCaromButton();
-        Helichrysum.getHelichrysumButton();
-        Coriander.getCorianderButton();
-        Dill.getDillButton();
-        Valerian.getValerianButton();
-        AlderBuckthorn.getAlderBuckthornButton();
-        Yarrow.getYarrowButton();
-        Lavender.getLavenderButton();
-        Flax.getFlaxButton();
-        Tilia.getTiliaButton();
-        Lovage.getLovageButton();
-        Bearberry.getLovageButton();
-        LemonBalm.getLemonBalmButton();
-        Peppermint.getPeppermintButton();
-        GoldenRod.getGoldenRodButton();
-        Psyllium.getPsylliumButton();
-        Althea.getAltheaButton();
-        Knotgrass.getKnotgrassButton();
-        Chamomile.getChamomileButton();
-        Rhubarb.getRhubarbButton();
-        Senna.getSennaButton();
-        Horsetail.getHorsetailButton();
-        Mallow.getMallowButton();
-        Sage.getSageButton();
-        Poplar.getPoplarButton();
-        Thyme.getThymeButton();
-        Willow.getWillowButton();
+
+
 
     }
 }

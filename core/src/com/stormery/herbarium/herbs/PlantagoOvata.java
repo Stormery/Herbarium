@@ -13,7 +13,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 public class PlantagoOvata extends HerbPage {
     static UseButton plantagoOvataButton;
-    public static boolean isThereAnyPlantagoOvata = false;
 
     public PlantagoOvata(Herbarium herbarium) {
         super(herbarium);
@@ -29,35 +28,6 @@ public class PlantagoOvata extends HerbPage {
     }
 
 
-    public static boolean checkIfPlantagoOvata() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyPlantagoOvata
-                ) return false;
-
-        else  if (MainScreenTableContainer.isSignForOslaniajace() || MainScreenTableContainer.isSignForPrzeczyszczajace()) {
-            System.out.println("jest Babka jajowata ");
-
-            return true;
-        }
-        return false;
-    }
 
     public static void initPlantagoOvata() {
         plantagoOvataButton = new UseButton(EnumHerb.PLANTAGO_OVATA, new IClickCallback() {
@@ -66,15 +36,9 @@ public class PlantagoOvata extends HerbPage {
                 System.out.println("IDZIE DO babka jajowata PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
-    public static void getPlantagoOvataButton() {
-        if (PlantagoOvata.checkIfPlantagoOvata()) {
-            MainScreenTableContainer.tableInnerScrollable.add(plantagoOvataButton).width(herbButtonWidth).height(herbButtonHeight).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        PlantagoOvata.isThereAnyPlantagoOvata = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(plantagoOvataButton) ? true : false;
-
-    }
 }
 

@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Horsetail extends HerbPage {
-    public static boolean isThereAnyHorsetail = false;
     static UseButton horsetailButton;
 
     public Horsetail(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Horsetail extends HerbPage {
                 System.out.println("IDZIE DO Skrzyp PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(horsetailButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +38,4 @@ public class Horsetail extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    private static boolean checkIfHorsetail() {
-        if (MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne()||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyHorsetail
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForMoczopedne()  ) {
-            System.out.println("jest Skrzyp ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getHorsetailButton() {
-        if (checkIfHorsetail()) {
-            MainScreenTableContainer.tableInnerScrollable.add(horsetailButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyHorsetail = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(horsetailButton) ? true : false;
-    }
 }

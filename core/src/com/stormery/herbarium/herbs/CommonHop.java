@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class CommonHop extends HerbPage {
-    public static boolean isThereAnyCommonHop = false;
     static UseButton commonHopButton;
 
     public CommonHop(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class CommonHop extends HerbPage {
                 System.out.println("IDZIE DO Chmiel PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(commonHopButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -38,43 +39,4 @@ public class CommonHop extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-
-    public static boolean checkIfCommonHop() {
-        if (
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                        MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                        MainScreenTableContainer.isSignForSciagajace() ||
-                        MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                        MainScreenTableContainer.isSignForWiatropedne() ||
-                        MainScreenTableContainer.isSignForZolciopedne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForMoczopedne() ||
-                        MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                        MainScreenTableContainer.isSignForOslaniajace() ||
-                        MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                        MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                        MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyCommonHop
-                ) return false;
-
-
-        else  if (MainScreenTableContainer.isSignForUspokajajace()) {
-            System.out.println("jest Chmiel ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getCommonHopButton() {
-        if (checkIfCommonHop()) {
-            MainScreenTableContainer.tableInnerScrollable.add(commonHopButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyCommonHop = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(commonHopButton) ? true : false;
-    }
 }

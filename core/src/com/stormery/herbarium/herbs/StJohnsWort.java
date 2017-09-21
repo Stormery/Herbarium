@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class StJohnsWort extends HerbPage {
-    public static boolean isThereAnyStJohnsWort = false;
     static UseButton stJohnsWortButton;
 
     public StJohnsWort(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class StJohnsWort extends HerbPage {
                 System.out.println("IDZIE DO Dziurawiec PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(stJohnsWortButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,42 +38,4 @@ public class StJohnsWort extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfStJohnsWort() {
-        if (
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                        MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                        MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                        MainScreenTableContainer.isSignForSciagajace() ||
-                        MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                        MainScreenTableContainer.isSignForWiatropedne() ||
-                        MainScreenTableContainer.isSignForZolciopedne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                        MainScreenTableContainer.isSignForNapotne() ||
-                        MainScreenTableContainer.isSignForMoczopedne() ||
-                        MainScreenTableContainer.isSignForWykrztusne() ||
-                        MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                        MainScreenTableContainer.isSignForPrzeczyszczajace()||
-                        MainScreenTableContainer.isSignForOslaniajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForUspokajajace() ||
-                        MainScreenTableContainer.isSignForRozkurczajace() ||
-                        isThereAnyStJohnsWort
-                ) return false;
-
-        else   if (MainScreenTableContainer.isSignForPobudzanieTrawienia()) {
-            System.out.println("jest Dziurawiec ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getStJohnsWortButton() {
-        if (checkIfStJohnsWort()) {
-            MainScreenTableContainer.tableInnerScrollable.add(stJohnsWortButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-       isThereAnyStJohnsWort = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(stJohnsWortButton) ? true : false;
-    }
 }

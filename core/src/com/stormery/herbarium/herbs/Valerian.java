@@ -26,6 +26,8 @@ public class Valerian extends HerbPage {
                 System.out.println("IDZIE DO Kozlka PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(valerianButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,39 +39,4 @@ public class Valerian extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    public static boolean checkIfValerian() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyValerian
-                ) return false;
-
-        else    if (MainScreenTableContainer.isSignForUspokajajace()) {
-            System.out.println("jest Kozlek ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getValerianButton() {
-        if (checkIfValerian()) {
-            MainScreenTableContainer.tableInnerScrollable.add(valerianButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyValerian = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(valerianButton) ? true : false;
-    }
 }

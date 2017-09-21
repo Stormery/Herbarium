@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.UseButton;
  */
 
 public class Willow extends HerbPage {
-    public static boolean isThereAnyWillow = false;
     static UseButton willowButton;
 
     public Willow(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Willow extends HerbPage {
                 System.out.println("IDZIE DO Wierzba PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(willowButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -37,38 +38,4 @@ public class Willow extends HerbPage {
     private void initBackgroundTexture() {
     }
 
-    private static boolean checkIfWillow() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyWillow
-                ) return false;
-
-        else if (MainScreenTableContainer.isSignForPrzeciwzapalne() || MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe()) {
-            System.out.println("jest Wierzba ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getWillowButton() {
-        if (checkIfWillow()) {
-            MainScreenTableContainer.tableInnerScrollable.add(willowButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyWillow = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(willowButton) ? true : false;
-    }
 }

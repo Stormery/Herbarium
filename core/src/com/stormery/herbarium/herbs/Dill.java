@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Dill extends HerbPage {
-    public static boolean isThereAnyDill = false;
     static UseButton dillButton;
 
     public Dill(Herbarium herbarium) {
@@ -26,6 +25,8 @@ public class Dill extends HerbPage {
                 System.out.println("IDZIE DO Kopru PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(dillButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -35,40 +36,5 @@ public class Dill extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfDill() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForSciagajace() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyDill
-                ) return false;
-
-        else  if ( MainScreenTableContainer.isSignForWiatropedne() || MainScreenTableContainer.isSignForWykrztusne()) {
-            System.out.println("jest Koper ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getDillButton() {
-        if (checkIfDill()) {
-            MainScreenTableContainer.tableInnerScrollable.add(dillButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyDill = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(dillButton) ? true : false;
     }
 }

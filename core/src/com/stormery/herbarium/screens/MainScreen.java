@@ -56,10 +56,6 @@ public class MainScreen extends HerbPage {
     public static boolean isNotDragging = true;
     private static int finishedLoading=0;
 
-
-    //TODO z tym zadzialac
-    private ArrayList<com.stormery.herbarium.service.EnumHerb> herbList;
-
     public MainScreen(Herbarium herbarium) {
         super(herbarium);
         this.herbarium = herbarium;
@@ -67,11 +63,10 @@ public class MainScreen extends HerbPage {
     }
 
     private void initialize() {
-        herbList = new ArrayList<com.stormery.herbarium.service.EnumHerb>();
         initBackgroundTextures();
         new MainScreenTableContainer(EnumLanguage.ENGLISH,stage);
 
-        initButtons();
+        //initButtons();
     }
 
     @Override
@@ -147,7 +142,7 @@ public class MainScreen extends HerbPage {
     @Override
     public void render(float delta) {
         super.render(delta);
-        LanguageAndHerbShow.checkLanguageAndInitHerbs(EnumLanguage.POLISH);
+        //LanguageAndHerbShow.checkLanguageAndInitHerbs(EnumLanguage.POLISH);
         stage.act();
 
     }

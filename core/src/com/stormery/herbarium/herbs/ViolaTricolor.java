@@ -11,7 +11,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  * Created by Ayo on 2017-08-24.
  */
 public class ViolaTricolor extends HerbPage {
-    public static boolean isThereAnyViolaTricolor = false;
     static UseButton violaTricolorButton;
 
     public ViolaTricolor(Herbarium herbarium) {
@@ -25,6 +24,8 @@ public class ViolaTricolor extends HerbPage {
                 System.out.println("IDZIE DO Fiolek PAGE");
             }
         });
+        MainScreenTableContainer.tableInnerScrollable.add(violaTricolorButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.row();
     }
 
     @Override
@@ -34,43 +35,6 @@ public class ViolaTricolor extends HerbPage {
     }
 
     private void initBackgroundTexture() {
-    }
-
-    public static boolean checkIfViolaTricolor() {
-        if (MainScreenTableContainer.isSignForPrzeciwbakteryjne() ||
-                MainScreenTableContainer.isSignForPrzeciwkaszlowe() ||
-                MainScreenTableContainer.isSignForPrzeciwgoraczkowe() ||
-                MainScreenTableContainer.isSignForOdkazajaceDrogiMoczowe() ||
-                MainScreenTableContainer.isSignForPrzeciwskurczowe() ||
-                MainScreenTableContainer.isSignForNiewydolnoscKrazenia() ||
-                MainScreenTableContainer.isSignForWiatropedne() ||
-                MainScreenTableContainer.isSignForZolciopedne() ||
-                MainScreenTableContainer.isSignForPrzeczyszczajace() ||
-                MainScreenTableContainer.isSignForNapotne() ||
-                MainScreenTableContainer.isSignForWykrztusne() ||
-                MainScreenTableContainer.isSignForPobudzanieTrawienia() ||
-                MainScreenTableContainer.isSignForOslaniajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForUspokajajace() ||
-                MainScreenTableContainer.isSignForRozkurczajace() ||
-                isThereAnyViolaTricolor
-                ) return false;
-
-        else    if (MainScreenTableContainer.isSignForMoczopedne() ||
-                MainScreenTableContainer.isSignForPrzeciwzapalne() ||
-                MainScreenTableContainer.isSignForSciagajace()) {
-            System.out.println("jest Fiolek ");
-            return true;
-        }
-        return false;
-    }
-
-    public static void getViolaTricolorButton() {
-        if (checkIfViolaTricolor()) {
-            MainScreenTableContainer.tableInnerScrollable.add(violaTricolorButton).width(320).height(100).padBottom(10f);
-            MainScreenTableContainer.tableInnerScrollable.row();
-        }
-        isThereAnyViolaTricolor = MainScreenTableContainer.tableInnerScrollable.isAscendantOf(violaTricolorButton) ? true : false;
     }
 }
 
