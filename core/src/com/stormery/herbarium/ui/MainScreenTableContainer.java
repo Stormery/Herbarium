@@ -1,9 +1,7 @@
 package com.stormery.herbarium.ui;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
@@ -49,7 +47,7 @@ import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
 /**
- * Created by Ayo on 2017-08-16.
+ * Created by Stormery on 2017-08-16.
  */
 
 public class MainScreenTableContainer {
@@ -62,7 +60,7 @@ public class MainScreenTableContainer {
 
     private Stage stage;
 
-    ButtonGroup buttonGroup;
+    private ButtonGroup buttonGroup;
 //Therapeutic Use buttons
     private UseButton bttAntibacterial;
     private UseButton bttAntipyretic;
@@ -109,8 +107,8 @@ public class MainScreenTableContainer {
     }
 
     private void initTable(EnumLanguage language) {
-        //TODO zmienic skin i Atlas
-        Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
+
+       // Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
 
 //InstantiateTables
         tableMain = new Table();
@@ -706,75 +704,5 @@ RIGHT
 
     //////////////Getters and Setterrs/////////////
 
-    public static boolean isSignForPrzeciwbakteryjne() {
-        return signForPrzeciwbakteryjne;
-    }
 
-    public static boolean isSignForPrzeciwkaszlowe() {
-        return signForPrzeciwkaszlowe;
-    }
-
-    public static boolean isSignForPrzeciwgoraczkowe() {
-        return signForPrzeciwgoraczkowe;
-    }
-
-    public static boolean isSignForOdkazajaceDrogiMoczowe() {
-        return signForOdkazajaceDrogiMoczowe;
-    }
-
-    public static boolean isSignForPrzeciwskurczowe() {
-        return signForPrzeciwskurczowe;
-    }
-
-    public static boolean isSignForSciagajace() {
-        return signForSciagajace;
-    }
-
-    public static boolean isSignForNiewydolnoscKrazenia() {
-        return signForNiewydolnoscKrazenia;
-    }
-
-    public static boolean isSignForWiatropedne() {
-        return signForWiatropedne;
-    }
-
-    public static boolean isSignForZolciopedne() {
-        return signForZolciopedne;
-    }
-
-    public static boolean isSignForPrzeciwzapalne() {
-        return signForPrzeciwzapalne;
-    }
-
-    public static boolean isSignForNapotne() {
-        return signForNapotne;
-    }
-
-    public static boolean isSignForMoczopedne() {
-        return signForMoczopedne;
-    }
-
-    public static boolean isSignForWykrztusne() {
-        return signForWykrztusne;
-    }
-
-    public static boolean isSignForPobudzanieTrawienia() {
-        return signForPobudzanieTrawienia;
-    }
-
-    public static boolean isSignForPrzeczyszczajace() {
-        return signForPrzeczyszczajace;
-    }
-
-    public static boolean isSignForOslaniajace() {
-        return signForOslaniajace;
-    }
-
-    public static boolean isSignForUspokajajace() {
-        return signForUspokajajace;
-    }
-
-    public static boolean isSignForRozkurczajace() {
-        return signForRozkurczajace;
-    }
 }

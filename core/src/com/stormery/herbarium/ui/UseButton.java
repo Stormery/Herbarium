@@ -10,7 +10,7 @@ import com.stormery.herbarium.service.EnumHerb;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
 
 /**
- * Created by Ayo on 2017-08-09.
+ * Created by Stormery on 2017-08-09.
  */
 
 public  class UseButton extends Button {
