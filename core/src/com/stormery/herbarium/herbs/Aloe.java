@@ -12,7 +12,6 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  */
 
 public class Aloe extends HerbPage {
-    public static boolean isThereAnyAloes = false;
     static UseButton aloeButton;
 
     public Aloe(Herbarium herbarium) {

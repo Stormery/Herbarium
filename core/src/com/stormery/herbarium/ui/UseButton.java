@@ -123,7 +123,8 @@ public  class UseButton extends Button {
             }else if (enumeratio.equals(EnumHerb.CORIANDER)) {
                 buttonStyle.up = skin.getDrawable("KolendraButton");
                 buttonStyle.down = skin.getDrawable("KolendraButtonDown");
-                MainScreen.countLoading(EnumHerb.CORIANDER);}
+                MainScreen.countLoading(EnumHerb.CORIANDER);
+            }
 
             else if (enumeratio.equals(EnumHerb.DILL)) {
                 buttonStyle.up = skin.getDrawable("KoperWloskiButton");

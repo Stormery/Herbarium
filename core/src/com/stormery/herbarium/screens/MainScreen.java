@@ -3,9 +3,6 @@ package com.stormery.herbarium.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.service.EnumLanguage;
-import com.stormery.herbarium.ui.LanguageAndHerbShow;
-import com.stormery.herbarium.ui.MainScreenTableContainer;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Althea;
@@ -45,7 +42,8 @@ import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.herbs.Willow;
 import com.stormery.herbarium.herbs.Yarrow;
-import java.util.ArrayList;
+import com.stormery.herbarium.service.EnumLanguage;
+import com.stormery.herbarium.ui.MainScreenTableContainer;
 
 
 public class MainScreen extends HerbPage {

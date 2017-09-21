@@ -6,12 +6,42 @@ import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Althea;
+import com.stormery.herbarium.herbs.Angelica;
+import com.stormery.herbarium.herbs.Aniseed;
+import com.stormery.herbarium.herbs.Bearberry;
+import com.stormery.herbarium.herbs.BirchTree;
+import com.stormery.herbarium.herbs.Carom;
 import com.stormery.herbarium.herbs.Chamomile;
+import com.stormery.herbarium.herbs.CommonHop;
+import com.stormery.herbarium.herbs.Coriander;
+import com.stormery.herbarium.herbs.Cranberry;
+import com.stormery.herbarium.herbs.Dill;
+import com.stormery.herbarium.herbs.Elder;
+import com.stormery.herbarium.herbs.Flax;
+import com.stormery.herbarium.herbs.GoldenRod;
+import com.stormery.herbarium.herbs.Hawthorn;
+import com.stormery.herbarium.herbs.Helichrysum;
+import com.stormery.herbarium.herbs.Horsetail;
+import com.stormery.herbarium.herbs.Juniper;
 import com.stormery.herbarium.herbs.Knotgrass;
+import com.stormery.herbarium.herbs.Lavender;
+import com.stormery.herbarium.herbs.LemonBalm;
+import com.stormery.herbarium.herbs.Lovage;
+import com.stormery.herbarium.herbs.Mallow;
+import com.stormery.herbarium.herbs.Peppermint;
+import com.stormery.herbarium.herbs.PlantagoOvata;
+import com.stormery.herbarium.herbs.Poplar;
+import com.stormery.herbarium.herbs.Psyllium;
+import com.stormery.herbarium.herbs.Rhubarb;
 import com.stormery.herbarium.herbs.Sage;
+import com.stormery.herbarium.herbs.Senna;
+import com.stormery.herbarium.herbs.StJohnsWort;
+import com.stormery.herbarium.herbs.Thyme;
 import com.stormery.herbarium.herbs.Tilia;
+import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.herbs.Willow;
 import com.stormery.herbarium.herbs.Yarrow;
@@ -28,7 +58,7 @@ public class MainScreenTableContainer {
     private Table tableBookmarkScrollable;
     private Table tableRight;
     public static Table tableInnerScrollable;
-    private boolean tableDebug = true;
+    private boolean tableDebug = false;
 
     private Stage stage;
 
@@ -280,6 +310,9 @@ RIGHT
             public void onClick() {
                 System.out.println("NiewydolnoscKrazenia  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForNiewydolnoscKrazenia){
+                    Hawthorn.initHawthorn();
+                }
                 signForNiewydolnoscKrazenia= !signForNiewydolnoscKrazenia;
             }
         });
@@ -289,6 +322,11 @@ RIGHT
             public void onClick() {
                 System.out.println("Wiatropedne  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForWiatropedne){
+                    Carom.initCarom();
+                    Coriander.initCoriander();
+                    Dill.initDill();
+                }
                 signForWiatropedne= !signForWiatropedne;
             }
         });
@@ -298,6 +336,11 @@ RIGHT
             public void onClick() {
                 System.out.println("Zolciopedne  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForZolciopedne){
+                    Helichrysum.initHelichrysum();
+                    Tilia.initTilia();
+                    Yarrow.initYarrow();
+                }
                 signForZolciopedne= !signForZolciopedne;
             }
         });
@@ -307,6 +350,13 @@ RIGHT
             public void onClick() {
                 System.out.println("Przeciwzapalne  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeciwzapalne){
+                    Chamomile.initChamomile();
+                    Knotgrass.initKnotgrass();
+                    Sage.initSage();
+                    ViolaTricolor.initViolaTricolor();
+                    Willow.initWillow();
+                }
                 signForPrzeciwzapalne= !signForPrzeciwzapalne;
             }
         });
@@ -316,6 +366,9 @@ RIGHT
             public void onClick() {
                 System.out.println("Napotne  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForNapotne){
+                    Elder.initElder();
+                }
                 signForNapotne= !signForNapotne;
             }
         });
@@ -325,6 +378,17 @@ RIGHT
             public void onClick() {
                 System.out.println("Moczopednt click");
                 tableInnerScrollable.clearChildren();
+                if(!signForMoczopedne){
+                    Bearberry.initBearberry();
+                    BirchTree.initBirchTree();
+                    Cranberry.initCranberry();
+                    Elder.initElder();
+                    GoldenRod.initGoldenRod();
+                    Horsetail.initHorsetail();
+                    Juniper.initJuniper();
+                    Lovage.initLovage();
+                    ViolaTricolor.initViolaTricolor();
+                }
                 signForMoczopedne= !signForMoczopedne;
             }
         });
@@ -334,6 +398,11 @@ RIGHT
             public void onClick() {
                 System.out.println("Wykrztusne  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForWykrztusne){
+                    Aniseed.initAniseed();
+                    Dill.initDill();
+                    Thyme.initThyme();
+                }
                 signForWykrztusne= !signForWykrztusne;
             }
         });
@@ -343,7 +412,11 @@ RIGHT
             public void onClick() {
                 System.out.println("Pobudzatrawienie  click");
                 tableInnerScrollable.clearChildren();
-                tableInnerScrollable.clearChildren();
+                if(!signForPobudzanieTrawienia){
+                    Angelica.initAngelica();
+                    Peppermint.initPeppermint();
+                    StJohnsWort.initStJohnsWort();
+                }
                 signForPobudzanieTrawienia= !signForPobudzanieTrawienia;
             }
         });
@@ -353,6 +426,16 @@ RIGHT
             public void onClick() {
                 System.out.println("Przeczyszczajace  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForPrzeczyszczajace){
+                    AlderBuckthorn.initAlderBuckthorn();
+                    Aloe.initAloe();
+                    Flax.initFlax();
+                    PlantagoOvata.initPlantagoOvata();
+                    Poplar.initPoplar();
+                    Psyllium.initPsyllium();
+                    Rhubarb.initRhubarb();
+                    Senna.initSenna();
+                }
                 signForPrzeczyszczajace= !signForPrzeczyszczajace;
             }
         });
@@ -362,6 +445,14 @@ RIGHT
             public void onClick() {
                 System.out.println("Oslaniajace  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForOslaniajace){
+                    Althea.initAlthea();
+                    Mallow.initMallow();
+                    Flax.initFlax();
+                    PlantagoOvata.initPlantagoOvata();
+                    Psyllium.initPsyllium();
+                    Poplar.initPoplar();
+                }
                 signForOslaniajace= !signForOslaniajace;
             }
         });
@@ -371,6 +462,12 @@ RIGHT
             public void onClick() {
                 System.out.println("Uspokajajace  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForUspokajajace){
+                    CommonHop.initCommonHop();
+                    Lavender.initLavender();
+                    LemonBalm.initLemonBalm();
+                    Valerian.initValerian();
+                }
                 signForUspokajajace= !signForUspokajajace;
             }
         });
@@ -380,6 +477,9 @@ RIGHT
             public void onClick() {
                 System.out.println("Rozkurczajace  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForRozkurczajace){
+
+                }
                 signForRozkurczajace= !signForRozkurczajace;
             }
         });
@@ -389,6 +489,9 @@ RIGHT
             public void onClick() {
                 System.out.println("Odkazajace drogi moczowe  click");
                 tableInnerScrollable.clearChildren();
+                if(!signForOdkazajaceDrogiMoczowe){
+
+                }
                 signForOdkazajaceDrogiMoczowe= !signForOdkazajaceDrogiMoczowe;
             }
         });
