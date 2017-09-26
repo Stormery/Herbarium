@@ -16,9 +16,8 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
 	default: {
 		font: AntiqueBook
 		fontColor: RGBA_0_0_0_255
-		up: ButtonUp
-		down: ButtonDown
-		checked: ButtonDown
+		up: buttonin1
+		checked: buttonout1
 	}
 }
 }

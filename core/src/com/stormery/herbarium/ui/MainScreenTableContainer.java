@@ -172,8 +172,8 @@ RIGHT
         ScrollPane scrollPane = new ScrollPane(tableBookmarkScrollable);
         scrollPane.setOverscroll(false, false);
 
-        tableMain.add(scrollPane).top().left().width(120f).height(535f)
-                .padLeft(21f).padRight(20f).padBottom(5f).padTop(115f);//bookmark
+        tableMain.add(scrollPane).top().left().width(120f).height(555f)
+                .padLeft(21f).padRight(20f).padBottom(5f).padTop(118f);//bookmark
     }
 
     private void tableInnerWithScrollableHerbs() {
