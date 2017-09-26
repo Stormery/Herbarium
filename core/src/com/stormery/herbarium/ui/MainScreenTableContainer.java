@@ -1,9 +1,20 @@
 package com.stormery.herbarium.ui;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Althea;
@@ -43,8 +54,15 @@ import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.herbs.Willow;
 import com.stormery.herbarium.herbs.Yarrow;
+import com.stormery.herbarium.screens.AbstractScreen;
+import com.stormery.herbarium.screens.MainScreen;
+import com.stormery.herbarium.screens.SplashScreen;
 import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
+
+import java.awt.Font;
+
+import sun.applet.Main;
 
 /**
  * Created by Stormery on 2017-08-16.
@@ -60,26 +78,25 @@ public class MainScreenTableContainer {
 
     private Stage stage;
 
-    private ButtonGroup buttonGroup;
-//Therapeutic Use buttons
-    private UseButton bttAntibacterial;
-    private UseButton bttAntipyretic;
-    private UseButton bttAntispasmodic;
-    private UseButton bttAntitussive;
-    private UseButton bttAstrigents;
-    private UseButton bttCardiacInsufficiency;
-    private UseButton bttCarminative;
-    private UseButton bttCholagogues;
-    private UseButton bttDiaphoretic;
-    private UseButton bttDemulcent;
-    private UseButton bttDiuretic;
-    private UseButton bttExpectorant;
-    private UseButton bttImprovingDigestion;
-    private UseButton bttLaxative;
-    private UseButton bttProtectiveScreening;
-    private UseButton bttSedative;
-    private UseButton bttSpasmolytic;
-    private UseButton bttUrinaryTractDisinfectant;
+    //Therapeutic Use buttons
+    private TherapeuticUseButtons bttAntibacterial;
+    private TherapeuticUseButtons bttAntipyretic;
+    private TherapeuticUseButtons bttAntispasmodic;
+    private TherapeuticUseButtons bttAntitussive;
+    private TherapeuticUseButtons bttAstrigents;
+    private TherapeuticUseButtons bttCardiacInsufficiency;
+    private TherapeuticUseButtons bttCarminative;
+    private TherapeuticUseButtons bttCholagogues;
+    private TherapeuticUseButtons bttDiaphoretic;
+    private TherapeuticUseButtons bttDemulcent;
+    private TherapeuticUseButtons bttDiuretic;
+    private TherapeuticUseButtons bttExpectorant;
+    private TherapeuticUseButtons bttImprovingDigestion;
+    private TherapeuticUseButtons bttLaxative;
+    private TherapeuticUseButtons bttProtectiveScreening;
+    private TherapeuticUseButtons bttSedative;
+    private TherapeuticUseButtons bttSpasmolytic;
+    private TherapeuticUseButtons bttUrinaryTractDisinfectant;
     ///
     private static boolean signForPrzeciwbakteryjne;
     private static boolean signForPrzeciwkaszlowe;
@@ -156,7 +173,7 @@ RIGHT
         scrollPane.setOverscroll(false, false);
 
         tableMain.add(scrollPane).top().left().width(120f).height(535f)
-                .padLeft(20f).padRight(20f).padBottom(5f).padTop(115f);//bookmark
+                .padLeft(21f).padRight(20f).padBottom(5f).padTop(115f);//bookmark
     }
 
     private void tableInnerWithScrollableHerbs() {
@@ -169,10 +186,12 @@ RIGHT
         //tableMain.row();
         tableRight.add(scrollPane).colspan(2).top();
         tableMain.add(tableRight).top().left();
+
+
     }
     private void tableWithTherapeuticUseTypesEnglish() {
         float therapeuticUsePadTop = 20f;
-        float therapeuticWidth = 110;
+        float therapeuticWidth = 116;
         float therapeuticHeight = 50f;
         /*
         If i click on TherapeuticUseButton
@@ -180,7 +199,7 @@ RIGHT
          */
         // Init Buttons
      initTherapeuticButtonsENG();
-
+/////////////////////////////////////////////////////
         tableBookmarkScrollable.add(bttAntibacterial).top().left().padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
         tableBookmarkScrollable.row();
 
@@ -237,146 +256,115 @@ RIGHT
     }// EnglishProperties table
 
     private void initTherapeuticButtonsENG() {
-        bttAntibacterial = new UseButton(EnumTherapeuticProperties.ANTIBACTERIAL, new IClickCallback() {
+        bttAntibacterial = new TherapeuticUseButtons("ANTIBACTERIAL", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Przeciwbakt click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeciwbakteryjne){
+                if(bttAntibacterial.isChecked()) {
                     Aloe.initAloe();
                 }
-                signForPrzeciwbakteryjne= !signForPrzeciwbakteryjne;
             }
         });
 
-        bttAntipyretic = new UseButton(EnumTherapeuticProperties.ANTIPYRETIC, new IClickCallback() {
+        bttAntipyretic = new TherapeuticUseButtons("ANTIPYRETIC", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("przeciwgoraczkowe click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeciwgoraczkowe){
+                if(bttAntipyretic.isChecked()){
                     Tilia.initTilia();
                     Willow.initWillow();
                 }
-                signForPrzeciwgoraczkowe= !signForPrzeciwgoraczkowe;
             }
         });
 
-        bttAntispasmodic = new UseButton(EnumTherapeuticProperties.ANTISPASMODIC, new IClickCallback() {
+        bttAntispasmodic = new TherapeuticUseButtons("ANTISPASMODIC", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Przeciwskurczowe  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeciwskurczowe){
+                if(bttAntispasmodic.isChecked()){
                     Chamomile.initChamomile();
                     Yarrow.initYarrow();
                 }
-                signForPrzeciwskurczowe= !signForPrzeciwskurczowe;
             }
         });
 
-        bttAntitussive = new UseButton(EnumTherapeuticProperties.ANTITUSSIVE, new IClickCallback() {
+        bttAntitussive = new TherapeuticUseButtons("ANTITUSSIVE", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Przeciwkaszlowe  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeciwkaszlowe){
+                if(bttAntitussive.isChecked()){
                     Althea.initAlthea();
                 }
-                signForPrzeciwkaszlowe= !signForPrzeciwkaszlowe;
             }
         });
 
-        bttAstrigents = new UseButton(EnumTherapeuticProperties.ASTRINGENTS, new IClickCallback() {
+        bttAstrigents = new TherapeuticUseButtons("ASTRIGENTS", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Sciagajace  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForSciagajace){
+                if(bttAstrigents.isChecked()){
                     Chamomile.initChamomile();
                     Knotgrass.initKnotgrass();
                     Sage.initSage();
                     ViolaTricolor.initViolaTricolor();
                     Willow.initWillow();
                 }
-                signForSciagajace= !signForSciagajace;
             }
         });
 
-        bttCardiacInsufficiency = new UseButton(EnumTherapeuticProperties.CARDIAC_INSUFFICIENCY, new IClickCallback() {
+        bttCardiacInsufficiency = new TherapeuticUseButtons("CARDIAC \nINSUFFICIENCY", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("NiewydolnoscKrazenia  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForNiewydolnoscKrazenia){
+                if(bttCardiacInsufficiency.isChecked()){
                     Hawthorn.initHawthorn();
                 }
-                signForNiewydolnoscKrazenia= !signForNiewydolnoscKrazenia;
             }
         });
 
-        bttCarminative = new UseButton(EnumTherapeuticProperties.CARMINATIVE, new IClickCallback() {
+
+        bttCarminative = new TherapeuticUseButtons("CARMINATIVE", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Wiatropedne  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForWiatropedne){
+                if(bttCarminative.isChecked()){
                     Carom.initCarom();
                     Coriander.initCoriander();
                     Dill.initDill();
                 }
-                signForWiatropedne= !signForWiatropedne;
             }
         });
 
-        bttCholagogues = new UseButton(EnumTherapeuticProperties.CHOLAGOGUES, new IClickCallback() {
+        bttCholagogues = new TherapeuticUseButtons("CHOLAGOGUES", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Zolciopedne  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForZolciopedne){
+                if(bttCholagogues.isChecked()){
                     Helichrysum.initHelichrysum();
                     Tilia.initTilia();
                     Yarrow.initYarrow();
                 }
-                signForZolciopedne= !signForZolciopedne;
             }
         });
 
-        bttDemulcent = new UseButton(EnumTherapeuticProperties.DEMULCENT, new IClickCallback() {
+        bttDemulcent = new TherapeuticUseButtons("DEMULCENT", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Przeciwzapalne  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeciwzapalne){
+                if(bttDemulcent.isChecked()){
                     Chamomile.initChamomile();
                     Knotgrass.initKnotgrass();
                     Sage.initSage();
                     ViolaTricolor.initViolaTricolor();
                     Willow.initWillow();
                 }
-                signForPrzeciwzapalne= !signForPrzeciwzapalne;
             }
         });
 
-        bttDiaphoretic = new UseButton(EnumTherapeuticProperties.DIAPHORETIC, new IClickCallback() {
+        bttDiaphoretic = new TherapeuticUseButtons("DIAPHORETIC", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Napotne  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForNapotne){
+                if(bttDiaphoretic.isChecked()){
                     Elder.initElder();
                 }
-                signForNapotne= !signForNapotne;
             }
         });
 
-        bttDiuretic = new UseButton(EnumTherapeuticProperties.DIURETIC, new IClickCallback() {
+        bttDiuretic = new TherapeuticUseButtons("DIURETIC", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Moczopednt click");
-                tableInnerScrollable.clearChildren();
-                if(!signForMoczopedne){
+                if(bttDiuretic.isChecked()){
                     Bearberry.initBearberry();
                     BirchTree.initBirchTree();
                     Cranberry.initCranberry();
@@ -387,44 +375,35 @@ RIGHT
                     Lovage.initLovage();
                     ViolaTricolor.initViolaTricolor();
                 }
-                signForMoczopedne= !signForMoczopedne;
             }
         });
 
-        bttExpectorant = new UseButton(EnumTherapeuticProperties.EXPECTORANT, new IClickCallback() {
+        bttExpectorant = new TherapeuticUseButtons("EXPECTORANT", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Wykrztusne  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForWykrztusne){
+                if(bttExpectorant.isChecked()){
                     Aniseed.initAniseed();
                     Dill.initDill();
                     Thyme.initThyme();
                 }
-                signForWykrztusne= !signForWykrztusne;
             }
         });
 
-        bttImprovingDigestion = new UseButton(EnumTherapeuticProperties.IMPROVING_DIGESTION, new IClickCallback() {
+        bttImprovingDigestion = new TherapeuticUseButtons("IMPROVING \nDIGESTION", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Pobudzatrawienie  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPobudzanieTrawienia){
+                if(bttImprovingDigestion.isChecked()){
                     Angelica.initAngelica();
                     Peppermint.initPeppermint();
                     StJohnsWort.initStJohnsWort();
                 }
-                signForPobudzanieTrawienia= !signForPobudzanieTrawienia;
             }
         });
 
-        bttLaxative = new UseButton(EnumTherapeuticProperties.LAXATIVE, new IClickCallback() {
+        bttLaxative = new TherapeuticUseButtons("LAXATIVE", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Przeczyszczajace  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForPrzeczyszczajace){
+                if(bttLaxative.isChecked()){
                     AlderBuckthorn.initAlderBuckthorn();
                     Aloe.initAloe();
                     Flax.initFlax();
@@ -434,16 +413,14 @@ RIGHT
                     Rhubarb.initRhubarb();
                     Senna.initSenna();
                 }
-                signForPrzeczyszczajace= !signForPrzeczyszczajace;
             }
         });
 
-        bttProtectiveScreening = new UseButton(EnumTherapeuticProperties.PROTECTIVE_SCREENING, new IClickCallback() {
+
+        bttProtectiveScreening = new TherapeuticUseButtons("PROTECTIVE \nSCREENING", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Oslaniajace  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForOslaniajace){
+                if(bttProtectiveScreening.isChecked()){
                     Althea.initAlthea();
                     Mallow.initMallow();
                     Flax.initFlax();
@@ -451,54 +428,44 @@ RIGHT
                     Psyllium.initPsyllium();
                     Poplar.initPoplar();
                 }
-                signForOslaniajace= !signForOslaniajace;
             }
         });
 
-        bttSedative = new UseButton(EnumTherapeuticProperties.SEDATIVE, new IClickCallback() {
+        bttSedative = new TherapeuticUseButtons("SEDATIVE", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Uspokajajace  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForUspokajajace){
+                if(bttSedative.isChecked()){
                     CommonHop.initCommonHop();
                     Lavender.initLavender();
                     LemonBalm.initLemonBalm();
                     Valerian.initValerian();
                 }
-                signForUspokajajace= !signForUspokajajace;
             }
         });
 
-        bttSpasmolytic = new UseButton(EnumTherapeuticProperties.SPASMOLYTIC, new IClickCallback() {
+        bttSpasmolytic = new TherapeuticUseButtons("SPASMOLYTIC", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Rozkurczajace  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForRozkurczajace){
+                if(bttSpasmolytic.isChecked()){
 
                 }
-                signForRozkurczajace= !signForRozkurczajace;
             }
         });
 
-        bttUrinaryTractDisinfectant = new UseButton(EnumTherapeuticProperties.URINARY_TRACT_DISINFECTANT, new IClickCallback() {
+        bttUrinaryTractDisinfectant = new TherapeuticUseButtons("URINARY TRACT \nDISINFECTANT", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("Odkazajace drogi moczowe  click");
-                tableInnerScrollable.clearChildren();
-                if(!signForOdkazajaceDrogiMoczowe){
+                if(bttUrinaryTractDisinfectant.isChecked()){
 
                 }
-                signForOdkazajaceDrogiMoczowe= !signForOdkazajaceDrogiMoczowe;
             }
         });
 
 
-        buttonGroup = new ButtonGroup(bttAntibacterial,bttAntipyretic,bttAntispasmodic,bttAntitussive,bttAstrigents,
-                                        bttCardiacInsufficiency,bttCarminative,bttCholagogues,bttDiaphoretic,bttDemulcent,
-                                        bttDiuretic, bttExpectorant, bttImprovingDigestion, bttLaxative, bttProtectiveScreening,
-                                        bttSedative,bttSpasmolytic,bttUrinaryTractDisinfectant);
+        ButtonGroup buttonGroup = new ButtonGroup(bttAntibacterial, bttAntipyretic, bttAntispasmodic, bttAntitussive, bttAstrigents,
+                bttCardiacInsufficiency, bttCarminative, bttCholagogues, bttDiaphoretic, bttDemulcent,
+                bttDiuretic, bttExpectorant, bttImprovingDigestion, bttLaxative, bttProtectiveScreening,
+                bttSedative, bttSpasmolytic, bttUrinaryTractDisinfectant);
         buttonGroup.setMaxCheckCount(1);
         buttonGroup.setMinCheckCount(0);
 //i

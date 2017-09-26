@@ -1,0 +1,24 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	AntiqueBook: {
+		file: AntiqueBook.fnt
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	RGBA_0_0_0_255: {
+		r: 0
+		g: 0
+		b: 0
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
+	default: {
+		font: AntiqueBook
+		fontColor: RGBA_0_0_0_255
+		up: ButtonUp
+		down: ButtonDown
+		checked: ButtonDown
+	}
+}
+}
