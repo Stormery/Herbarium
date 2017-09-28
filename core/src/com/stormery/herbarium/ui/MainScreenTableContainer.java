@@ -333,6 +333,7 @@ RIGHT
             public void onClick() {
                 if(bttCholagogues.isChecked()){
                     Helichrysum.initHelichrysum();
+                    Juniper.initJuniper();
                     Tilia.initTilia();
                     Yarrow.initYarrow();
                 }
