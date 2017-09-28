@@ -1,20 +1,10 @@
 package com.stormery.herbarium.ui;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
 import com.stormery.herbarium.herbs.Aloe;
 import com.stormery.herbarium.herbs.Althea;
@@ -54,15 +44,8 @@ import com.stormery.herbarium.herbs.Valerian;
 import com.stormery.herbarium.herbs.ViolaTricolor;
 import com.stormery.herbarium.herbs.Willow;
 import com.stormery.herbarium.herbs.Yarrow;
-import com.stormery.herbarium.screens.AbstractScreen;
-import com.stormery.herbarium.screens.MainScreen;
-import com.stormery.herbarium.screens.SplashScreen;
 import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.service.EnumTherapeuticProperties;
-
-import java.awt.Font;
-
-import sun.applet.Main;
 
 /**
  * Created by Stormery on 2017-08-16.
@@ -70,6 +53,7 @@ import sun.applet.Main;
 
 public class MainScreenTableContainer {
     /////Tables
+    private Herbarium herbarium;
     private Table tableMain;
     private Table tableBookmarkScrollable;
     private Table tableRight;
@@ -118,8 +102,9 @@ public class MainScreenTableContainer {
     private static boolean signForRozkurczajace;
 
 
-    public MainScreenTableContainer(EnumLanguage language, Stage stage) {
+    public MainScreenTableContainer(EnumLanguage language, Stage stage, Herbarium herbarium) {
         this.stage = stage;
+        this.herbarium = herbarium;
         initTable(language);
     }
 
@@ -260,7 +245,7 @@ RIGHT
             @Override
             public void onClick() {
                 if(bttAntibacterial.isChecked()) {
-                    Aloe.initAloe();
+                    Aloe.initAloe(herbarium);
                 }
             }
         });
@@ -406,7 +391,7 @@ RIGHT
             public void onClick() {
                 if(bttLaxative.isChecked()){
                     AlderBuckthorn.initAlderBuckthorn();
-                    Aloe.initAloe();
+                    Aloe.initAloe(herbarium);
                     Flax.initFlax();
                     PlantagoOvata.initPlantagoOvata();
                     Poplar.initPoplar();

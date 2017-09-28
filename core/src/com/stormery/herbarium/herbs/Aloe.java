@@ -1,5 +1,8 @@
 package com.stormery.herbarium.herbs;
 
+import com.badlogic.gdx.Net;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.ui.UseButton;
 import com.stormery.herbarium.service.EnumHerb;
@@ -18,12 +21,14 @@ public class Aloe extends HerbPage {
         super(herbarium);
     }
 
-    public static void initAloe() {
+    public static void initAloe(final Herbarium herbarium) {
 
             aloeButton = new UseButton(EnumHerb.ALOE, new IClickCallback() {
                 @Override
                 public void onClick() {
                     System.out.println("IDZIE DO ALOES PAGE");
+                     herbarium.setScreen(new Aloe(herbarium));
+
                 }
             });
         MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320).height(100).padBottom(10f);
@@ -34,6 +39,7 @@ public class Aloe extends HerbPage {
     @Override
     protected void init() {
         initBackgroundTexture();
+        //initTableMain();
         initReturnButton();
     }
 

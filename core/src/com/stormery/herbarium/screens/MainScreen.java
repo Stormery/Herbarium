@@ -24,7 +24,7 @@ public class MainScreen extends HerbPage {
 
     private void initialize() {
         initBackgroundTextures();
-        new MainScreenTableContainer(EnumLanguage.ENGLISH,stage);
+        new MainScreenTableContainer(EnumLanguage.ENGLISH,stage,herbarium);
 
         //initButtons();
     }
