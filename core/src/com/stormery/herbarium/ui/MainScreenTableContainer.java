@@ -52,6 +52,7 @@ import com.stormery.herbarium.service.EnumTherapeuticProperties;
  */
 
 public class MainScreenTableContainer {
+    protected static boolean mainInfoShowed;
     /////Tables
     private Herbarium herbarium;
     private Table tableMain;
@@ -63,24 +64,24 @@ public class MainScreenTableContainer {
     private Stage stage;
 
     //Therapeutic Use buttons
-    private TherapeuticUseButtons bttAntibacterial;
-    private TherapeuticUseButtons bttAntipyretic;
-    private TherapeuticUseButtons bttAntispasmodic;
-    private TherapeuticUseButtons bttAntitussive;
-    private TherapeuticUseButtons bttAstrigents;
-    private TherapeuticUseButtons bttCardiacInsufficiency;
-    private TherapeuticUseButtons bttCarminative;
-    private TherapeuticUseButtons bttCholagogues;
-    private TherapeuticUseButtons bttDiaphoretic;
-    private TherapeuticUseButtons bttDemulcent;
-    private TherapeuticUseButtons bttDiuretic;
-    private TherapeuticUseButtons bttExpectorant;
-    private TherapeuticUseButtons bttImprovingDigestion;
-    private TherapeuticUseButtons bttLaxative;
-    private TherapeuticUseButtons bttProtectiveScreening;
-    private TherapeuticUseButtons bttSedative;
-    private TherapeuticUseButtons bttSpasmolytic;
-    private TherapeuticUseButtons bttUrinaryTractDisinfectant;
+    private static TherapeuticUseButtons bttAntibacterial;
+    private static TherapeuticUseButtons bttAntipyretic;
+    private static TherapeuticUseButtons bttAntispasmodic;
+    private static TherapeuticUseButtons bttAntitussive;
+    private static TherapeuticUseButtons bttAstrigents;
+    private static TherapeuticUseButtons bttCardiacInsufficiency;
+    private static TherapeuticUseButtons bttCarminative;
+    private static TherapeuticUseButtons bttCholagogues;
+    private static TherapeuticUseButtons bttDiaphoretic;
+    private static TherapeuticUseButtons bttDemulcent;
+    private static TherapeuticUseButtons bttDiuretic;
+    private static TherapeuticUseButtons bttExpectorant;
+    private static TherapeuticUseButtons bttImprovingDigestion;
+    private static TherapeuticUseButtons bttLaxative;
+    private static TherapeuticUseButtons bttProtectiveScreening;
+    private static TherapeuticUseButtons bttSedative;
+    private static TherapeuticUseButtons bttSpasmolytic;
+    private static TherapeuticUseButtons bttUrinaryTractDisinfectant;
     ///
     private static boolean signForPrzeciwbakteryjne;
     private static boolean signForPrzeciwkaszlowe;
@@ -136,6 +137,7 @@ RIGHT
         tableRight.row();
         Instantiate Box with ScrollableButtons
         */
+
         tableInnerWithScrollableHerbs();
         stage.addActor(tableMain);
     }
@@ -174,6 +176,46 @@ RIGHT
 
 
     }
+
+    public static void tableMainPage() {
+        if(nothingIsChecked()){
+            if(!mainInfoShowed){
+                createMainInfoTable();
+            }
+            mainInfoShowed = true;
+        }
+        
+    }
+// TODO MAIN INFO
+    private static void createMainInfoTable() {
+        System.out.println("jesT!");
+    }
+
+    private static boolean nothingIsChecked() {
+        if(!bttAntibacterial.isChecked() &&
+                !bttAntispasmodic.isChecked()&&
+                !bttAntipyretic.isChecked() &&
+                !bttAntitussive.isChecked()&&
+                !bttAstrigents.isChecked()&&
+                !bttCardiacInsufficiency.isChecked()&&
+                !bttCholagogues.isChecked()&&
+                !bttCarminative.isChecked()&&
+                !bttDemulcent.isChecked() &&
+                !bttDiaphoretic.isChecked() &&
+                !bttDiuretic.isChecked() &&
+                !bttExpectorant.isChecked() &&
+                !bttImprovingDigestion.isChecked()&&
+                !bttLaxative.isChecked() &&
+                !bttProtectiveScreening.isChecked() &&
+                !bttSedative.isChecked() &&
+                !bttSpasmolytic.isChecked() &&
+                !bttUrinaryTractDisinfectant.isChecked()
+                ){
+            return true;
+        }
+        return false;
+    }
+
     private void tableWithTherapeuticUseTypesEnglish() {
         float therapeuticUsePadTop = 20f;
         float therapeuticWidth = 116;

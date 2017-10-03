@@ -1,5 +1,7 @@
 package com.stormery.herbarium.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -53,64 +55,69 @@ public class HerbPage extends AbstractScreen {
 
 	}
 
-	public void initTableMain(Image background) {
-
-		this.background = background;
+	public void initTableMain(Image herbLogo, Image herbDesc) {
+		boolean setDebug = false;
 
 		tableMain = new Table();
 		tableMain.setFillParent(true);
-		tableMain.setDebug(true);
+		tableMain.setDebug(setDebug);
 
-		Table tableScroll = new Table();
-		tableScroll.setDebug(true);
-		tableScroll.top().left();
 		Table tableInner = new Table();
-		tableInner.setDebug(true);
+		tableInner.setDebug(setDebug);
 		tableInner.top().right();
 
-		Image testImage = new Image(new Texture("buttons/back.png"));
+		Table tableScroll = new Table();
+		tableScroll.setDebug(setDebug);
+		tableScroll.top().left();
 
-		tableInner.add(new Image(new Texture("backgroundImg/Logo.png"))).height(150).expandX().colspan(2);
+
+		if(herbLogo==null){
+			herbLogo = new Image(new Texture("testButton.png"));
+		}
+
+//Top Logo
+		tableInner.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).expandX().colspan(2).top();
 		tableInner.row();
 
 
-		tableInner.add(new HerbImage("buttons/back.png", 100, 300, new IClickCallback() {
-
-			@Override
-			public void onClick() {
-				System.out.println("click pokrzywa");
-			}
-		}, herbarium)).padLeft(20f);
-		tableInner.add().expandX();
+		tableInner.add(herbLogo).padLeft(10f).padTop(10f);
+		//tableInner.add().expandX(); // Pole na tekst z roznymi nazwami rosliny
 		tableInner.row();
-		tableInner.add().colspan(2).expandY();
-		tableInner.add();
-//		tableInner.row();
-//		tableInner.add(testImage).expandY().colspan(3);
+		tableInner.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).padLeft(5f);
+		tableInner.row();
 
-
-//Background scrollable
-		tableScroll.setBackground((Drawable) this.background.getDrawable());
-		tableScroll.add(tableInner);
 		ScrollPane scrollPane = new ScrollPane(tableScroll);
 		scrollPane.setOverscroll(false, false);
+		tableInner.add(scrollPane).colspan(2).expandX().height(500f);
 
-		tableMain.add(scrollPane);
+		// Opis rosliny
+
+		tableScroll.add(herbDesc).padLeft(10f);
+		tableScroll.row();
+		tableScroll.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).padLeft(5f);
+
+//Background scrollable
+
+		tableMain.add(tableInner).height(Herbarium.HEIGHT).width(460).left().padRight(25f);
 		stage.addActor(tableMain);
 
 	}
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
+		inputControl();
 		spriteBatch.begin();
-
 		stage.draw();
+		stage.act();
 
 		spriteBatch.end();
 
 	}
 
-	
+	private void inputControl() {
+		if (Gdx.input.isKeyPressed(Input.Keys.BACK)) {
+			herbarium.setScreen(new MainScreen(herbarium));
+		}
+	}
 
 }

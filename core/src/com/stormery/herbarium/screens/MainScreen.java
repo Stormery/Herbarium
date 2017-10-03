@@ -58,8 +58,7 @@ public class MainScreen extends HerbPage {
     public void render(float delta) {
         super.render(delta);
         stage.act();
-
-
+        MainScreenTableContainer.tableMainPage();
     }
 
 

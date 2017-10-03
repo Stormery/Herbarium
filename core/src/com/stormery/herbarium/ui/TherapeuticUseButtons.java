@@ -28,6 +28,7 @@ public class TherapeuticUseButtons extends ImageTextButton {
                     System.out.println(text + " click");
                     MainScreenTableContainer.tableInnerScrollable.clearChildren();
                     callback.onClick();
+                    MainScreenTableContainer.mainInfoShowed=false;
                 }
                 super.touchUp(event, x, y, pointer, button);
             }

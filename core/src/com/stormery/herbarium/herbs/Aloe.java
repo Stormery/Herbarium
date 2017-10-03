@@ -38,12 +38,18 @@ public class Aloe extends HerbPage {
 
     @Override
     protected void init() {
+        Image aloeLogo = new Image(new Texture("buttons/herbs/AloeDesc.png"));
+        Image aloeDesc = new Image(new Texture("buttons/herbs/AloePageDesc.png"));
         initBackgroundTexture();
-        //initTableMain();
+        initTableMain(aloeLogo,aloeDesc);
         initReturnButton();
     }
 
     private void initBackgroundTexture() {
+        Image background = new Image(new Texture("backgroundImg/Background.png"));
+        background.setHeight(700);
+        background.setWidth(480);
+        stage.addActor(background);
     }
 
 

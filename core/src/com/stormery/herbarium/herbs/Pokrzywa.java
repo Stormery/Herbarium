@@ -17,7 +17,7 @@ public class Pokrzywa extends  HerbPage{
 	@Override
 	protected void init() {
 		initBackgroundTexture();
-		initTableMain(background);
+		//initTableMain();
 
 
 
