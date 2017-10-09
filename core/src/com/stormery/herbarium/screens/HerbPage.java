@@ -35,7 +35,7 @@ public class HerbPage extends AbstractScreen {
 
 	@Override
 	protected void init() {
-		
+		Gdx.input.setCatchBackKey(true);
 
 	}
 	
@@ -101,6 +101,13 @@ public class HerbPage extends AbstractScreen {
 		tableMain.add(tableInner).height(Herbarium.HEIGHT).width(460).left().padRight(25f);
 		stage.addActor(tableMain);
 
+	}
+
+	protected void initBackgroundTextures() {
+		Image background = new Image(new Texture("backgroundImg/Background.png"));
+		background.setHeight(Herbarium.HEIGHT);
+		background.setWidth(Herbarium.WIDHT);
+		stage.addActor(background);
 	}
 	@Override
 	public void render(float delta) {

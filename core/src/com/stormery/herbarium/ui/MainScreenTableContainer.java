@@ -1,7 +1,9 @@
 package com.stormery.herbarium.ui;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
@@ -150,8 +152,7 @@ RIGHT
         }
     }
 
-
-
+    //Init table and add to scroll
     private void tableBookmarkScrollable() {
 
         tableBookmarkScrollable = new Table();
@@ -162,7 +163,7 @@ RIGHT
         tableMain.add(scrollPane).top().left().width(120f).height(555f)
                 .padLeft(21f).padRight(20f).padBottom(5f).padTop(118f);//bookmark
     }
-
+//Init table and add to scroll
     private void tableInnerWithScrollableHerbs() {
         tableInnerScrollable = new Table();
         tableInnerScrollable.setDebug(tableDebug);
@@ -188,7 +189,8 @@ RIGHT
     }
 // TODO MAIN INFO
     private static void createMainInfoTable() {
-        System.out.println("jesT!");
+        tableInnerScrollable.clearChildren();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
     }
 
     private static boolean nothingIsChecked() {
@@ -216,6 +218,7 @@ RIGHT
         return false;
     }
 
+    //Here we r adding All herbs to tables (init is in init)
     private void tableWithTherapeuticUseTypesEnglish() {
         float therapeuticUsePadTop = 20f;
         float therapeuticWidth = 116;
@@ -281,7 +284,7 @@ RIGHT
         tableBookmarkScrollable.add(bttUrinaryTractDisinfectant).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
         tableBookmarkScrollable.row();
     }// EnglishProperties table
-
+    // Here we have all functionality for each Herb buttons
     private void initTherapeuticButtonsENG() {
         bttAntibacterial = new TherapeuticUseButtons("ANTIBACTERIAL", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
@@ -432,7 +435,7 @@ RIGHT
             @Override
             public void onClick() {
                 if(bttLaxative.isChecked()){
-                    AlderBuckthorn.initAlderBuckthorn();
+                    AlderBuckthorn.initAlderBuckthorn(herbarium);
                     Aloe.initAloe(herbarium);
                     Flax.initFlax();
                     PlantagoOvata.initPlantagoOvata();
@@ -629,7 +632,6 @@ RIGHT
             public void onClick() {
                 System.out.println("Pobudzatrawienie  click");
                 tableInnerScrollable.clearChildren();
-                    tableInnerScrollable.clearChildren();
                     signForPobudzanieTrawienia= !signForPobudzanieTrawienia;
             }
         })).padTop(therapeuticUsePadTop);

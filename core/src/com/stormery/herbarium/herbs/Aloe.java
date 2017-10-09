@@ -10,6 +10,10 @@ import com.stormery.herbarium.screens.HerbPage;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * Created by Ayo on 2017-08-22.
  */
@@ -31,7 +35,7 @@ public class Aloe extends HerbPage {
 
                 }
             });
-        MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.add(aloeButton).width(320f).height(100f).padBottom(10f);
         MainScreenTableContainer.tableInnerScrollable.row();
 
     }
@@ -40,17 +44,13 @@ public class Aloe extends HerbPage {
     protected void init() {
         Image aloeLogo = new Image(new Texture("buttons/herbs/AloeDesc.png"));
         Image aloeDesc = new Image(new Texture("buttons/herbs/AloePageDesc.png"));
-        initBackgroundTexture();
+
+        initBackgroundTextures();
         initTableMain(aloeLogo,aloeDesc);
         initReturnButton();
     }
 
-    private void initBackgroundTexture() {
-        Image background = new Image(new Texture("backgroundImg/Background.png"));
-        background.setHeight(700);
-        background.setWidth(480);
-        stage.addActor(background);
-    }
+
 
 
 }

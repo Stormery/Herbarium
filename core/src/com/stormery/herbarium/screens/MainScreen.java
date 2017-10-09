@@ -1,11 +1,7 @@
 package com.stormery.herbarium.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.service.EnumLanguage;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
@@ -23,7 +19,7 @@ public class MainScreen extends HerbPage {
     }
 
     private void initialize() {
-        initBackgroundTextures();
+        initBackgroundAndBookmarkTexture();
         new MainScreenTableContainer(EnumLanguage.ENGLISH,stage,herbarium);
 
         //initButtons();
@@ -34,7 +30,7 @@ public class MainScreen extends HerbPage {
         // initTable();
 
     }
-    private void initBackgroundTextures() {
+    private void initBackgroundAndBookmarkTexture() {
 
         Image background = new Image(new Texture("backgroundImg/Background.png"));
         background.setHeight(700);
