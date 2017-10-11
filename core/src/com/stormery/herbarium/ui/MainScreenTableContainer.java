@@ -187,12 +187,6 @@ RIGHT
         }
         
     }
-// TODO MAIN INFO
-    private static void createMainInfoTable() {
-        tableInnerScrollable.clearChildren();
-        tableInnerScrollable.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
-    }
-
     private static boolean nothingIsChecked() {
         if(!bttAntibacterial.isChecked() &&
                 !bttAntispasmodic.isChecked()&&
@@ -217,6 +211,13 @@ RIGHT
         }
         return false;
     }
+
+    // TODO MAIN INFO
+    private static void createMainInfoTable() {
+        tableInnerScrollable.clearChildren();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
+    }
+
 
     //Here we r adding All herbs to tables (init is in init)
     private void tableWithTherapeuticUseTypesEnglish() {

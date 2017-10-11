@@ -1,7 +1,7 @@
 {
 com.badlogic.gdx.graphics.g2d.BitmapFont: {
-	VerdanaClassic: {
-		file: Verdana.fnt
+	VerdanaCursive: {
+		file: VerdanaCursive.fnt
 	}
 }
 com.badlogic.gdx.graphics.Color: {
@@ -14,7 +14,7 @@ com.badlogic.gdx.graphics.Color: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
-		font: VerdanaClassic
+		font: VerdanaCursive
 		fontColor: RGBA_0_0_0_255
 	}
 }

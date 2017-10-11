@@ -1,6 +1,7 @@
 package com.stormery.herbarium.herbs;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -8,15 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
-import com.stormery.herbarium.ui.UseButton;
-import com.stormery.herbarium.service.EnumHerb;
 import com.stormery.herbarium.screens.HerbPage;
+import com.stormery.herbarium.service.EnumHerb;
 import com.stormery.herbarium.ui.IClickCallback;
 import com.stormery.herbarium.ui.MainScreenTableContainer;
+import com.stormery.herbarium.ui.UseButton;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -52,23 +52,33 @@ public class AlderBuckthorn extends HerbPage {
         initBackgroundTextures();
         alderBuckthornDesc =  new ArrayList<String>();
         initDummyTable();
-        readFile("AlderBuckthorn.txt");
+        readFile("herbDesc/AlderBuckthorn.txt");
+        //readingFile("AlderBuckthorn.txt");
         initReturnButton();
     }
 
     private void initDummyTable() {
         boolean setDebug = false;
-        Skin skin = new Skin(Gdx.files.internal("ui/skinTable/VerdanaClassic.json"),
-                new TextureAtlas(Gdx.files.internal("ui/skinTable/VerdanaClassic.atlas")));
-        skin.getFont("VerdanaClassic").getData().setScale(0.8f);
+        Skin skin = new Skin(Gdx.files.internal("ui/skinTable/Verdana.json"),
+                new TextureAtlas(Gdx.files.internal("ui/skinTable/Verdana.atlas")));
+        skin.getFont("VerdanaCursive").getData().setScale(0.55f);
 
         tableMain = new Table();
         tableMain.setFillParent(true);
         tableMain.setDebug(setDebug);
+        tableMain.left().padLeft(10f);
 
-        Table tableInner = new Table();
+        Table tableInner = new Table(skin);
         tableInner.setDebug(setDebug);
         tableInner.top().right();
+        //HerbPicture
+        tableInner.add(new Image(new Texture("buttons/herbs/Alder/Alder01.jpg"))).width(160f).height(100f);
+        //HerbLogo Desc
+        tableInner.add("Alder Bucktorn").expandX().height(100f);
+        tableInner.row();
+        //TODO przyciac troche zloty pasek bo wystaje
+        tableInner.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).colspan(2).expandX().left();
+        tableInner.row();
 
 
         tableScroll = new Table(skin);
@@ -77,13 +87,21 @@ public class AlderBuckthorn extends HerbPage {
 
         ScrollPane scrollPane = new ScrollPane(tableScroll);
         scrollPane.setOverscroll(false, false);
-        tableInner.add(scrollPane);
+        tableInner.add(scrollPane).colspan(2).left();
 
 
-        tableMain.add(tableInner).padLeft(12f);
+        tableMain.add(tableInner);
         stage.addActor(tableMain);
     }
 
+    public void readingFile(String path){
+        FileHandle handle = Gdx.files.local(path);
+        String text = handle.readString();
+        String wordsArray[] = text.split("\\r?\\n");
+        for(String word : wordsArray) {
+            tableScroll.add(word);
+        }
+    }
     public void readFile(String filePath) {
 
         try{
@@ -103,7 +121,6 @@ public class AlderBuckthorn extends HerbPage {
         } catch (IOException ie){
 
         }
-
     }
 
 

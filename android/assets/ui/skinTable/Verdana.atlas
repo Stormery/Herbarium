@@ -1,10 +1,10 @@
 
-VerdanaClassic.png
+Verdana.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Verdana1
+VerdanaCursive1
   rotate: false
   xy: 1, 1
   size: 512, 512
@@ -12,12 +12,12 @@ Verdana1
   offset: 0, 0
   index: -1
 
-VerdanaClassic2.png
+Verdana2.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Verdana2
+VerdanaCursive2
   rotate: false
   xy: 1, 1
   size: 512, 512
