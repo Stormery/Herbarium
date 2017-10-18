@@ -14,7 +14,7 @@ import com.stormery.herbarium.herbs.Angelica;
 import com.stormery.herbarium.herbs.Aniseed;
 import com.stormery.herbarium.herbs.Bearberry;
 import com.stormery.herbarium.herbs.BirchTree;
-import com.stormery.herbarium.herbs.Carom;
+import com.stormery.herbarium.herbs.Caraway;
 import com.stormery.herbarium.herbs.Chamomile;
 import com.stormery.herbarium.herbs.CommonHop;
 import com.stormery.herbarium.herbs.Coriander;
@@ -352,7 +352,7 @@ RIGHT
             @Override
             public void onClick() {
                 if(bttCarminative.isChecked()){
-                    Carom.initCarom();
+                    Caraway.initCarom();
                     Coriander.initCoriander();
                     Dill.initDill();
                 }

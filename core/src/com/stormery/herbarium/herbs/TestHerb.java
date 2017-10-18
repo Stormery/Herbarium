@@ -22,16 +22,16 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * Created by Ayo on 2017-08-28.
+ * Created by Stormery on 2017-10-18.
  */
 
-public class AlderBuckthorn extends HerbPage {
+public class TestHerb extends HerbPage {
     static UseButton alderBuckthornButton;
     private ArrayList<String> alderBuckthornDesc;
     private Table tableMain;
     Table tableScroll;
 
-    public AlderBuckthorn(Herbarium herbarium) {
+    public TestHerb(Herbarium herbarium) {
         super(herbarium);
     }
 
@@ -103,7 +103,7 @@ public class AlderBuckthorn extends HerbPage {
         }
     }
     public void readFile(String filePath) {
-    FileHandle file = Gdx.files.internal("herbDesc/AlderBuckthorn.txt");
+        FileHandle file = Gdx.files.internal("herbDesc/AlderBuckthorn.txt");
         try{
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
                     new FileInputStream(String.valueOf(file)), "cp1250"));
@@ -125,4 +125,3 @@ public class AlderBuckthorn extends HerbPage {
 
 
 }
-

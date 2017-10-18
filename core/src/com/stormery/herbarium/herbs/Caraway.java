@@ -11,21 +11,21 @@ import com.stormery.herbarium.ui.MainScreenTableContainer;
  * Created by Ayo on 2017-08-28.
  */
 
-public class Carom extends HerbPage {
-    static UseButton caromButton;
+public class Caraway extends HerbPage {
+    static UseButton carawayButton;
 
-    public Carom(Herbarium herbarium) {
+    public Caraway(Herbarium herbarium) {
         super(herbarium);
     }
 
     public static void initCarom() {
-        caromButton = new UseButton(EnumHerb.CAROM, new IClickCallback() {
+        carawayButton = new UseButton(EnumHerb.CARAWAY, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("IDZIE DO Kminku PAGE");
             }
         });
-        MainScreenTableContainer.tableInnerScrollable.add(caromButton).width(320).height(100).padBottom(10f);
+        MainScreenTableContainer.tableInnerScrollable.add(carawayButton).width(320).height(100).padBottom(10f);
         MainScreenTableContainer.tableInnerScrollable.row();
     }
 
