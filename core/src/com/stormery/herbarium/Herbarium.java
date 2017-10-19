@@ -7,6 +7,7 @@ import com.stormery.herbarium.service.SoundService;
 public class Herbarium extends Game {
 
 	public final static String APP_NAME = "Herbarium";
+	public final static String APP_VERSION = "Alpha";
 
 	public final static int WIDHT = 480;
 	public final static int HEIGHT = 700;

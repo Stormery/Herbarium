@@ -1,10 +1,14 @@
 package com.stormery.herbarium.ui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.stormery.herbarium.Herbarium;
 import com.stormery.herbarium.herbs.AlderBuckthorn;
@@ -40,6 +44,7 @@ import com.stormery.herbarium.herbs.Rhubarb;
 import com.stormery.herbarium.herbs.Sage;
 import com.stormery.herbarium.herbs.Senna;
 import com.stormery.herbarium.herbs.StJohnsWort;
+import com.stormery.herbarium.herbs.TestHerb;
 import com.stormery.herbarium.herbs.Thyme;
 import com.stormery.herbarium.herbs.Tilia;
 import com.stormery.herbarium.herbs.Valerian;
@@ -62,12 +67,14 @@ public class MainScreenTableContainer {
     private Table tableRight;
     public static Table tableInnerScrollable;
     private boolean tableDebug = false;
+    private static Skin skinRightTable;
 
     private Stage stage;
 
+    private static TherapeuticUseButtons bttTest;
     //Therapeutic Use buttons
-    private static TherapeuticUseButtons bttAntibacterial;
     private static TherapeuticUseButtons bttAntipyretic;
+    private static TherapeuticUseButtons bttAntibacterial;
     private static TherapeuticUseButtons bttAntispasmodic;
     private static TherapeuticUseButtons bttAntitussive;
     private static TherapeuticUseButtons bttAstrigents;
@@ -112,9 +119,6 @@ public class MainScreenTableContainer {
     }
 
     private void initTable(EnumLanguage language) {
-
-       // Image tableLogo = new Image(new Texture("backgroundImg/Logo.png"));
-
 //InstantiateTables
         tableMain = new Table();
         tableRight = new Table();
@@ -137,9 +141,9 @@ RIGHT
         TODO wyszukiwarki nie ma
         tableRight.add().height(152f).top(); //LOGO
         tableRight.row();
-        Instantiate Box with ScrollableButtons
-        */
 
+Instantiate Box with ScrollableButtons
+ */
         tableInnerWithScrollableHerbs();
         stage.addActor(tableMain);
     }
@@ -165,7 +169,12 @@ RIGHT
     }
 //Init table and add to scroll
     private void tableInnerWithScrollableHerbs() {
-        tableInnerScrollable = new Table();
+
+        skinRightTable = new Skin(Gdx.files.internal("ui/skinTable/Verdana.json"),
+                new TextureAtlas(Gdx.files.internal("ui/skinTable/Verdana.atlas")));
+        skinRightTable.getFont("VerdanaCursive").getData().setScale(0.5f);
+
+        tableInnerScrollable = new Table(skinRightTable);
         tableInnerScrollable.setDebug(tableDebug);
 
         ScrollPane scrollPane = new ScrollPane(tableInnerScrollable);
@@ -174,10 +183,11 @@ RIGHT
         //tableMain.row();
         tableRight.add(scrollPane).colspan(2).top();
         tableMain.add(tableRight).top().left();
-
-
     }
 
+    /*
+ Here we r managing Whats going on main page while no therapeutic use buttons are used
+*/
     public static void tableMainPage() {
         if(nothingIsChecked()){
             if(!mainInfoShowed){
@@ -185,7 +195,6 @@ RIGHT
             }
             mainInfoShowed = true;
         }
-        
     }
     private static boolean nothingIsChecked() {
         if(!bttAntibacterial.isChecked() &&
@@ -205,7 +214,8 @@ RIGHT
                 !bttProtectiveScreening.isChecked() &&
                 !bttSedative.isChecked() &&
                 !bttSpasmolytic.isChecked() &&
-                !bttUrinaryTractDisinfectant.isChecked()
+                !bttUrinaryTractDisinfectant.isChecked() &&
+                !bttTest.isChecked()
                 ){
             return true;
         }
@@ -216,10 +226,47 @@ RIGHT
     private static void createMainInfoTable() {
         tableInnerScrollable.clearChildren();
         tableInnerScrollable.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
+        tableInnerScrollable.row();
+        tableInnerScrollable.add("ver. " + Herbarium.APP_VERSION).right().padTop(5f);
+        tableInnerScrollable.row();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/SearchBar.jpg"))).height(45f).width(280);
+        tableInnerScrollable.row();
+
+        tableInnerScrollable.add("Hi").center().padTop(20f);
+        tableInnerScrollable.row();
+        String text = "Welcome to my herbarium, you will find therapeutic applications hidden in " +
+                "herbs that you meet on a daily basis. Any comments and feedback please go to " +
+                "email @ panStormery@gmail.com";
+
+        Label labelIntro = new Label(text,skinRightTable);
+        labelIntro.setWrap(true);
+        tableInnerScrollable.add(labelIntro).left().padTop(5f).width(290f);
+        tableInnerScrollable.row();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).width(290f);
+        tableInnerScrollable.row();
+
+             text = "The information on this site does not " +
+                "replace the doctor's advice regarding the treatment " +
+                "of diseases and can not be used by patients for self-healing. " +
+                "Ailments and their treatment must always be consulted with a physician.";
+
+        Label labelDoctorAdvice = new Label(text,skinRightTable);
+        labelDoctorAdvice.setWrap(true);
+        tableInnerScrollable.add(labelDoctorAdvice).left().padTop(5f).width(290f);
+        tableInnerScrollable.row();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).width(290f);
+        tableInnerScrollable.row();
+
+        text = "Being aware of my misconception, I would like to ask all users to notify me " +
+                "of potential errors and shortcomings, both substantive and technical";
+        Label labelMisconception = new Label(text,skinRightTable);
+        labelMisconception.setWrap(true);
+        tableInnerScrollable.add(labelMisconception).left().width(290f);
+
     }
 
 
-    //Here we r adding All herbs to tables (init is in init)
+    //Here we r adding All herbs to the tables (init is in init)
     private void tableWithTherapeuticUseTypesEnglish() {
         float therapeuticUsePadTop = 20f;
         float therapeuticWidth = 116;
@@ -231,6 +278,9 @@ RIGHT
         // Init Buttons
      initTherapeuticButtonsENG();
 /////////////////////////////////////////////////////
+        tableBookmarkScrollable.add(bttTest).top().left().padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
+        tableBookmarkScrollable.row();
+
         tableBookmarkScrollable.add(bttAntibacterial).top().left().padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
         tableBookmarkScrollable.row();
 
@@ -285,8 +335,19 @@ RIGHT
         tableBookmarkScrollable.add(bttUrinaryTractDisinfectant).padTop(therapeuticUsePadTop).height(therapeuticHeight).width(therapeuticWidth);
         tableBookmarkScrollable.row();
     }// EnglishProperties table
-    // Here we have all functionality for each Herb buttons
+
+    // Here we have all functionality for each TherapeuticHerb buttons
+    //ButtonGroup for bookmark is here below
     private void initTherapeuticButtonsENG() {
+        bttTest = new TherapeuticUseButtons("TEST", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
+            @Override
+            public void onClick() {
+                if(bttTest.isChecked()){
+                    TestHerb.initAlderBuckthorn(herbarium);
+                }
+            }
+        });
+
         bttAntibacterial = new TherapeuticUseButtons("ANTIBACTERIAL", TherapeuticUseButtons.getTherapeuticBttSkin(), new IClickCallback() {
             @Override
             public void onClick() {
@@ -494,7 +555,7 @@ RIGHT
         });
 
 
-        ButtonGroup buttonGroup = new ButtonGroup(bttAntibacterial, bttAntipyretic, bttAntispasmodic, bttAntitussive, bttAstrigents,
+        ButtonGroup buttonGroup = new ButtonGroup(bttTest,bttAntibacterial, bttAntipyretic, bttAntispasmodic, bttAntitussive, bttAstrigents,
                 bttCardiacInsufficiency, bttCarminative, bttCholagogues, bttDiaphoretic, bttDemulcent,
                 bttDiuretic, bttExpectorant, bttImprovingDigestion, bttLaxative, bttProtectiveScreening,
                 bttSedative, bttSpasmolytic, bttUrinaryTractDisinfectant);

@@ -12,7 +12,7 @@ import com.stormery.herbarium.service.EnumTherapeuticProperties;
 /**
  * Created by Stormery on 2017-08-09.
  */
-
+//TODO Cala klase zmienic pozniej tak jak TherapeuticUseButtons i usunac
 public  class UseButton extends Button {
     private static TextureAtlas textureAtlas;
     private static ButtonStyle buttonStyle;
