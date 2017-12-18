@@ -16,7 +16,7 @@ public class SplashScreen extends AbstractScreen{
 
 	private SplashScreenButton splashScreenButton;
 
-	private String splashInfo= new String("Tap to continue");
+	private String splashInfo= new String("");
 	private Table table;
 	private TextField splashText;
 	public SplashScreen(Herbarium herbarium) {

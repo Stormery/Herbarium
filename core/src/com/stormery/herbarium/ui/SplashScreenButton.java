@@ -21,7 +21,7 @@ public class SplashScreenButton extends Image {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				
 				herbarium.getSoundService().playTapSound();
-
+				System.out.println("~Debug Splash przed initialize");
 				herbarium.setScreen(new MainScreen(herbarium));
 				
 				return super.touchDown(event, x, y, pointer, button);

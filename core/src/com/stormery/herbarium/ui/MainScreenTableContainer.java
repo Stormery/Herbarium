@@ -64,7 +64,7 @@ public class MainScreenTableContainer {
     private Herbarium herbarium;
     private Table tableMain;
     private Table tableBookmarkScrollable;
-    private Table tableRight;
+    private static Table tableRight;
     public static Table tableInnerScrollable;
     private boolean tableDebug = false;
     private static Skin skinRightTable;
@@ -144,8 +144,28 @@ RIGHT
 
 Instantiate Box with ScrollableButtons
  */
+        initSkinForRightTable();
+        tableRightLogoAndSearch();
         tableInnerWithScrollableHerbs();
         stage.addActor(tableMain);
+    }
+
+    private void initSkinForRightTable() {
+        skinRightTable = new Skin(Gdx.files.internal("ui/skinTable/Verdana.json"),
+                new TextureAtlas(Gdx.files.internal("ui/skinTable/Verdana.atlas")));
+        skinRightTable.getFont("VerdanaCursive").getData().setScale(0.4f);
+        tableRight.setSkin(skinRightTable);
+    }
+
+    private void tableRightLogoAndSearch() {
+
+
+        tableRight.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
+        tableRight.row();
+        tableRight.add("ver. " + Herbarium.APP_VERSION).right().padTop(5f);
+        tableRight.row();
+        tableRight.add(new Image(new Texture("backgroundImg/SearchBar.jpg"))).height(45f).width(300).padBottom(20f);
+        tableRight.row();
     }
 
     private void LanguageChangeTableOfTherapeuticUse(EnumLanguage language) {
@@ -169,11 +189,6 @@ Instantiate Box with ScrollableButtons
     }
 //Init table and add to scroll
     private void tableInnerWithScrollableHerbs() {
-
-        skinRightTable = new Skin(Gdx.files.internal("ui/skinTable/Verdana.json"),
-                new TextureAtlas(Gdx.files.internal("ui/skinTable/Verdana.atlas")));
-        skinRightTable.getFont("VerdanaCursive").getData().setScale(0.5f);
-
         tableInnerScrollable = new Table(skinRightTable);
         tableInnerScrollable.setDebug(tableDebug);
 
@@ -181,7 +196,7 @@ Instantiate Box with ScrollableButtons
         scrollPane.setOverscroll(false, false);
 
         //tableMain.row();
-        tableRight.add(scrollPane).colspan(2).top();
+        tableRight.add(scrollPane).colspan(2).top().width(300f);
         tableMain.add(tableRight).top().left();
     }
 
@@ -225,43 +240,19 @@ Instantiate Box with ScrollableButtons
     // TODO MAIN INFO
     private static void createMainInfoTable() {
         tableInnerScrollable.clearChildren();
-        tableInnerScrollable.add(new Image(new Texture("backgroundImg/Logo.png"))).height(80).width(280f).top().center();
-        tableInnerScrollable.row();
-        tableInnerScrollable.add("ver. " + Herbarium.APP_VERSION).right().padTop(5f);
-        tableInnerScrollable.row();
-        tableInnerScrollable.add(new Image(new Texture("backgroundImg/SearchBar.jpg"))).height(45f).width(280);
-        tableInnerScrollable.row();
-
-        tableInnerScrollable.add("Hi").center().padTop(20f);
-        tableInnerScrollable.row();
-        String text = "Welcome to my herbarium, you will find therapeutic applications hidden in " +
-                "herbs that you meet on a daily basis. Any comments and feedback please go to " +
-                "email @ panStormery@gmail.com";
-
-        Label labelIntro = new Label(text,skinRightTable);
-        labelIntro.setWrap(true);
-        tableInnerScrollable.add(labelIntro).left().padTop(5f).width(290f);
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/mainPage/Naglowek.png")));
         tableInnerScrollable.row();
         tableInnerScrollable.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).width(290f);
         tableInnerScrollable.row();
-
-             text = "The information on this site does not " +
-                "replace the doctor's advice regarding the treatment " +
-                "of diseases and can not be used by patients for self-healing. " +
-                "Ailments and their treatment must always be consulted with a physician.";
-
-        Label labelDoctorAdvice = new Label(text,skinRightTable);
-        labelDoctorAdvice.setWrap(true);
-        tableInnerScrollable.add(labelDoctorAdvice).left().padTop(5f).width(290f);
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/mainPage/DoctorAdvice.png")));
         tableInnerScrollable.row();
         tableInnerScrollable.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).width(290f);
         tableInnerScrollable.row();
+       // tableInnerScrollable.add(new Image(new Texture("backgroundImg/mainPage/Reportbugs.png")));
+       // tableInnerScrollable.row();
+        tableInnerScrollable.add(new Image(new Texture("backgroundImg/ZlotyPasek.png"))).width(290f);
+        tableInnerScrollable.row();
 
-        text = "Being aware of my misconception, I would like to ask all users to notify me " +
-                "of potential errors and shortcomings, both substantive and technical";
-        Label labelMisconception = new Label(text,skinRightTable);
-        labelMisconception.setWrap(true);
-        tableInnerScrollable.add(labelMisconception).left().width(290f);
 
     }
 
